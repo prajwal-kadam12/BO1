@@ -1,0 +1,1243 @@
+{
+  "bills": [
+    {
+      "id": "1767873525733",
+      "organizationId": "1",
+      "billNumber": "24",
+      "orderNumber": "",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {
+        "street1": "Bhumkar chown ",
+        "street2": "pune",
+        "city": "pune",
+        "state": "[UK] - Uttarakhand",
+        "pinCode": "",
+        "country": "India",
+        "gstin": ""
+      },
+      "billDate": "2026-01-08",
+      "dueDate": "2026-01-08",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "",
+      "items": [
+        {
+          "id": "1767873514881",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 40000
+        }
+      ],
+      "subTotal": 40000,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 0,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 40000,
+      "amountPaid": 0,
+      "balanceDue": 40000,
+      "notes": "",
+      "attachments": [],
+      "status": "OPEN",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2026-01-08T11:58:45.733Z",
+      "updatedAt": "2026-01-08T11:58:45.733Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2026-01-08T11:58:45.733Z",
+          "action": "created",
+          "description": "Bill created for ₹40,000",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1767098489701",
+      "organizationId": "1",
+      "billNumber": "23",
+      "orderNumber": "",
+      "vendorId": "7",
+      "vendorName": "Vikas  Traders Pvt Ltd ",
+      "vendorAddress": {
+        "street1": "Plot No. 21, Industrial Area",
+        "street2": "MIDC Phase 2",
+        "city": "Pune",
+        "state": "[MH] - Maharashtra",
+        "pinCode": "411019",
+        "country": "India",
+        "gstin": ""
+      },
+      "billDate": "2025-12-30",
+      "dueDate": "2025-12-30",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": true,
+      "subject": "",
+      "items": [
+        {
+          "id": "1767098473489",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 50
+        },
+        {
+          "id": "1767098478984",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 40000
+        }
+      ],
+      "subTotal": 40050,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 0,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 40050,
+      "amountPaid": 0,
+      "balanceDue": 40050,
+      "notes": "",
+      "attachments": [],
+      "status": "OPEN",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-30T12:41:29.701Z",
+      "updatedAt": "2025-12-30T12:41:29.701Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-30T12:41:29.701Z",
+          "action": "created",
+          "description": "Bill created for ₹40,050",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766633708822",
+      "billNumber": "22",
+      "orderNumber": "PO-2025-0014",
+      "vendorId": "7",
+      "vendorName": "Vikas  Traders Pvt Ltd ",
+      "vendorAddress": {},
+      "billDate": "2025-12-25",
+      "dueDate": "2025-12-25",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0014",
+      "items": [
+        {
+          "id": "item-1766633698653-0",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "discount",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst18",
+          "taxAmount": 7200,
+          "customerDetails": "none",
+          "amount": 40000
+        }
+      ],
+      "subTotal": 40000,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 7200,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 47200,
+      "amountPaid": 10200,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PARTIALLY_PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-25T03:35:08.822Z",
+      "updatedAt": "2025-12-25T04:22:35.005Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-25T03:35:08.822Z",
+          "action": "created",
+          "description": "Bill created for ₹47,200",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-25T03:35:24.123Z",
+          "action": "payment",
+          "description": "Payment of ₹7,200 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766633762202",
+          "timestamp": "2025-12-25T03:36:02.197Z",
+          "action": "payment",
+          "description": "Payment of ₹20,000 recorded via PM-00061",
+          "user": "System"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-25T03:45:34.999Z",
+          "action": "payment",
+          "description": "Payment of ₹1,000 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-25T03:48:18.472Z",
+          "action": "payment",
+          "description": "Payment of ₹500 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766634531118",
+          "timestamp": "2025-12-25T03:48:51.114Z",
+          "action": "payment",
+          "description": "Payment of ₹700 recorded via PM-00064",
+          "user": "System"
+        },
+        {
+          "id": "1766636435979",
+          "timestamp": "2025-12-25T04:20:35.977Z",
+          "action": "payment",
+          "description": "Payment of ₹800 recorded via PM-00065",
+          "user": "System"
+        }
+      ],
+      "paymentsRecorded": [
+        {
+          "paymentId": "direct-1766633724123",
+          "paymentNumber": "PM-00060",
+          "amount": 7200,
+          "date": "2025-12-25",
+          "mode": "Cash"
+        },
+        {
+          "paymentId": "direct-1766634334999",
+          "paymentNumber": "PM-00062",
+          "amount": 1000,
+          "date": "2025-12-25",
+          "mode": "Cash"
+        },
+        {
+          "paymentId": "direct-1766634498472",
+          "paymentNumber": "PM-00063",
+          "amount": 500,
+          "date": "2025-12-25",
+          "mode": "Cash"
+        }
+      ]
+    },
+    {
+      "id": "1766563756864",
+      "billNumber": "21",
+      "orderNumber": "",
+      "vendorId": "3",
+      "vendorName": "Ganesh k",
+      "vendorAddress": {
+        "street1": "Bhumkar chown ",
+        "street2": "pune",
+        "city": "pune",
+        "state": "[UK] - Uttarakhand",
+        "pinCode": "",
+        "country": "India",
+        "gstin": ""
+      },
+      "billDate": "2025-12-24",
+      "dueDate": "2025-12-24",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "",
+      "items": [
+        {
+          "id": "1766563748461",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 50
+        }
+      ],
+      "subTotal": 50,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 0,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 50,
+      "amountPaid": 50,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-24T08:09:16.864Z",
+      "updatedAt": "2025-12-29T09:40:09.546Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-24T08:09:16.864Z",
+          "action": "created",
+          "description": "Bill created for ₹50",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-29T09:40:09.546Z",
+          "action": "credit_applied",
+          "description": "Vendor Credit VC-00015 applied: ₹50.00",
+          "user": "Admin User"
+        }
+      ],
+      "creditsApplied": [
+        {
+          "creditId": "vc-1766554458859",
+          "creditNumber": "VC-00015",
+          "amount": 50,
+          "appliedDate": "2025-12-29"
+        }
+      ]
+    },
+    {
+      "id": "1766552713435",
+      "billNumber": "19",
+      "orderNumber": "PO-2025-0003",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {},
+      "billDate": "2025-12-24",
+      "dueDate": "2025-12-24",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0003",
+      "items": [
+        {
+          "id": "item-1766552711258-0",
+          "itemName": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "account": "Inventory Asset",
+          "quantity": 1,
+          "rate": 60,
+          "tax": "gst5",
+          "taxAmount": 3,
+          "customerDetails": "none",
+          "amount": 60
+        }
+      ],
+      "subTotal": 60,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 3,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 63,
+      "amountPaid": 63,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-24T05:05:13.435Z",
+      "updatedAt": "2025-12-24T05:05:46.502Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-24T05:05:13.435Z",
+          "action": "created",
+          "description": "Bill created for ₹63",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-24T05:05:27.730Z",
+          "action": "payment",
+          "description": "Payment of ₹13 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-24T05:05:39.723Z",
+          "action": "payment",
+          "description": "Payment of ₹40 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-24T05:05:46.502Z",
+          "action": "payment",
+          "description": "Payment of ₹10 recorded",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766546511524",
+      "billNumber": "18",
+      "orderNumber": "PO-2025-0010",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {},
+      "billDate": "2025-12-24",
+      "dueDate": "2025-12-24",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0010",
+      "items": [
+        {
+          "id": "item-1766546491041-0",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "unearned_revenue",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "none",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 50
+        },
+        {
+          "id": "item-1766546491041-1",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "employee_advance",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "none",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 40000
+        },
+        {
+          "id": "1766546494881",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "employee_advance",
+          "quantity": 11,
+          "rate": 50,
+          "tax": "none",
+          "taxAmount": 0,
+          "customerDetails": "none",
+          "amount": 550
+        }
+      ],
+      "subTotal": 40600,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 0,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 40600,
+      "amountPaid": 23059,
+      "balanceDue": 17541,
+      "notes": "",
+      "attachments": [],
+      "status": "PARTIALLY_PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-24T03:21:51.524Z",
+      "updatedAt": "2025-12-24T06:17:10.461Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-24T03:21:51.524Z",
+          "action": "created",
+          "description": "Bill created for ₹40,100",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-24T03:52:47.323Z",
+          "action": "payment",
+          "description": "Payment of ₹7,541 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-24T03:53:08.573Z",
+          "action": "payment",
+          "description": "Payment of ₹10,000 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-24T06:16:59.130Z",
+          "action": "updated",
+          "description": "Bill updated. New total: ₹40600.00, Balance due: ₹500.00",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-24T06:17:10.461Z",
+          "action": "payment",
+          "description": "Payment of ₹500 recorded",
+          "user": "Admin User"
+        }
+      ],
+      "creditsApplied": [
+        {
+          "creditId": "vc-1766494760998",
+          "creditNumber": "VC-00012",
+          "amount": 22559,
+          "appliedDate": "2025-12-24"
+        }
+      ],
+      "paymentsRecorded": [
+        {
+          "paymentId": "direct-1766557030461",
+          "paymentNumber": "PM-00059",
+          "amount": 500,
+          "date": "2025-12-24",
+          "mode": "Cash"
+        }
+      ]
+    },
+    {
+      "id": "1766545240520",
+      "billNumber": "15",
+      "orderNumber": "PO-2025-0010",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {},
+      "billDate": "2025-12-24",
+      "dueDate": "2025-12-24",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0010",
+      "items": [
+        {
+          "id": "item-1766545234221-0",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "unearned_revenue",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst5",
+          "taxAmount": 2.5,
+          "customerDetails": "none",
+          "amount": 50
+        },
+        {
+          "id": "item-1766545234221-1",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "employee_advance",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst5",
+          "taxAmount": 2000,
+          "customerDetails": "none",
+          "amount": 40000
+        }
+      ],
+      "subTotal": 40050,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 2002.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 42052.5,
+      "amountPaid": 42052.5,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-24T03:00:40.520Z",
+      "updatedAt": "2025-12-24T03:19:17.104Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-24T03:00:40.520Z",
+          "action": "created",
+          "description": "Bill created for ₹42,052.5",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766546357109",
+          "timestamp": "2025-12-24T03:19:17.104Z",
+          "action": "payment",
+          "description": "Payment of ₹42,052.5 recorded via PM-00033",
+          "user": "System"
+        }
+      ]
+    },
+    {
+      "id": "1766494624617",
+      "billNumber": "14",
+      "orderNumber": "",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "country": "India",
+        "gstin": ""
+      },
+      "billDate": "2025-12-23",
+      "dueDate": "2025-12-23",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "",
+      "items": [
+        {
+          "id": "1766494581582",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "input_tax_credits",
+          "quantity": 21,
+          "rate": 50,
+          "tax": "CGST9",
+          "taxAmount": 94.5,
+          "customerDetails": "3",
+          "amount": 1050
+        },
+        {
+          "id": "1766494600561",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "prepaid_expenses",
+          "quantity": 1,
+          "rate": 45002,
+          "tax": "IGST18",
+          "taxAmount": 8100,
+          "customerDetails": "6",
+          "amount": 45002
+        }
+      ],
+      "subTotal": 46050,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 8194.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 54244.5,
+      "amountPaid": 78489,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-23T12:57:04.616Z",
+      "updatedAt": "2025-12-24T03:19:17.104Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T12:57:04.616Z",
+          "action": "created",
+          "description": "Bill created for ₹54,244.5",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-23T12:58:36.699Z",
+          "action": "payment",
+          "description": "Payment of ₹24,244.5 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766546357111",
+          "timestamp": "2025-12-24T03:19:17.104Z",
+          "action": "payment",
+          "description": "Payment of ₹54,244.5 recorded via PM-00033",
+          "user": "System"
+        }
+      ]
+    },
+    {
+      "id": "1766399984974",
+      "billNumber": "13",
+      "orderNumber": "PO-2025-0008",
+      "vendorId": "6",
+      "vendorName": "Sharma Traders Pvt Ltd",
+      "vendorAddress": {},
+      "billDate": "2025-12-22",
+      "dueDate": "2025-12-22",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0008",
+      "items": [
+        {
+          "id": "item-1766399968557-0",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Inventory Asset",
+          "quantity": 13,
+          "rate": 50,
+          "tax": "IGST18",
+          "taxAmount": 117,
+          "customerDetails": "none",
+          "amount": 650
+        },
+        {
+          "id": "item-1766399968557-1",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 31,
+          "rate": 50,
+          "tax": "CGST9",
+          "taxAmount": 139.5,
+          "customerDetails": "none",
+          "amount": 1550
+        }
+      ],
+      "subTotal": 2200,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 256.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 2456.5,
+      "amountPaid": 2456.5,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-22T10:39:44.974Z",
+      "updatedAt": "2025-12-23T10:08:16.979Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T10:39:44.974Z",
+          "action": "created",
+          "description": "Bill created for ₹2,456.5",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766400586531",
+          "timestamp": "2025-12-22T10:49:46.525Z",
+          "action": "payment",
+          "description": "Payment of ₹456 recorded via PM-00023",
+          "user": "System"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-22T11:39:19.763Z",
+          "action": "payment",
+          "description": "Payment of ₹1,000.5 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766403597712",
+          "timestamp": "2025-12-22T11:39:57.711Z",
+          "action": "payment",
+          "description": "Payment of ₹200 recorded via PM-00025",
+          "user": "System"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-23T10:08:00.489Z",
+          "action": "payment",
+          "description": "Payment of ₹500 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "6",
+          "timestamp": "2025-12-23T10:08:16.979Z",
+          "action": "payment",
+          "description": "Payment of ₹300 recorded",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766381072824",
+      "billNumber": "10",
+      "orderNumber": "PO-2025-0008",
+      "vendorId": "6",
+      "vendorName": "Sharma Traders Pvt Ltd",
+      "vendorAddress": {},
+      "billDate": "2025-12-22",
+      "dueDate": "2025-12-22",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0008",
+      "items": [
+        {
+          "id": "item-1766381045444-0",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 13,
+          "rate": 50,
+          "tax": "IGST18",
+          "taxAmount": 117,
+          "customerDetails": "none",
+          "amount": 650
+        },
+        {
+          "id": "item-1766381045444-1",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 31,
+          "rate": 50,
+          "tax": "CGST9",
+          "taxAmount": 139.5,
+          "customerDetails": "none",
+          "amount": 1550
+        }
+      ],
+      "subTotal": 2200,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 220,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 256.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 2236.5,
+      "amountPaid": 2236.5,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "VOID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-22T05:24:32.824Z",
+      "updatedAt": "2025-12-23T11:37:03.508Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T05:24:32.824Z",
+          "action": "created",
+          "description": "Bill created for ₹2,236.5",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-22T05:24:50.896Z",
+          "action": "payment",
+          "description": "Payment of ₹236.5 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-22T05:25:53.274Z",
+          "action": "payment",
+          "description": "Payment of ₹111 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-22T06:44:09.899Z",
+          "action": "payment",
+          "description": "Payment of ₹1,889 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-23T11:37:03.508Z",
+          "action": "void",
+          "description": "Bill has been voided",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766374500345",
+      "billNumber": "7",
+      "orderNumber": "PO-2025-0004",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {},
+      "billDate": "2025-12-22",
+      "dueDate": "2025-12-22",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0004",
+      "items": [
+        {
+          "id": "item-1766374489435-0",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "customerDetails": "none",
+          "amount": 50
+        },
+        {
+          "id": "item-1766374489435-1",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "customerDetails": "none",
+          "amount": 50
+        }
+      ],
+      "subTotal": 100,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 18,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 118,
+      "amountPaid": 236,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-22T03:35:00.345Z",
+      "updatedAt": "2025-12-24T04:04:48.909Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T03:35:00.345Z",
+          "action": "created",
+          "description": "Bill created for ₹118",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-22T03:56:14.939Z",
+          "action": "payment",
+          "description": "Payment of ₹118 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766549088913",
+          "timestamp": "2025-12-24T04:04:48.909Z",
+          "action": "payment",
+          "description": "Payment of ₹118 recorded via PM-00040",
+          "user": "System"
+        }
+      ]
+    },
+    {
+      "id": "1766137256492",
+      "billNumber": "5",
+      "orderNumber": "PO-2025-0004",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {},
+      "billDate": "2025-12-19",
+      "dueDate": "2025-12-19",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": false,
+      "subject": "Bill for Purchase Order #PO-2025-0004",
+      "items": [
+        {
+          "id": "item-1766137214734-0",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 11,
+          "rate": 49.99,
+          "tax": "none",
+          "taxAmount": 0,
+          "customerDetails": "2",
+          "amount": 549.89
+        },
+        {
+          "id": "item-1766137214734-1",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "none",
+          "taxAmount": 0,
+          "customerDetails": "7",
+          "amount": 50
+        }
+      ],
+      "subTotal": 599.89,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 59.989,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 0,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 539.901,
+      "amountPaid": 1079.802,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-19T09:40:56.492Z",
+      "updatedAt": "2025-12-24T04:04:48.909Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-19T09:40:56.492Z",
+          "action": "created",
+          "description": "Bill created for ₹539.901",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-22T03:06:52.815Z",
+          "action": "payment",
+          "description": "Payment of ₹439.901 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-22T03:33:46.842Z",
+          "action": "payment",
+          "description": "Payment of ₹100 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766549088915",
+          "timestamp": "2025-12-24T04:04:48.909Z",
+          "action": "payment",
+          "description": "Payment of ₹539.901 recorded via PM-00040",
+          "user": "System"
+        }
+      ]
+    },
+    {
+      "id": "1766053744518",
+      "billNumber": "4",
+      "orderNumber": "",
+      "vendorId": "2",
+      "vendorName": "Amazon",
+      "vendorAddress": {
+        "street1": "Bhumkar chown ",
+        "street2": "pune",
+        "city": "pune",
+        "state": "[UK] - Uttarakhand",
+        "pinCode": "",
+        "country": "India",
+        "gstin": ""
+      },
+      "billDate": "2025-12-18",
+      "dueDate": "2025-12-18",
+      "paymentTerms": "Due on Receipt",
+      "reverseCharge": true,
+      "subject": "dc",
+      "items": [
+        {
+          "id": "1766053725870",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "employee_advance",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "CGST9",
+          "taxAmount": 4.5,
+          "customerDetails": "CYBAEM TECH PRIVATE LIMITED ",
+          "amount": 50
+        }
+      ],
+      "subTotal": 50,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 4.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 54.5,
+      "amountPaid": 109,
+      "balanceDue": 0,
+      "notes": "",
+      "attachments": [],
+      "status": "PAID",
+      "pdfTemplate": "Standard Template",
+      "journalEntries": [],
+      "createdAt": "2025-12-18T10:29:04.518Z",
+      "updatedAt": "2025-12-24T04:04:48.909Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-18T10:29:04.518Z",
+          "action": "created",
+          "description": "Bill created for ₹54.5",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-22T12:04:19.808Z",
+          "action": "updated",
+          "description": "Bill has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-23T11:02:45.422Z",
+          "action": "payment",
+          "description": "Payment of ₹54.5 recorded",
+          "user": "Admin User"
+        },
+        {
+          "id": "1766549088915",
+          "timestamp": "2025-12-24T04:04:48.909Z",
+          "action": "payment",
+          "description": "Payment of ₹54.5 recorded via PM-00040",
+          "user": "System"
+        }
+      ]
+    }
+  ],
+  "nextBillNumber": 25,
+  "accounts": [
+    {
+      "id": "1",
+      "name": "Cost of Goods Sold",
+      "type": "expense"
+    },
+    {
+      "id": "2",
+      "name": "Office Supplies",
+      "type": "expense"
+    },
+    {
+      "id": "3",
+      "name": "Software",
+      "type": "expense"
+    },
+    {
+      "id": "4",
+      "name": "Professional Services",
+      "type": "expense"
+    },
+    {
+      "id": "5",
+      "name": "Utilities",
+      "type": "expense"
+    },
+    {
+      "id": "6",
+      "name": "Rent",
+      "type": "expense"
+    },
+    {
+      "id": "7",
+      "name": "Travel Expense",
+      "type": "expense"
+    },
+    {
+      "id": "8",
+      "name": "Marketing",
+      "type": "expense"
+    }
+  ],
+  "taxes": [
+    {
+      "id": "1",
+      "name": "IGST18",
+      "rate": 18
+    },
+    {
+      "id": "2",
+      "name": "CGST9",
+      "rate": 9
+    },
+    {
+      "id": "3",
+      "name": "SGST9",
+      "rate": 9
+    },
+    {
+      "id": "4",
+      "name": "GST5",
+      "rate": 5
+    },
+    {
+      "id": "5",
+      "name": "GST12",
+      "rate": 12
+    },
+    {
+      "id": "6",
+      "name": "GST28",
+      "rate": 28
+    }
+  ]
+}

@@ -1,0 +1,1139 @@
+{
+  "purchaseOrders": [
+    {
+      "id": "1767356337289",
+      "purchaseOrderNumber": "PO-2025-0016",
+      "referenceNumber": "",
+      "date": "2026-01-02",
+      "deliveryDate": "2026-01-29",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": true,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "amount": 59
+        }
+      ],
+      "subTotal": 50,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 9,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 59,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "YET TO BE BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2026-01-02T12:18:57.289Z",
+      "updatedAt": "2026-01-02T12:18:57.289Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2026-01-02T12:18:57.289Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹59",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1767096295222",
+      "purchaseOrderNumber": "PO-2025-0015",
+      "referenceNumber": "",
+      "date": "2025-12-30",
+      "deliveryDate": "",
+      "vendorId": "6",
+      "vendorName": "Sharma Traders Pvt Ltd",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "amount": 59
+        },
+        {
+          "id": "1767096266186",
+          "itemId": "1766469453909",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst_18",
+          "taxAmount": 7200,
+          "amount": 47200
+        }
+      ],
+      "subTotal": 40050,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 7209,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 47259,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "YET TO BE BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-30T12:04:55.221Z",
+      "updatedAt": "2025-12-30T12:10:20.566Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-30T12:04:55.221Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹47,259",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-30T12:10:20.566Z",
+          "action": "updated",
+          "description": "Purchase Order has been updated",
+          "user": "Admin User"
+        }
+      ],
+      "gstTreatment": "Unregistered Business",
+      "sourceOfSupply": "MH - Maharashtra",
+      "destinationOfSupply": "MH - Maharashtra",
+      "vendorBillingAddress": {
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "vendorShippingAddress": {
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "organizationDetails": {
+        "name": "Ganesh Kale",
+        "address": "Hinjewadi - Wakad road\nHinjewadi\nPune, Maharashtra\nIndia, 411057"
+      },
+      "selectedCustomer": null,
+      "customerSearchQuery": "",
+      "emailCommunications": [
+        "accounts@sharmatraders.in"
+      ]
+    },
+    {
+      "id": "1766633692116",
+      "purchaseOrderNumber": "PO-2025-0014",
+      "referenceNumber": "",
+      "date": "2025-12-25",
+      "deliveryDate": "",
+      "vendorId": "7",
+      "vendorName": "Vikas  Traders Pvt Ltd ",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "discount",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst18",
+          "taxAmount": 7200,
+          "amount": 47200
+        }
+      ],
+      "subTotal": 40000,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 7200,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 47200,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "RECEIVED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-25T03:34:52.116Z",
+      "updatedAt": "2025-12-26T03:08:21.578Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-25T03:34:52.116Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹47,200",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-25T03:34:58.439Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-26T03:08:21.578Z",
+          "action": "received",
+          "description": "Status changed to RECEIVED",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766487220655",
+      "purchaseOrderNumber": "PO-2025-0013",
+      "referenceNumber": "231231",
+      "date": "2025-12-23",
+      "deliveryDate": "2025-12-11",
+      "vendorId": "3",
+      "vendorName": "Ganesh k",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst_18",
+          "taxAmount": 7200,
+          "amount": 47200
+        },
+        {
+          "id": "1766487216114",
+          "itemId": "1765535400204",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "amount": 59
+        }
+      ],
+      "subTotal": 40050,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 7209,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 47259,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "DRAFT",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-23T10:53:40.655Z",
+      "updatedAt": "2025-12-24T05:32:32.226Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T10:53:40.655Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹47,259",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-23T10:53:49.196Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-23T11:20:29.983Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-24T05:32:32.226Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766485937920",
+      "purchaseOrderNumber": "PO-2025-0011",
+      "referenceNumber": "",
+      "date": "2025-12-23",
+      "deliveryDate": "",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "input_cgst",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst12",
+          "taxAmount": 4800,
+          "amount": 44800
+        }
+      ],
+      "subTotal": 40000,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 4800,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 44800,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "CANCELLED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-23T10:32:17.920Z",
+      "updatedAt": "2025-12-23T11:57:02.299Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T10:32:17.920Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹44,800",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-23T10:53:02.131Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-23T11:57:02.299Z",
+          "action": "cancelled",
+          "description": "Purchase Order has been cancelled",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766479300128",
+      "purchaseOrderNumber": "PO-2025-0010",
+      "referenceNumber": "",
+      "date": "2025-12-23",
+      "deliveryDate": "",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "customer",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "unearned_revenue",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst5",
+          "taxAmount": 2.5,
+          "amount": 52.5
+        },
+        {
+          "id": "1766479247542",
+          "itemId": "1766469453909",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "employee_advance",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst5",
+          "taxAmount": 2000,
+          "amount": 42000
+        }
+      ],
+      "subTotal": 40050,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 2002.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 42052.5,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-23T08:41:40.128Z",
+      "updatedAt": "2025-12-24T03:21:30.762Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T08:41:40.128Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹42,052.5",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-24T03:00:33.668Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-24T03:21:30.762Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766477065831",
+      "purchaseOrderNumber": "PO-2025-0009",
+      "referenceNumber": "",
+      "date": "2025-12-23",
+      "deliveryDate": "",
+      "vendorId": "4",
+      "vendorName": "Sham",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "Local Pickup",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "itemName": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "input_sgst",
+          "quantity": 1,
+          "rate": 40000,
+          "tax": "gst18",
+          "taxAmount": 7200,
+          "amount": 47200
+        }
+      ],
+      "subTotal": 40000,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 4000,
+      "taxType": "TDS",
+      "taxCategory": "tds194j",
+      "taxAmount": 7200,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 43200,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "YET TO BE BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-23T08:04:25.831Z",
+      "updatedAt": "2025-12-23T08:04:25.831Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T08:04:25.831Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹43,200",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766381035707",
+      "purchaseOrderNumber": "PO-2025-0008",
+      "referenceNumber": "",
+      "date": "2025-12-22",
+      "deliveryDate": "",
+      "vendorId": "6",
+      "vendorName": "Sharma Traders Pvt Ltd",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Inventory Asset",
+          "quantity": 13,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 117,
+          "amount": 767
+        },
+        {
+          "id": "1766381017165",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Cost of Goods Sold",
+          "quantity": 31,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 279,
+          "amount": 1829
+        }
+      ],
+      "subTotal": 2200,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 220,
+      "taxType": "TDS",
+      "taxCategory": "tds194c",
+      "taxAmount": 396,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 2376,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-22T05:23:55.707Z",
+      "updatedAt": "2025-12-22T10:39:26.072Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T05:23:55.707Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹2,376",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-22T05:24:05.192Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-22T10:39:26.072Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766380988800",
+      "purchaseOrderNumber": "PO-2025-0007",
+      "referenceNumber": "",
+      "date": "2025-12-22",
+      "deliveryDate": "",
+      "vendorId": "3",
+      "vendorName": "Ganesh k",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 31,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 279,
+          "amount": 1829
+        },
+        {
+          "id": "1766380968891",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "amount": 59
+        }
+      ],
+      "subTotal": 1600,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 160,
+      "taxType": "TDS",
+      "taxCategory": "tds194j",
+      "taxAmount": 288,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 1728,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-22T05:23:08.800Z",
+      "updatedAt": "2025-12-24T03:00:49.663Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T05:23:08.800Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹1,728",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-23T11:57:20.159Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-24T03:00:49.663Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766380089845",
+      "purchaseOrderNumber": "PO-2025-0006",
+      "referenceNumber": "",
+      "date": "2025-12-22",
+      "deliveryDate": "2025-12-18",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "Express Shipping",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Inventory Asset",
+          "quantity": 51,
+          "rate": 50,
+          "tax": "gst5",
+          "taxAmount": 127.5,
+          "amount": 2677.5
+        }
+      ],
+      "subTotal": 2550,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 255,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 127.5,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 2422.5,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "YET TO BE BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-22T05:08:09.845Z",
+      "updatedAt": "2025-12-22T05:08:09.845Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T05:08:09.845Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹2,422.5",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766372735775",
+      "purchaseOrderNumber": "PO-2025-0005",
+      "referenceNumber": "",
+      "date": "2025-12-22",
+      "deliveryDate": "2025-12-26",
+      "vendorId": "1",
+      "vendorName": "Nilraj Bhilare",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "Overnight Shipping",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Inventory Asset",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst18",
+          "taxAmount": 9,
+          "amount": 59
+        },
+        {
+          "id": "1766372693053",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "Inventory Asset",
+          "quantity": 21,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 189,
+          "amount": 1239
+        }
+      ],
+      "subTotal": 1100,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 198,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 1298,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-22T03:05:35.775Z",
+      "updatedAt": "2025-12-22T03:23:16.747Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-22T03:05:35.775Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹1,298",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-22T03:23:16.747Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766137154379",
+      "purchaseOrderNumber": "PO-2025-0004",
+      "referenceNumber": "",
+      "date": "2025-12-19",
+      "deliveryDate": "2025-12-18",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766056260714",
+          "itemName": "Rice (Copy)",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "amount": 59
+        },
+        {
+          "id": "1766137136225",
+          "itemId": "1765535400204",
+          "itemName": "Rice",
+          "description": "Premium quality rice sourced from local farms. Ideal for daily cooking, delivers consistent taste and texture.\n",
+          "account": "",
+          "quantity": 1,
+          "rate": 50,
+          "tax": "gst_18",
+          "taxAmount": 9,
+          "amount": 59
+        }
+      ],
+      "subTotal": 100,
+      "discountType": "percent",
+      "discountValue": 10,
+      "discountAmount": 10,
+      "taxType": "TDS",
+      "taxCategory": "",
+      "taxAmount": 18,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 108,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-19T09:39:14.379Z",
+      "updatedAt": "2025-12-22T03:34:49.159Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-19T09:39:14.379Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹108",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-19T09:40:14.553Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-22T03:34:49.159Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766051860049",
+      "purchaseOrderNumber": "PO-2025-0003",
+      "referenceNumber": "",
+      "date": "2025-12-18",
+      "deliveryDate": "",
+      "vendorId": "2",
+      "vendorName": "Ganesh kale",
+      "vendorAddress": {},
+      "deliveryAddress": {
+        "attention": "",
+        "street1": "",
+        "street2": "",
+        "city": "",
+        "state": "",
+        "pinCode": "",
+        "countryRegion": "India"
+      },
+      "deliveryAddressType": "organization",
+      "paymentTerms": "Due on Receipt",
+      "shipmentPreference": "Overnight Shipping",
+      "reverseCharge": false,
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "itemName": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "account": "Inventory Asset",
+          "quantity": 1,
+          "rate": 60,
+          "tax": "gst5",
+          "taxAmount": 3,
+          "amount": 63
+        }
+      ],
+      "subTotal": 60,
+      "discountType": "percent",
+      "discountValue": 0,
+      "discountAmount": 0,
+      "taxType": "TDS",
+      "taxCategory": "tds194c",
+      "taxAmount": 3,
+      "adjustment": 0,
+      "adjustmentDescription": "",
+      "total": 63,
+      "notes": "",
+      "termsAndConditions": "",
+      "attachments": [],
+      "status": "ISSUED",
+      "receiveStatus": "YET TO BE RECEIVED",
+      "billedStatus": "BILLED",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-18T09:57:40.049Z",
+      "updatedAt": "2025-12-30T07:30:26.786Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-18T09:57:40.049Z",
+          "action": "created",
+          "description": "Purchase Order created for ₹63",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-18T10:38:42.925Z",
+          "action": "updated",
+          "description": "Purchase Order has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-19T09:35:28.467Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-24T03:01:02.445Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-24T05:05:10.984Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        },
+        {
+          "id": "6",
+          "timestamp": "2025-12-30T07:30:26.786Z",
+          "action": "converted_to_bill",
+          "description": "Purchase Order converted to Bill",
+          "user": "Admin User"
+        }
+      ],
+      "gstTreatment": "Unregistered Business",
+      "sourceOfSupply": "MH - Maharashtra",
+      "destinationOfSupply": "MH - Maharashtra",
+      "organizationDetails": {
+        "name": "Ganesh Kale",
+        "address": "Hinjewadi - Wakad road\nHinjewadi\nPune, Maharashtra\nIndia, 411057"
+      },
+      "selectedCustomer": null,
+      "customerSearchQuery": "",
+      "emailCommunications": []
+    }
+  ],
+  "nextPurchaseOrderNumber": 17
+}

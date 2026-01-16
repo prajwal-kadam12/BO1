@@ -1,0 +1,317 @@
+{
+  "summary": {
+    "totalReceivables": {
+      "totalUnpaid": 245780.50,
+      "current": 185002.00,
+      "overdue": 60780.50
+    },
+    "totalPayables": {
+      "totalUnpaid": 125650.00,
+      "current": 98500.00,
+      "overdue": 27150.00
+    },
+    "cashOnHand": 450020.00,
+    "bankBalance": 1250020.00,
+    "totalIncome": 850020.00,
+    "totalExpenses": 725535.00
+  },
+  "cashFlow": [
+    {
+      "month": "Apr 2025",
+      "value": 120000,
+      "incoming": 180000,
+      "outgoing": 60000
+    },
+    {
+      "month": "May 2025",
+      "value": 145002,
+      "incoming": 195002,
+      "outgoing": 50020
+    },
+    {
+      "month": "Jun 2025",
+      "value": 180000,
+      "incoming": 220000,
+      "outgoing": 40000
+    },
+    {
+      "month": "Jul 2025",
+      "value": 165002,
+      "incoming": 210000,
+      "outgoing": 45002
+    },
+    {
+      "month": "Aug 2025",
+      "value": 195002,
+      "incoming": 250020,
+      "outgoing": 55002
+    },
+    {
+      "month": "Sep 2025",
+      "value": 220000,
+      "incoming": 280000,
+      "outgoing": 60000
+    },
+    {
+      "month": "Oct 2025",
+      "value": 245002,
+      "incoming": 310000,
+      "outgoing": 65002
+    },
+    {
+      "month": "Nov 2025",
+      "value": 275002,
+      "incoming": 350020,
+      "outgoing": 75002
+    },
+    {
+      "month": "Dec 2025",
+      "value": 310000,
+      "incoming": 395002,
+      "outgoing": 85002
+    },
+    {
+      "month": "Jan 2026",
+      "value": 290000,
+      "incoming": 360000,
+      "outgoing": 70000
+    },
+    {
+      "month": "Feb 2026",
+      "value": 320000,
+      "incoming": 400000,
+      "outgoing": 80000
+    },
+    {
+      "month": "Mar 2026",
+      "value": 350020,
+      "incoming": 430000,
+      "outgoing": 80000
+    }
+  ],
+  "incomeExpense": [
+    {
+      "month": "Apr 2025",
+      "income": 85002,
+      "expense": 45002
+    },
+    {
+      "month": "May 2025",
+      "income": 92000,
+      "expense": 52000
+    },
+    {
+      "month": "Jun 2025",
+      "income": 78000,
+      "expense": 48000
+    },
+    {
+      "month": "Jul 2025",
+      "income": 105002,
+      "expense": 62000
+    },
+    {
+      "month": "Aug 2025",
+      "income": 118000,
+      "expense": 71000
+    },
+    {
+      "month": "Sep 2025",
+      "income": 125002,
+      "expense": 68000
+    },
+    {
+      "month": "Oct 2025",
+      "income": 140000,
+      "expense": 85002
+    },
+    {
+      "month": "Nov 2025",
+      "income": 155002,
+      "expense": 92000
+    },
+    {
+      "month": "Dec 2025",
+      "income": 180000,
+      "expense": 105002
+    },
+    {
+      "month": "Jan 2026",
+      "income": 145002,
+      "expense": 78000
+    },
+    {
+      "month": "Feb 2026",
+      "income": 160000,
+      "expense": 88000
+    },
+    {
+      "month": "Mar 2026",
+      "income": 175002,
+      "expense": 95002
+    }
+  ],
+  "topExpenses": [
+    {
+      "category": "Salaries and Employee Wages",
+      "amount": 450020,
+      "percentage": 45
+    },
+    {
+      "category": "Rent Expense",
+      "amount": 120000,
+      "percentage": 12
+    },
+    {
+      "category": "IT and Internet Expenses",
+      "amount": 85002,
+      "percentage": 8.5
+    },
+    {
+      "category": "Travel Expense",
+      "amount": 65002,
+      "percentage": 6.5
+    },
+    {
+      "category": "Office Supplies",
+      "amount": 45002,
+      "percentage": 4.5
+    },
+    {
+      "category": "Advertising And Marketing",
+      "amount": 38000,
+      "percentage": 3.8
+    },
+    {
+      "category": "Bank Fees and Charges",
+      "amount": 33425,
+      "percentage": 3.3
+    },
+    {
+      "category": "Other Expenses",
+      "amount": 163575,
+      "percentage": 16.4
+    }
+  ],
+  "recentTransactions": [
+    {
+      "id": "1",
+      "type": "invoice",
+      "description": "Invoice #INV-001 for Uraja Foods",
+      "amount": 45002,
+      "date": "2025-12-10"
+    },
+    {
+      "id": "2",
+      "type": "expense",
+      "description": "Bank Fees and Charges",
+      "amount": -33425,
+      "date": "2025-12-10"
+    },
+    {
+      "id": "3",
+      "type": "payment",
+      "description": "Payment received from Ashtvinayak Education",
+      "amount": 75002,
+      "date": "2025-12-09"
+    },
+    {
+      "id": "4",
+      "type": "expense",
+      "description": "Office Supplies Purchase",
+      "amount": -12500,
+      "date": "2025-12-08"
+    },
+    {
+      "id": "5",
+      "type": "invoice",
+      "description": "Invoice #INV-002 for TechCorp Solutions",
+      "amount": 125002,
+      "date": "2025-12-07"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "name": "Website Redesign",
+      "client": "Uraja Foods",
+      "progress": 75,
+      "budget": 150020,
+      "spent": 112500
+    },
+    {
+      "id": "2",
+      "name": "Mobile App Development",
+      "client": "TechCorp Solutions",
+      "progress": 45,
+      "budget": 280000,
+      "spent": 126000
+    },
+    {
+      "id": "3",
+      "name": "Brand Identity",
+      "client": "Ashtvinayak Education",
+      "progress": 90,
+      "budget": 85002,
+      "spent": 76500
+    }
+  ],
+  "bankAccounts": [
+    {
+      "id": "1",
+      "name": "HDFC Business Account",
+      "balance": 850020,
+      "type": "savings"
+    },
+    {
+      "id": "2",
+      "name": "ICICI Current Account",
+      "balance": 400000,
+      "type": "current"
+    },
+    {
+      "id": "3",
+      "name": "Petty Cash",
+      "balance": 25002,
+      "type": "cash"
+    }
+  ],
+  "overdueInvoices": [
+    {
+      "id": "1",
+      "invoiceNumber": "INV-2025-001",
+      "customer": "Nilraj Bhilare",
+      "amount": 35002,
+      "dueDate": "2025-11-25",
+      "daysOverdue": 15
+    },
+    {
+      "id": "2",
+      "invoiceNumber": "INV-2025-002",
+      "customer": "Tech Solutions Pvt Ltd",
+      "amount": 25780.50,
+      "dueDate": "2025-11-30",
+      "daysOverdue": 10
+    }
+  ],
+  "accountWatchlist": [
+    {
+      "id": "1",
+      "name": "Accounts Receivable",
+      "balance": 245780.50,
+      "change": 12.5
+    },
+    {
+      "id": "2",
+      "name": "Cash and Bank",
+      "balance": 1275002,
+      "change": 8.2
+    },
+    {
+      "id": "3",
+      "name": "Accounts Payable",
+      "balance": 125650,
+      "change": -5.3
+    }
+  ]
+}

@@ -1,0 +1,1837 @@
+{
+  "salesOrders": [
+    {
+      "id": "1767694912509",
+      "organizationId": "1",
+      "salesOrderNumber": "SO-00018",
+      "referenceNumber": "",
+      "date": "2026-01-06",
+      "expectedShipmentDate": "",
+      "customerId": "6",
+      "customerName": "Ganesh kale",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "",
+      "placeOfSupply": "Maharashtra",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "name": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "hsnSac": "847150",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 45002,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 45002,
+          "ordered": 1,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        }
+      ],
+      "subTotal": 45002,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 45002,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "Confirmed",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2026-01-06T10:21:52.509Z",
+      "updatedAt": "2026-01-06T10:21:52.509Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2026-01-06T10:21:52.509Z",
+          "action": "created",
+          "description": "Sales Order created for ₹45,000",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766479691385",
+      "salesOrderNumber": "SO-00017",
+      "referenceNumber": "",
+      "date": "2025-12-23",
+      "expectedShipmentDate": "",
+      "customerId": "13",
+      "customerName": "Mr. Amit Verma",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "afshjd",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "name": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "quantity": 1,
+          "unit": "",
+          "rate": 45002,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 5,
+          "taxName": "GST5",
+          "amount": 45002,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        },
+        {
+          "id": "1766479637328",
+          "itemId": "1766056260714",
+          "name": "Rice (Copy)",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "quantity": 2,
+          "unit": "",
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 5,
+          "taxName": "GST5",
+          "amount": 120,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        }
+      ],
+      "subTotal": 45120,
+      "shippingCharges": 0,
+      "cgst": 1128,
+      "sgst": 1128,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 47376,
+      "customerNotes": "Looking forward for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CONFIRMED",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "sourceType": "quote",
+      "sourceId": "1766479661159",
+      "sourceNumber": "QT-000020",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-23T08:48:11.384Z",
+      "updatedAt": "2025-12-23T08:48:11.384Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T08:48:11.384Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000020",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766473965006",
+      "salesOrderNumber": "SO-00016",
+      "referenceNumber": "852",
+      "date": "2025-12-23",
+      "expectedShipmentDate": "",
+      "customerId": "13",
+      "customerName": "Mr. Amit Verma",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "Sujay",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "name": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "quantity": 11,
+          "unit": "",
+          "rate": 45002,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 495002,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        }
+      ],
+      "subTotal": 495002,
+      "shippingCharges": 1000,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 496000,
+      "customerNotes": "Looking forward for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CONFIRMED",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "sourceType": "quote",
+      "sourceId": "1766473951215",
+      "sourceNumber": "QT-000019",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-23T07:12:45.006Z",
+      "updatedAt": "2025-12-23T07:12:45.006Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-23T07:12:45.006Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000019",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766056302179",
+      "salesOrderNumber": "SO-00015",
+      "referenceNumber": "1213",
+      "date": "2025-12-18",
+      "expectedShipmentDate": "2025-12-21",
+      "customerId": "6",
+      "customerName": "Ganesh kale",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Express Delivery",
+      "salesperson": "",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "name": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "hsnSac": "1006",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 60,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        },
+        {
+          "id": "1766056286154",
+          "itemId": "1766056260714",
+          "name": "Rice (Copy)",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "hsnSac": "1006",
+          "quantity": 11,
+          "unit": "pcs",
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 660,
+          "ordered": 11,
+          "invoicedQty": 11,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 720,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 720,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "1766636627252",
+          "invoiceNumber": "INV-00040",
+          "date": "2025-12-25",
+          "dueDate": "2026-01-24",
+          "status": "pending",
+          "amount": 720,
+          "balanceDue": 720
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-18T11:11:42.179Z",
+      "updatedAt": "2025-12-25T04:23:47.252Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-18T11:11:42.179Z",
+          "action": "created",
+          "description": "Sales Order created for ₹720",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-25T04:23:47.252Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00040 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766055279358",
+      "salesOrderNumber": "SO-00014",
+      "referenceNumber": "",
+      "date": "2025-12-18",
+      "expectedShipmentDate": "2025-12-20",
+      "customerId": "2",
+      "customerName": "Ashtvinayak Education Society",
+      "billingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "name": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "hsnSac": "1006",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 5,
+          "taxName": "GST5",
+          "amount": 60,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 60,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 1.5,
+      "sgst": 1.5,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 63,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00023",
+          "invoiceNumber": "INV-00023",
+          "date": "2025-12-18",
+          "dueDate": "2025-12-18",
+          "status": "DRAFT",
+          "amount": 63,
+          "balanceDue": 63
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-18T10:54:39.358Z",
+      "updatedAt": "2025-12-18T10:59:54.271Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-18T10:54:39.358Z",
+          "action": "created",
+          "description": "Sales Order created for ₹63",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-18T10:59:54.271Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00023 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765780399854",
+      "salesOrderNumber": "SO-00013",
+      "referenceNumber": "",
+      "date": "2025-12-15",
+      "expectedShipmentDate": "",
+      "customerId": "4",
+      "customerName": "Saturo Technologies Private Limited",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "",
+      "placeOfSupply": "",
+      "items": [],
+      "subTotal": 0,
+      "shippingCharges": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 0,
+      "customerNotes": "Looking forward for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00020",
+          "invoiceNumber": "INV-00020",
+          "date": "2025-12-15",
+          "dueDate": "2025-12-15",
+          "status": "DRAFT",
+          "amount": 0,
+          "balanceDue": 0
+        }
+      ],
+      "sourceType": "quote",
+      "sourceId": "1765780370630",
+      "sourceNumber": "QT-000012",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-15T06:33:19.854Z",
+      "updatedAt": "2025-12-15T06:33:30.450Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-15T06:33:19.854Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000012",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-15T06:33:30.450Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00020 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765780337318",
+      "salesOrderNumber": "SO-00012",
+      "referenceNumber": "12312",
+      "date": "2025-12-15",
+      "expectedShipmentDate": "",
+      "customerId": "6",
+      "customerName": "Ganesh kale",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "Sujay",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "3",
+          "name": "EMPLOYEE ACTIVITY MONITORING APP",
+          "description": "",
+          "quantity": 11,
+          "unit": "",
+          "rate": 500,
+          "discount": 10,
+          "discountType": "percentage",
+          "tax": 5,
+          "taxName": "GST5",
+          "amount": 4950,
+          "invoicedQty": 11,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 4950,
+      "shippingCharges": 0,
+      "cgst": 123.75,
+      "sgst": 123.75,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 5197.5,
+      "customerNotes": "Looking forward for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00021",
+          "invoiceNumber": "INV-00021",
+          "date": "2025-12-15",
+          "dueDate": "2025-12-15",
+          "status": "DRAFT",
+          "amount": 5197.5,
+          "balanceDue": 5197.5
+        },
+        {
+          "id": "INV-00022",
+          "invoiceNumber": "INV-00022",
+          "date": "2025-12-15",
+          "dueDate": "2025-12-15",
+          "status": "DRAFT",
+          "amount": 5197.5,
+          "balanceDue": 5197.5
+        },
+        {
+          "id": "INV-00024",
+          "invoiceNumber": "INV-00024",
+          "date": "2025-12-18",
+          "dueDate": "2025-12-18",
+          "status": "DRAFT",
+          "amount": 5197.5,
+          "balanceDue": 5197.5
+        },
+        {
+          "id": "INV-00025",
+          "invoiceNumber": "INV-00025",
+          "date": "2025-12-18",
+          "dueDate": "2025-12-18",
+          "status": "DRAFT",
+          "amount": 5197.5,
+          "balanceDue": 5197.5
+        }
+      ],
+      "sourceType": "quote",
+      "sourceId": "1765776571748",
+      "sourceNumber": "QT-000011",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-15T06:32:17.317Z",
+      "updatedAt": "2025-12-18T11:00:24.773Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-15T06:32:17.317Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000011",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-15T06:41:44.404Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00021 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-15T06:41:44.450Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00022 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-18T11:00:10.678Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00024 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-18T11:00:24.773Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00025 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765537309680",
+      "salesOrderNumber": "SO-00011",
+      "referenceNumber": "",
+      "date": "2025-12-12",
+      "expectedShipmentDate": "",
+      "customerId": "1",
+      "customerName": "CYBAEM TECH PRIVATE LIMITED",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "rohan",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "quantity": 1,
+          "unit": "",
+          "rate": 555,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 555,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 555,
+      "shippingCharges": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 555,
+      "customerNotes": "Looking forward for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00017",
+          "invoiceNumber": "INV-00017",
+          "date": "2025-12-12",
+          "dueDate": "2025-12-12",
+          "status": "DRAFT",
+          "amount": 555,
+          "balanceDue": 555
+        }
+      ],
+      "sourceType": "quote",
+      "sourceId": "1765435390839",
+      "sourceNumber": "QT-000007",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-12T11:01:49.680Z",
+      "updatedAt": "2025-12-12T11:05:30.155Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-12T11:01:49.680Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000007",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-12T11:05:30.155Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00017 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765518014969",
+      "salesOrderNumber": "SO-00010",
+      "referenceNumber": "",
+      "date": "2025-12-12",
+      "expectedShipmentDate": "2025-12-13",
+      "customerId": "3",
+      "customerName": "Uraja Foods",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Net 30",
+      "deliveryMethod": "Express Delivery",
+      "salesperson": "Sujay",
+      "placeOfSupply": "gujarat",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1",
+          "name": "Antivirus1",
+          "description": "",
+          "hsnSac": "85238020",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 410,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 410,
+          "ordered": 1,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        }
+      ],
+      "subTotal": 410,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 410,
+      "customerNotes": "sdjfbfhj",
+      "termsAndConditions": "",
+      "orderStatus": "Confirmed",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-12T05:40:14.969Z",
+      "updatedAt": "2025-12-12T05:40:42.229Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-12T05:40:14.969Z",
+          "action": "created",
+          "description": "Sales Order created for ₹410",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-12T05:40:42.229Z",
+          "action": "updated",
+          "description": "Sales Order has been updated",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765458352635",
+      "salesOrderNumber": "SO-00009",
+      "referenceNumber": "34343",
+      "date": "2025-12-11",
+      "expectedShipmentDate": "",
+      "customerId": "2",
+      "customerName": "Ashtvinayak Education Society",
+      "billingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "afshjd",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "3",
+          "name": "EMPLOYEE ACTIVITY MONITORING APP",
+          "description": "",
+          "hsnSac": "",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 0,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 0,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 0,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 0,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00015",
+          "invoiceNumber": "INV-00015",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 0,
+          "balanceDue": 0
+        },
+        {
+          "id": "INV-00016",
+          "invoiceNumber": "INV-00016",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 0,
+          "balanceDue": 0
+        },
+        {
+          "id": "INV-00019",
+          "invoiceNumber": "INV-00019",
+          "date": "2025-12-15",
+          "dueDate": "2025-12-15",
+          "status": "DRAFT",
+          "amount": 0,
+          "balanceDue": 0
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-11T13:05:52.635Z",
+      "updatedAt": "2025-12-15T05:41:13.483Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-11T13:05:52.635Z",
+          "action": "created",
+          "description": "Sales Order created for ₹0",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-11T13:06:12.125Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00015 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-11T13:06:12.129Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00016 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-15T05:41:13.483Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00019 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765456640413",
+      "salesOrderNumber": "SO-00008",
+      "referenceNumber": "4381",
+      "date": "2025-12-11",
+      "expectedShipmentDate": "2025-12-18",
+      "customerId": "3",
+      "customerName": "Uraja Foods",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "2",
+      "placeOfSupply": "karnataka",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766056260714",
+          "name": "Rice (Copy)",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "hsnSac": "1006",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 60,
+          "ordered": 1,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        }
+      ],
+      "subTotal": 60,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 60,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "Confirmed",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-11T12:37:20.413Z",
+      "updatedAt": "2025-12-18T11:48:06.970Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-11T12:37:20.413Z",
+          "action": "created",
+          "description": "Sales Order created for ₹33,330",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-18T11:48:06.970Z",
+          "action": "updated",
+          "description": "Sales Order has been updated",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765456251955",
+      "salesOrderNumber": "SO-00007",
+      "referenceNumber": "1234",
+      "date": "2025-12-11",
+      "expectedShipmentDate": "",
+      "customerId": "1",
+      "customerName": "CYBAEM TECH PRIVATE LIMITED",
+      "billingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "shippingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "Sujay",
+      "placeOfSupply": "karnataka",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "hsnSac": "998315",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 555,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 555,
+          "ordered": 1,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced"
+        }
+      ],
+      "subTotal": 555,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 555,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "Confirmed",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-11T12:30:51.955Z",
+      "updatedAt": "2025-12-11T12:30:51.955Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-11T12:30:51.955Z",
+          "action": "created",
+          "description": "Sales Order created for ₹555",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765455859452",
+      "salesOrderNumber": "SO-00006",
+      "referenceNumber": "rgtrb",
+      "date": "2025-12-11",
+      "expectedShipmentDate": "",
+      "customerId": "2",
+      "customerName": "Ashtvinayak Education Society",
+      "billingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "hsnSac": "998315",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 555,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 555,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 555,
+      "shippingCharges": 0,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 555,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00011",
+          "invoiceNumber": "INV-00011",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 555,
+          "balanceDue": 555
+        },
+        {
+          "id": "INV-00012",
+          "invoiceNumber": "INV-00012",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 555,
+          "balanceDue": 555
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-11T12:24:19.452Z",
+      "updatedAt": "2025-12-11T12:25:20.193Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-11T12:24:19.452Z",
+          "action": "created",
+          "description": "Sales Order created for ₹555",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-11T12:24:40.009Z",
+          "action": "updated",
+          "description": "Sales Order has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-11T12:25:20.164Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00011 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-11T12:25:20.193Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00012 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765436192477",
+      "salesOrderNumber": "SO-00005",
+      "referenceNumber": "",
+      "date": "2025-12-11",
+      "expectedShipmentDate": "",
+      "customerId": "2",
+      "customerName": "Ashtvinayak Education Society",
+      "billingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "",
+      "placeOfSupply": "Maharashtra",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1",
+          "name": "Antivirus",
+          "description": "",
+          "quantity": 43,
+          "unit": "",
+          "rate": 700,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 18,
+          "taxName": "GST18",
+          "amount": 30100,
+          "invoicedQty": 43,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 30100,
+      "shippingCharges": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 30100,
+      "customerNotes": "",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-00010",
+          "invoiceNumber": "INV-00010",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 30100,
+          "balanceDue": 30100
+        },
+        {
+          "id": "INV-00013",
+          "invoiceNumber": "INV-00013",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 30100,
+          "balanceDue": 30100
+        },
+        {
+          "id": "INV-00014",
+          "invoiceNumber": "INV-00014",
+          "date": "2025-12-11",
+          "dueDate": "2025-12-11",
+          "status": "DRAFT",
+          "amount": 30100,
+          "balanceDue": 30100
+        }
+      ],
+      "sourceType": "quote",
+      "sourceId": "2",
+      "sourceNumber": "QT-000003",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-11T06:56:32.477Z",
+      "updatedAt": "2025-12-11T12:27:57.144Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-11T06:56:32.477Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000003",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-11T07:49:07.809Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00010 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-11T12:27:56.888Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00013 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-11T12:27:57.144Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00014 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765436170284",
+      "salesOrderNumber": "SO-00004",
+      "referenceNumber": "",
+      "date": "2025-12-11",
+      "expectedShipmentDate": "",
+      "customerId": "1",
+      "customerName": "CYBAEM TECH PRIVATE LIMITED",
+      "billingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "shippingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "4",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 555,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 555,
+          "invoicedQty": 0,
+          "invoiceStatus": "Not Invoiced",
+          "hsnSac": "",
+          "ordered": 1
+        }
+      ],
+      "subTotal": 555,
+      "shippingCharges": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 555,
+      "customerNotes": "Looking forward for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CONFIRMED",
+      "invoiceStatus": "Not Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [],
+      "sourceType": "quote",
+      "sourceId": "1765435390839",
+      "sourceNumber": "QT-000007",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-11T06:56:10.284Z",
+      "updatedAt": "2025-12-11T10:47:58.473Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-11T06:56:10.284Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000007",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-11T10:47:58.473Z",
+          "action": "updated",
+          "description": "Sales Order has been updated",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765300911055",
+      "salesOrderNumber": "SO-00003",
+      "referenceNumber": "",
+      "date": "2025-12-09",
+      "expectedShipmentDate": "2025-12-11",
+      "customerId": "3",
+      "customerName": "Uraja Foods",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "shippingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "paymentTerms": "Net 15",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "rohan",
+      "placeOfSupply": "maharashtra",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "hsnSac": "998315",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 555,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 555,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 555,
+      "shippingCharges": 49.94,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 604.94,
+      "customerNotes": "Looking forward to your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-000007",
+          "invoiceNumber": "INV-000007",
+          "date": "2025-12-09",
+          "dueDate": "2025-12-09",
+          "status": "DRAFT",
+          "amount": 604.94,
+          "balanceDue": 604.94
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-09T17:21:51.055Z",
+      "updatedAt": "2025-12-09T17:22:31.638Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-09T17:21:51.055Z",
+          "action": "created",
+          "description": "Sales Order created for ₹604.94",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-09T17:22:31.638Z",
+          "action": "invoiced",
+          "description": "Invoice INV-000007 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "salesOrderNumber": "SO-00001",
+      "referenceNumber": "QT-000004",
+      "date": "2025-11-13",
+      "expectedShipmentDate": "",
+      "customerId": "1",
+      "customerName": "CYBAEM TECH PRIVATE LIMITED",
+      "billingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "shippingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "Standard Delivery",
+      "salesperson": "",
+      "placeOfSupply": "maharashtra (27)",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "4",
+          "name": "Mouse",
+          "description": "Dell 450",
+          "hsnSac": "84716060",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 500,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 18,
+          "taxName": "GST18",
+          "amount": 500,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        },
+        {
+          "id": "2",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "hsnSac": "998315",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 13500,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 18,
+          "taxName": "GST18",
+          "amount": 13500,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 14000,
+      "shippingCharges": 178,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 2520,
+      "adjustment": 0,
+      "total": 16698,
+      "customerNotes": "Thanks for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-000006",
+          "invoiceNumber": "INV-000006",
+          "date": "2025-12-09",
+          "dueDate": "2025-12-09",
+          "status": "DRAFT",
+          "amount": 16698,
+          "balanceDue": 16698
+        },
+        {
+          "id": "INV-000008",
+          "invoiceNumber": "INV-000008",
+          "date": "2025-12-10",
+          "dueDate": "2025-12-10",
+          "status": "DRAFT",
+          "amount": 16698,
+          "balanceDue": 16698
+        },
+        {
+          "id": "INV-00009",
+          "invoiceNumber": "INV-00009",
+          "date": "2025-12-10",
+          "dueDate": "2025-12-10",
+          "status": "DRAFT",
+          "amount": 16698,
+          "balanceDue": 16698
+        },
+        {
+          "id": "INV-00018",
+          "invoiceNumber": "INV-00018",
+          "date": "2025-12-12",
+          "dueDate": "2025-12-12",
+          "status": "DRAFT",
+          "amount": 16698,
+          "balanceDue": 16698
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-11-13T15:18:00.000Z",
+      "updatedAt": "2025-12-12T11:06:53.178Z",
+      "createdBy": "Rohan Bhosale",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-11-13T15:18:00.000Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000004",
+          "user": "Rohan Bhosale"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-09T17:19:47.382Z",
+          "action": "invoiced",
+          "description": "Invoice INV-000006 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-09T17:20:28.476Z",
+          "action": "updated",
+          "description": "Sales Order has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-10T04:07:59.293Z",
+          "action": "invoiced",
+          "description": "Invoice INV-000008 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-10T04:52:26.935Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00009 created",
+          "user": "Admin User"
+        },
+        {
+          "id": "6",
+          "timestamp": "2025-12-12T11:06:53.178Z",
+          "action": "invoiced",
+          "description": "Invoice INV-00018 created",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "salesOrderNumber": "SO-00002",
+      "referenceNumber": "QT-000004",
+      "date": "2025-09-12",
+      "expectedShipmentDate": "",
+      "customerId": "1",
+      "customerName": "CYBAEM TECH PRIVATE LIMITED",
+      "billingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "shippingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "paymentTerms": "Due on Receipt",
+      "deliveryMethod": "",
+      "salesperson": "",
+      "placeOfSupply": "Maharashtra (27)",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "4",
+          "name": "Mouse",
+          "description": "Dell 450",
+          "hsnSac": "84716060",
+          "quantity": 1,
+          "unit": "pcs",
+          "rate": 540,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 18,
+          "taxName": "GST18",
+          "amount": 540,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        },
+        {
+          "id": "2",
+          "itemId": "2",
+          "name": "Cloud Server",
+          "description": "",
+          "hsnSac": "998315",
+          "quantity": 1,
+          "unit": "",
+          "rate": 15002,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 18,
+          "taxName": "GST18",
+          "amount": 15002,
+          "ordered": 1,
+          "invoicedQty": 1,
+          "invoiceStatus": "Invoiced"
+        }
+      ],
+      "subTotal": 15540,
+      "shippingCharges": 178,
+      "tdsType": "",
+      "tdsAmount": 0,
+      "cgst": 1398.6,
+      "sgst": 1398.6,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 18515.2,
+      "customerNotes": "Thanks for your business.",
+      "termsAndConditions": "",
+      "orderStatus": "CLOSED",
+      "invoiceStatus": "Invoiced",
+      "paymentStatus": "Unpaid",
+      "shipmentStatus": "Pending",
+      "invoices": [
+        {
+          "id": "INV-000004",
+          "invoiceNumber": "INV-000004",
+          "date": "2025-09-12",
+          "dueDate": "2025-09-12",
+          "status": "DRAFT",
+          "amount": 16698,
+          "balanceDue": 16698
+        },
+        {
+          "id": "INV-000005",
+          "invoiceNumber": "INV-000005",
+          "date": "2025-12-09",
+          "dueDate": "2025-12-09",
+          "status": "DRAFT",
+          "amount": 18515.2,
+          "balanceDue": 18515.2
+        }
+      ],
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-09-12T11:01:00.000Z",
+      "updatedAt": "2025-12-09T16:41:52.394Z",
+      "createdBy": "Rohan Bhosale",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-09-12T11:01:00.000Z",
+          "action": "created",
+          "description": "Sales Order created from Quote QT-000004",
+          "user": "Rohan Bhosale"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-09-12T11:02:00.000Z",
+          "action": "invoiced",
+          "description": "Invoice INV-000004 created",
+          "user": "Rohan Bhosale"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-09T16:41:52.394Z",
+          "action": "invoiced",
+          "description": "Invoice INV-000005 created",
+          "user": "Admin User"
+        }
+      ]
+    }
+  ],
+  "nextSalesOrderNumber": 19,
+  "nextInvoiceNumber": 26
+}

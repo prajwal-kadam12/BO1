@@ -1,0 +1,381 @@
+{
+  "creditNotes": [
+    {
+      "id": "1766999998247",
+      "creditNoteNumber": "CN-00006",
+      "referenceNumber": "",
+      "date": "2025-12-29",
+      "customerId": "6",
+      "customerName": "Ganesh kale",
+      "invoiceId": "",
+      "invoiceNumber": "",
+      "reason": "sales_return",
+      "salesperson": "",
+      "subject": "Credit Note for Invoice #INV-00040",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "gstin": "",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1765535400204",
+          "name": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "account": "sales",
+          "quantity": 1,
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 60
+        },
+        {
+          "id": "2",
+          "itemId": "1766056260714",
+          "name": "Rice (Copy)",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "account": "sales",
+          "quantity": 11,
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 660
+        }
+      ],
+      "subTotal": 720,
+      "shippingCharges": 0,
+      "tdsType": "TDS",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 720,
+      "creditsRemaining": 720,
+      "customerNotes": "",
+      "termsAndConditions": "",
+      "status": "OPEN",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-29T09:19:58.246Z",
+      "updatedAt": "2025-12-29T09:19:58.246Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-29T09:19:58.246Z",
+          "action": "created",
+          "description": "Credit Note created for ₹720",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1766634266812",
+      "creditNoteNumber": "CN-00005",
+      "referenceNumber": "",
+      "date": "2025-12-25",
+      "customerId": "13",
+      "customerName": "Mr. Amit Verma",
+      "invoiceId": "",
+      "invoiceNumber": "",
+      "reason": "post_sale_discount",
+      "salesperson": "Sujay",
+      "subject": "",
+      "billingAddress": {
+        "street": "TechNova Towers, Level 12,  Hinjewadi IT Park, Phase 2",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "gstin": "27AABCT6789L1Z2",
+      "placeOfSupply": "27 - Maharashtra",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1766469453909",
+          "name": "HP ProDesk Desktop",
+          "description": "HP ProDesk desktop computer for office and professional use.\n",
+          "account": "sales",
+          "quantity": 1,
+          "rate": 45002,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 45002
+        }
+      ],
+      "subTotal": 45002,
+      "shippingCharges": 0,
+      "tdsType": "TDS",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 45002,
+      "creditsRemaining": 45002,
+      "customerNotes": "",
+      "termsAndConditions": "",
+      "status": "OPEN",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-25T03:44:26.812Z",
+      "updatedAt": "2025-12-25T03:44:26.812Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-25T03:44:26.812Z",
+          "action": "created",
+          "description": "Credit Note created for ₹45,000",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765534233343",
+      "creditNoteNumber": "CN-00003",
+      "referenceNumber": "23113",
+      "date": "2025-12-12",
+      "customerId": "3",
+      "customerName": "Uraja Foods",
+      "invoiceId": "",
+      "invoiceNumber": "",
+      "reason": "post_sale_discount",
+      "salesperson": "nilraj",
+      "subject": "",
+      "billingAddress": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "country": "India",
+        "pincode": ""
+      },
+      "gstin": "",
+      "placeOfSupply": "Maharashtra",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1",
+          "name": "Antivirus1",
+          "description": "",
+          "account": "service",
+          "quantity": 11,
+          "rate": 550,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 6050
+        }
+      ],
+      "subTotal": 6050,
+      "shippingCharges": 0,
+      "tdsType": "TDS",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 6050,
+      "creditsRemaining": 6050,
+      "customerNotes": "",
+      "termsAndConditions": "",
+      "status": "OPEN",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-12T10:10:33.343Z",
+      "updatedAt": "2025-12-12T10:10:33.343Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-12T10:10:33.343Z",
+          "action": "created",
+          "description": "Credit Note created for ₹6,050",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1765519677707",
+      "creditNoteNumber": "CN-00002",
+      "referenceNumber": "121321",
+      "date": "2025-12-12",
+      "customerId": "1",
+      "customerName": "CYBAEM TECH PRIVATE LIMITED ",
+      "invoiceId": "",
+      "invoiceNumber": "",
+      "reason": "sales_return",
+      "salesperson": "Sujay",
+      "subject": "",
+      "billingAddress": {
+        "street": "Hinjewadi",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411057"
+      },
+      "gstin": "",
+      "placeOfSupply": "",
+      "items": [
+        {
+          "id": "1765519648425",
+          "itemId": "1765535400204",
+          "name": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "account": "service",
+          "quantity": 61,
+          "rate": 600,
+          "discount": 5,
+          "discountType": "percentage",
+          "tax": 18,
+          "taxName": "GST18",
+          "amount": 34770
+        },
+        {
+          "id": "1767094980114",
+          "itemId": "1765535400204",
+          "name": "Rice",
+          "description": "Bulk purchase of raw rice directly from vendors. High-grade grains with minimal impurities.",
+          "account": "sales",
+          "quantity": 1,
+          "rate": 60,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "none",
+          "amount": 60
+        }
+      ],
+      "subTotal": 34830,
+      "shippingCharges": 1000,
+      "tdsType": "TDS",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 35830,
+      "creditsRemaining": 0,
+      "customerNotes": "",
+      "termsAndConditions": "",
+      "status": "OPEN",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-12T06:07:57.707Z",
+      "updatedAt": "2025-12-30T11:43:13.534Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-12T06:07:57.707Z",
+          "action": "created",
+          "description": "Credit Note created for ₹0",
+          "user": "Admin User"
+        },
+        {
+          "id": "2",
+          "timestamp": "2025-12-12T10:09:12.300Z",
+          "action": "updated",
+          "description": "Credit Note has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "3",
+          "timestamp": "2025-12-23T05:08:23.485Z",
+          "action": "updated",
+          "description": "Credit Note has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "4",
+          "timestamp": "2025-12-23T05:10:07.831Z",
+          "action": "updated",
+          "description": "Credit Note has been updated",
+          "user": "Admin User"
+        },
+        {
+          "id": "5",
+          "timestamp": "2025-12-30T11:43:13.534Z",
+          "action": "updated",
+          "description": "Credit Note has been updated",
+          "user": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "creditNoteNumber": "CN-00001",
+      "referenceNumber": "1234",
+      "date": "2025-12-12",
+      "customerId": "4",
+      "customerName": "AABHA CONTRACEPTIVES PRIVATE LIMITED",
+      "invoiceId": "",
+      "invoiceNumber": "",
+      "reason": "",
+      "salesperson": "Sujay",
+      "subject": "",
+      "billingAddress": {
+        "street": "Plot No 2, Kaftol Bassord, Maharashtra Industrial Development Corporation Area, Bassord",
+        "city": "",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": "411134"
+      },
+      "gstin": "27A6GA4009Q1Z6",
+      "placeOfSupply": "Maharashtra (27)",
+      "items": [
+        {
+          "id": "1",
+          "itemId": "1",
+          "name": "Antivirus",
+          "description": "RTC005T",
+          "account": "Sales",
+          "quantity": 1,
+          "rate": 0,
+          "discount": 0,
+          "discountType": "percentage",
+          "tax": 0,
+          "taxName": "CGST 9%",
+          "amount": 0
+        }
+      ],
+      "subTotal": 0,
+      "shippingCharges": 0,
+      "tdsType": "TDS",
+      "tdsAmount": 0,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 0,
+      "adjustment": 0,
+      "total": 0,
+      "creditsRemaining": 0,
+      "customerNotes": "",
+      "termsAndConditions": "",
+      "status": "DRAFT",
+      "pdfTemplate": "Standard Template",
+      "createdAt": "2025-12-12T00:00:00.000Z",
+      "updatedAt": "2025-12-12T10:09:05.790Z",
+      "createdBy": "Admin User",
+      "activityLogs": [
+        {
+          "id": "1",
+          "timestamp": "2025-12-12T10:09:05.790Z",
+          "action": "updated",
+          "description": "Credit Note has been updated",
+          "user": "Admin User"
+        }
+      ]
+    }
+  ],
+  "nextCreditNoteNumber": 7
+}

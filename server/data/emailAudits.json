@@ -1,0 +1,223 @@
+{
+  "audits": [
+    {
+      "id": "062fdbfc-3262-4f46-961e-cb4d2cb91fad",
+      "triggerId": "44b345b3-57e8-49da-8f63-d20800f3a827",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T06:40:08.486Z",
+      "updatedAt": "2026-01-07T06:40:19.862Z",
+      "errorMessage": "Email send failed: Unexpected socket close"
+    },
+    {
+      "id": "34b3aa09-27ad-4081-9c12-83942d24b50c",
+      "triggerId": "6a61a7a6-5b1f-4f7d-b6c2-5d5a59e9c580",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T06:41:27.900Z",
+      "updatedAt": "2026-01-07T06:41:39.078Z",
+      "errorMessage": "Email send failed: Unexpected socket close"
+    },
+    {
+      "id": "ee761cfc-3212-4476-b021-c1c335287aea",
+      "triggerId": "c288cd3e-e974-470d-a5a3-e1423b61113e",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T06:49:48.373Z",
+      "updatedAt": "2026-01-07T06:49:50.104Z",
+      "errorMessage": "Email send failed: Missing credentials for \"PLAIN\""
+    },
+    {
+      "id": "7db7be2c-c451-4099-bff4-e2cfa6b1b726",
+      "triggerId": "640cf3a7-bfbf-4770-86ab-a8fa784a7996",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T06:55:13.955Z",
+      "updatedAt": "2026-01-07T06:55:15.645Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a3e3c3a464sm39819445ad.2 - gsmtp"
+    },
+    {
+      "id": "2694b62f-d462-436d-890b-7c6e5752a279",
+      "triggerId": "32ccfdf8-6714-4026-bdb6-1b37d51f77ad",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T06:56:23.755Z",
+      "updatedAt": "2026-01-07T06:56:25.356Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-34f5f7c6f4dsm4070668a91.8 - gsmtp"
+    },
+    {
+      "id": "faf94490-cbac-4ab4-a3fc-ff9ca6e03e11",
+      "triggerId": "c3e5c4e2-9ec9-4b73-bb4b-ff95c2be1708",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T06:56:42.162Z",
+      "updatedAt": "2026-01-07T06:56:43.636Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a3e3cd469dsm40564475ad.94 - gsmtp"
+    },
+    {
+      "id": "daeb78a8-8ef7-4b9d-8438-5fb132a7c1fc",
+      "triggerId": "edccbd11-f0a2-4915-aa85-71966c9fc4f5",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T07:00:01.715Z",
+      "updatedAt": "2026-01-07T07:00:03.282Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-819bafe991dsm3955320b3a.16 - gsmtp"
+    },
+    {
+      "id": "cc8308b2-d96d-4836-8f5e-0e9a6ad008e6",
+      "triggerId": "4e7185d8-b0f9-4b62-8755-792a3d553723",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T12:07:46.204Z",
+      "updatedAt": "2026-01-07T12:07:47.533Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a3e3cd46a9sm50542625ad.93 - gsmtp"
+    },
+    {
+      "id": "7880d046-9226-4cfb-ae4f-0b965d2b902e",
+      "triggerId": "976a7f89-b07b-4102-8fbd-7edaa5859ee8",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T12:08:32.767Z",
+      "updatedAt": "2026-01-07T12:08:34.022Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a3e3cd4654sm50373995ad.97 - gsmtp"
+    },
+    {
+      "id": "5d69fe9b-4d47-46e7-9dfe-a2f430de603c",
+      "triggerId": "b179541c-b1ab-421a-a9f2-a26b3d1e5792",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T12:10:06.479Z",
+      "updatedAt": "2026-01-07T12:10:07.800Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2a3e3cc8ddfsm49795945ad.74 - gsmtp"
+    },
+    {
+      "id": "ff8a261f-be31-4396-b3cc-95e3c8c7baef",
+      "triggerId": "4a52545f-0c1d-4088-8e45-00c0afd5c4f6",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T12:33:21.218Z",
+      "updatedAt": "2026-01-07T12:33:22.832Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-81a8fafaefdsm4557661b3a.45 - gsmtp"
+    },
+    {
+      "id": "18671a47-5199-4c0d-922e-749738b16297",
+      "triggerId": "c42911d5-0534-449b-82dc-544a115b62ee",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T12:35:19.105Z",
+      "updatedAt": "2026-01-07T12:35:20.646Z",
+      "errorMessage": "Email send failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-819c59e7c16sm4939910b3a.53 - gsmtp"
+    },
+    {
+      "id": "547fb765-7ad5-4ec7-b747-5b712eed95f7",
+      "triggerId": "feaa73a8-2050-41a8-948a-7c7fed3629f7",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Account Statement from this-month",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-07T12:50:16.820Z",
+      "updatedAt": "2026-01-07T12:50:18.537Z",
+      "errorMessage": "SMTP Authentication Failed: Invalid credentials. If you are using Gmail, please ensure you are using a 16-character App Password (not your regular password) and that 2-Step Verification is enabled on your Google account."
+    },
+    {
+      "id": "adce8f04-73f7-42ce-b2fa-08c82efd0292",
+      "triggerId": "2ba5c15a-bc52-4f4d-a0c5-f9c38466bb97",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Statement of Accounts from Cybaem Tech",
+      "status": "failed",
+      "attempts": 0,
+      "createdAt": "2026-01-08T05:28:56.763Z",
+      "updatedAt": "2026-01-08T05:28:58.244Z",
+      "errorMessage": "SMTP Authentication Failed: Invalid credentials. If you are using Gmail, please ensure you are using a 16-character App Password (not your regular password) and that 2-Step Verification is enabled on your Google account."
+    },
+    {
+      "id": "c4c83a0c-781a-409a-b8fa-6838d9db26b8",
+      "triggerId": "2b428943-472c-427a-9396-d27af563891d",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Statement of Accounts from Cybaem Tech",
+      "status": "sent",
+      "attempts": 0,
+      "createdAt": "2026-01-08T05:36:56.083Z",
+      "updatedAt": "2026-01-08T05:37:00.269Z",
+      "sentAt": "2026-01-08T05:37:00.269Z",
+      "providerMessageId": "<7b99bdc4-1e63-e2c4-8e5c-7595f672f060@gmail.com>",
+      "providerResponse": "\"250 2.0.0 OK  1767850622 41be03b00d2f7-c4cbf28ebe4sm6747812a12.4 - gsmtp\""
+    },
+    {
+      "id": "b6db8020-5f3e-4394-8dab-d486ed5a0f9f",
+      "triggerId": "ce358bc3-2989-4589-902a-c7707e60274f",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Statement of Accounts from Cybaem Tech",
+      "status": "sent",
+      "attempts": 0,
+      "createdAt": "2026-01-08T05:40:47.599Z",
+      "updatedAt": "2026-01-08T05:40:51.585Z",
+      "sentAt": "2026-01-08T05:40:51.585Z",
+      "providerMessageId": "<12192662-633b-3bcd-f75a-ad153fbdf09c@gmail.com>",
+      "providerResponse": "\"250 2.0.0 OK  1767850853 d9443c01a7336-2a3e3cc8dd2sm65365705ad.82 - gsmtp\""
+    },
+    {
+      "id": "67bafc0a-f89e-4fb2-b8c1-4c716ed012d0",
+      "triggerId": "1dea9b3e-31aa-4a70-b1ec-fa5bd436a1ef",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Statement of Accounts from Cybaem Tech",
+      "status": "sent",
+      "attempts": 0,
+      "createdAt": "2026-01-08T08:58:27.576Z",
+      "updatedAt": "2026-01-08T08:58:27.586Z",
+      "sentAt": "2026-01-08T08:58:27.585Z",
+      "providerMessageId": "mock-1767862707584-ch096qo",
+      "providerResponse": "\"250 2.0.0 OK (Mock)\""
+    },
+    {
+      "id": "0bdc69dd-6ec2-4d43-b4d8-b87d5ed062df",
+      "triggerId": "66e30fdd-57d9-494e-a8de-9094fddf25d9",
+      "toAddresses": "[\"priyanka.k@cybaemtech.com\"]",
+      "subject": "Statement of Accounts from Cybaem Tech",
+      "status": "sent",
+      "attempts": 0,
+      "createdAt": "2026-01-08T08:59:20.276Z",
+      "updatedAt": "2026-01-08T08:59:20.285Z",
+      "sentAt": "2026-01-08T08:59:20.284Z",
+      "providerMessageId": "mock-1767862760283-bzuswvd",
+      "providerResponse": "\"250 2.0.0 OK (Mock)\""
+    },
+    {
+      "id": "44737bd7-5839-4ab1-b78f-49191ff17224",
+      "triggerId": "8d743e5a-6d70-4757-9ba3-88ae0477efc6",
+      "toAddresses": "[\"ganeshkale030303@gmail.com\"]",
+      "subject": "Statement of Accounts from Cybaem Tech",
+      "status": "sent",
+      "attempts": 0,
+      "createdAt": "2026-01-08T09:04:31.900Z",
+      "updatedAt": "2026-01-08T09:04:31.910Z",
+      "sentAt": "2026-01-08T09:04:31.909Z",
+      "providerMessageId": "mock-1767863071907-ixnv3rh",
+      "providerResponse": "\"250 2.0.0 OK (Mock)\""
+    }
+  ]
+}
