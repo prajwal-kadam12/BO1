@@ -408,7 +408,7 @@ export default function InvoiceEdit() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 pb-24">
+    <div className="max-w-6xl mx-auto p-6 pb-24 overflow-y-auto max-h-screen">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" onClick={() => setLocation('/invoices')} data-testid="button-back">

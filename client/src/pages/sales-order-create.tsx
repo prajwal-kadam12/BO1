@@ -19,6 +19,8 @@ import { useTransactionBootstrap } from "@/hooks/use-transaction-bootstrap";
 import { formatAddressDisplay } from "@/lib/customer-snapshot";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Trash2, Loader2, FileText } from "lucide-react";
 
 interface Customer {
   id: string;
@@ -447,434 +449,471 @@ export default function SalesOrderCreatePage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-6 animate-in fade-in duration-300">
-      <div className="flex items-center gap-4 mb-6">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setLocation('/sales-orders')}
-          data-testid="button-back"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
-        <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">New Sales Order</h1>
+    <div className="flex-1 flex flex-col bg-slate-50 h-screen animate-in slide-in-from-right duration-300">
+      <div className="flex items-center justify-between p-4 bg-white border-b border-slate-200 shadow-sm z-10 flex-shrink-0">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" size="icon" onClick={() => setLocation('/sales-orders')} className="rounded-full hover:bg-slate-100" data-testid="button-back">
+            <ArrowLeft className="h-5 w-5 text-slate-500" />
+          </Button>
+          <h1 className="text-xl font-semibold text-slate-900">New Sales Order</h1>
+        </div>
       </div>
 
-      <div className="space-y-6">
-        <div className="grid grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label className="text-black">Customer Name
-              <span className="text-red-600">*</span>
-            </Label>
-            <Select value={formData.customerId} onValueChange={handleCustomerChange}>
-              <SelectTrigger className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800" data-testid="select-customer">
-                <SelectValue placeholder="Select or add a customer" />
-              </SelectTrigger>
-              <SelectContent>
-                <div className="p-2">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Search className="h-4 w-4 text-gray-400" />
-                    <Input
-                      placeholder="Search customers..."
-                      className="h-8"
-                      value={customerSearchTerm}
-                      onChange={(e) => setCustomerSearchTerm(e.target.value)}
-                    />
-                  </div>
+      <div className="flex-1 overflow-y-auto invisible-scrollbar">
+        <div className="max-w-6xl mx-auto p-8 pb-32">
+          <div className="space-y-8">
+            {/* Sales Order Details Card */}
+            <Card className="overflow-hidden border-slate-200 shadow-sm">
+              <CardContent className="p-0">
+                <div className="p-6 border-b border-slate-100 bg-slate-50/50">
+                  <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">Sales Order Details</h2>
                 </div>
-                {filteredCustomers.map(customer => (
-                  <SelectItem key={customer.id} value={customer.id} data-testid={`option-customer-${customer.id}`}>
-                    {customer.name}
-                  </SelectItem>
-                ))}
-                <div className="border-t mt-1 pt-1">
-                  <SelectItem value="__add_new_customer__">
-                    <div className="flex items-center gap-2 text-blue-600">
-                      <Plus className="h-4 w-4" />
-                      Add New Customer
-                    </div>
-                  </SelectItem>
-                </div>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex justify-end">
-            <Button variant="outline" size="icon" data-testid="button-search-customer">
-              <Search className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label className="text-black">Sales Order#
-              <span className="text-red-600">*</span>
-            </Label>
-            <div className="flex gap-2">
-              <Input
-                value={formData.salesOrderNumber || nextOrderNumber}
-                onChange={(e) => setFormData(prev => ({ ...prev, salesOrderNumber: e.target.value }))}
-                className="flex-1"
-                data-testid="input-order-number"
-              />
-              <Button variant="outline" size="icon" data-testid="button-edit-order-number">
-                <Pencil className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label>Reference#</Label>
-            <Input
-              value={formData.referenceNumber}
-              onChange={(e) => setFormData(prev => ({ ...prev, referenceNumber: e.target.value }))}
-              data-testid="input-reference-number"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label className="text-black">Sales Order Date
-              <span className="text-red-600">*</span>
-            </Label>
-            <Input
-              type="date"
-              value={formData.orderDate}
-              onChange={(e) => setFormData(prev => ({ ...prev, orderDate: e.target.value }))}
-              data-testid="input-order-date"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label>Expected Shipment Date</Label>
-            <Input
-              type="date"
-              value={formData.expectedShipmentDate}
-              onChange={(e) => setFormData(prev => ({ ...prev, expectedShipmentDate: e.target.value }))}
-              data-testid="input-shipment-date"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label>Payment Terms</Label>
-            <Select value={formData.paymentTerms} onValueChange={(v) => setFormData(prev => ({ ...prev, paymentTerms: v }))}>
-              <SelectTrigger data-testid="select-payment-terms">
-                <SelectValue placeholder="Select payment terms" />
-              </SelectTrigger>
-              <SelectContent>
-                {paymentTermsOptions.map(option => (
-                  <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Delivery Method</Label>
-            <Select value={formData.deliveryMethod} onValueChange={(v) => setFormData(prev => ({ ...prev, deliveryMethod: v }))}>
-              <SelectTrigger data-testid="select-delivery-method">
-                <SelectValue placeholder="Select delivery method" />
-              </SelectTrigger>
-              <SelectContent>
-                {deliveryMethodOptions.map(option => (
-                  <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label>Salesperson</Label>
-            <Select value={formData.salesperson} onValueChange={(v) => {
-              if (v === "manage_salespersons") {
-                setShowManageSalespersons(true);
-              } else {
-                setFormData(prev => ({ ...prev, salesperson: v }));
-              }
-            }}>
-              <SelectTrigger data-testid="select-salesperson">
-                <SelectValue placeholder="Select or Add Salesperson" />
-              </SelectTrigger>
-              <SelectContent>
-                <div className="p-2">
-                  <div className="relative">
-                    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Search" className="pl-8 h-9" />
-                  </div>
-                </div>
-                {salespersons.map(sp => (
-                  <SelectItem key={sp.id} value={sp.name}>{sp.name}</SelectItem>
-                ))}
-                <div
-                  className="flex items-center gap-2 p-2 text-sm text-blue-600 cursor-pointer hover:bg-slate-100 border-t mt-1"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setShowManageSalespersons(true);
-                  }}
-                >
-                  <Plus className="h-4 w-4" />
-                  Manage Salespersons
-                </div>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Place of Supply</Label>
-            <Select value={formData.placeOfSupply} onValueChange={(v) => setFormData(prev => ({ ...prev, placeOfSupply: v }))}>
-              <SelectTrigger data-testid="select-place-of-supply">
-                <SelectValue placeholder="Select place of supply" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                <SelectItem value="gujarat">Gujarat</SelectItem>
-                <SelectItem value="karnataka">Karnataka</SelectItem>
-                <SelectItem value="delhi">Delhi</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-          <div className="bg-slate-50 dark:bg-slate-800 px-4 py-2 font-medium text-sm text-slate-700 dark:text-slate-300">
-            Item Table
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase w-8"></th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Item Details</th>
-                  <th className="px-4 py-2 text-center text-xs font-medium text-slate-500 uppercase w-24">Quantity</th>
-                  <th className="px-4 py-2 text-right text-xs font-medium text-slate-500 uppercase w-28">Rate (₹)</th>
-                  <th className="px-4 py-2 text-center text-xs font-medium text-slate-500 uppercase w-28">Discount</th>
-                  <th className="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase w-32">Tax</th>
-                  <th className="px-4 py-2 text-right text-xs font-medium text-slate-500 uppercase w-28">Amount</th>
-                  <th className="px-4 py-2 w-10"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                {orderItems.map((item, index) => (
-                  <tr key={item.id} data-testid={`row-item-${index}`}>
-                    <td className="px-4 py-2 text-slate-400">::</td>
-                    <td className="px-4 py-2">
-                      <Select value={item.itemId} onValueChange={(v) => handleItemChange(index, v)}>
-                        <SelectTrigger className="border-dashed" data-testid={`select-item-${index}`}>
-                          <SelectValue placeholder="Type or click to select an item." />
+                <div className="p-6 space-y-6">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium after:content-['*'] after:ml-0.5 after:text-red-500">Customer Name</Label>
+                      <Select value={formData.customerId} onValueChange={handleCustomerChange}>
+                        <SelectTrigger className="bg-white border-slate-200" data-testid="select-customer">
+                          <SelectValue placeholder="Select or add a customer" />
                         </SelectTrigger>
                         <SelectContent>
-                          {items.map(i => (
-                            <SelectItem key={i.id} value={i.id}>{i.name}</SelectItem>
+                          <div className="p-2">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Search className="h-4 w-4 text-gray-400" />
+                              <Input
+                                placeholder="Search customers..."
+                                className="h-8"
+                                value={customerSearchTerm}
+                                onChange={(e) => setCustomerSearchTerm(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          {filteredCustomers.map(customer => (
+                            <SelectItem key={customer.id} value={customer.id} data-testid={`option-customer-${customer.id}`}>
+                              {customer.name}
+                            </SelectItem>
+                          ))}
+                          <div className="border-t mt-1 pt-1">
+                            <SelectItem value="__add_new_customer__">
+                              <div className="flex items-center gap-2 text-blue-600">
+                                <Plus className="h-4 w-4" />
+                                Add New Customer
+                              </div>
+                            </SelectItem>
+                          </div>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex justify-end items-end">
+                      <Button variant="outline" size="icon" className="h-10 w-10" data-testid="button-search-customer">
+                        <Search className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium after:content-['*'] after:ml-0.5 after:text-red-500">Sales Order#</Label>
+                      <div className="flex gap-2">
+                        <Input
+                          value={formData.salesOrderNumber || nextOrderNumber}
+                          onChange={(e) => setFormData(prev => ({ ...prev, salesOrderNumber: e.target.value }))}
+                          className="flex-1 font-mono bg-slate-50"
+                          data-testid="input-order-number"
+                        />
+                        <Button variant="outline" size="icon" className="h-10 w-10 shrink-0" data-testid="button-edit-order-number">
+                          <Pencil className="h-4 w-4 text-slate-500" />
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium">Reference#</Label>
+                      <Input
+                        value={formData.referenceNumber}
+                        onChange={(e) => setFormData(prev => ({ ...prev, referenceNumber: e.target.value }))}
+                        className="bg-white"
+                        data-testid="input-reference-number"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium after:content-['*'] after:ml-0.5 after:text-red-500">Sales Order Date</Label>
+                      <Input
+                        type="date"
+                        value={formData.orderDate}
+                        onChange={(e) => setFormData(prev => ({ ...prev, orderDate: e.target.value }))}
+                        className="bg-white"
+                        data-testid="input-order-date"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium">Expected Shipment Date</Label>
+                      <Input
+                        type="date"
+                        value={formData.expectedShipmentDate}
+                        onChange={(e) => setFormData(prev => ({ ...prev, expectedShipmentDate: e.target.value }))}
+                        className="bg-white"
+                        data-testid="input-shipment-date"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium">Payment Terms</Label>
+                      <Select value={formData.paymentTerms} onValueChange={(v) => setFormData(prev => ({ ...prev, paymentTerms: v }))}>
+                        <SelectTrigger className="bg-white" data-testid="select-payment-terms">
+                          <SelectValue placeholder="Select payment terms" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {paymentTermsOptions.map(option => (
+                            <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
-                    </td>
-                    <td className="px-4 py-2">
-                      <Input
-                        type="number"
-                        min="1"
-                        value={item.quantity}
-                        onChange={(e) => updateOrderItem(index, 'quantity', parseFloat(e.target.value) || 1)}
-                        className="text-center"
-                        data-testid={`input-quantity-${index}`}
-                      />
-                    </td>
-                    <td className="px-4 py-2">
-                      <Input
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        value={item.rate}
-                        onChange={(e) => updateOrderItem(index, 'rate', parseFloat(e.target.value) || 0)}
-                        className="text-right"
-                        data-testid={`input-rate-${index}`}
-                      />
-                    </td>
-                    <td className="px-4 py-2">
-                      <div className="flex items-center gap-1">
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium">Delivery Method</Label>
+                      <Select value={formData.deliveryMethod} onValueChange={(v) => setFormData(prev => ({ ...prev, deliveryMethod: v }))}>
+                        <SelectTrigger className="bg-white" data-testid="select-delivery-method">
+                          <SelectValue placeholder="Select delivery method" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {deliveryMethodOptions.map(option => (
+                            <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium">Salesperson</Label>
+                      <Select value={formData.salesperson} onValueChange={(v) => {
+                        if (v === "manage_salespersons") {
+                          setShowManageSalespersons(true);
+                        } else {
+                          setFormData(prev => ({ ...prev, salesperson: v }));
+                        }
+                      }}>
+                        <SelectTrigger className="bg-white" data-testid="select-salesperson">
+                          <SelectValue placeholder="Select or Add Salesperson" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <div className="p-2">
+                            <div className="relative">
+                              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                              <Input placeholder="Search" className="pl-8 h-9" />
+                            </div>
+                          </div>
+                          {salespersons.map(sp => (
+                            <SelectItem key={sp.id} value={sp.name}>{sp.name}</SelectItem>
+                          ))}
+                          <div
+                            className="flex items-center gap-2 p-2 text-sm text-blue-600 cursor-pointer hover:bg-slate-100 border-t mt-1"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setShowManageSalespersons(true);
+                            }}
+                          >
+                            <Plus className="h-4 w-4" />
+                            Manage Salespersons
+                          </div>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-slate-700 font-medium">Place of Supply</Label>
+                      <Select value={formData.placeOfSupply} onValueChange={(v) => setFormData(prev => ({ ...prev, placeOfSupply: v }))}>
+                        <SelectTrigger className="bg-white" data-testid="select-place-of-supply">
+                          <SelectValue placeholder="Select place of supply" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="maharashtra">Maharashtra</SelectItem>
+                          <SelectItem value="gujarat">Gujarat</SelectItem>
+                          <SelectItem value="karnataka">Karnataka</SelectItem>
+                          <SelectItem value="delhi">Delhi</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Items Card */}
+            <Card className="overflow-hidden border-slate-200 shadow-sm">
+              <CardContent className="p-0">
+                <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+                  <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">Items</h2>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-slate-50 border-b border-slate-200">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider w-8">#</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Item Details</th>
+                        <th className="px-6 py-3 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider w-32">Quantity</th>
+                        <th className="px-6 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider w-36">Rate (₹)</th>
+                        <th className="px-6 py-3 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider w-36">Discount</th>
+                        <th className="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider w-40">Tax</th>
+                        <th className="px-6 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider w-32">Amount</th>
+                        <th className="px-6 py-3 w-16"></th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {orderItems.map((item, index) => (
+                        <tr key={item.id} className="group hover:bg-slate-50/50 transition-colors" data-testid={`row-item-${index}`}>
+                          <td className="px-6 py-4 text-xs text-slate-400 font-mono">{index + 1}</td>
+                          <td className="px-6 py-4">
+                            <Select value={item.itemId} onValueChange={(v) => handleItemChange(index, v)}>
+                              <SelectTrigger className="border-0 bg-transparent hover:bg-white focus:bg-white shadow-none hover:shadow-sm transition-all h-auto py-2" data-testid={`select-item-${index}`}>
+                                <SelectValue placeholder="Select an item" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {items.map(i => (
+                                  <SelectItem key={i.id} value={i.id}>{i.name}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </td>
+                          <td className="px-6 py-4">
+                            <Input
+                              type="number"
+                              min="1"
+                              value={item.quantity}
+                              onChange={(e) => updateOrderItem(index, 'quantity', parseFloat(e.target.value) || 1)}
+                              className="text-center h-9"
+                              data-testid={`input-quantity-${index}`}
+                            />
+                          </td>
+                          <td className="px-6 py-4">
+                            <Input
+                              type="number"
+                              min="0"
+                              step="0.01"
+                              value={item.rate}
+                              onChange={(e) => updateOrderItem(index, 'rate', parseFloat(e.target.value) || 0)}
+                              className="text-right h-9"
+                              data-testid={`input-rate-${index}`}
+                            />
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-1">
+                              <Input
+                                type="number"
+                                min="0"
+                                value={item.discount}
+                                onChange={(e) => updateOrderItem(index, 'discount', parseFloat(e.target.value) || 0)}
+                                className="w-20 text-center h-9"
+                                data-testid={`input-discount-${index}`}
+                              />
+                              <Select
+                                value={item.discountType}
+                                onValueChange={(v) => updateOrderItem(index, 'discountType', v)}
+                              >
+                                <SelectTrigger className="w-16 h-9 px-2" data-testid={`select-discount-type-${index}`}>
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="percentage">%</SelectItem>
+                                  <SelectItem value="amount">₹</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <Select value={item.tax} onValueChange={(v) => updateOrderItem(index, 'tax', v)}>
+                              <SelectTrigger className="h-9" data-testid={`select-tax-${index}`}>
+                                <SelectValue placeholder="Select Tax" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {taxOptions.map(tax => (
+                                  <SelectItem key={tax.value} value={tax.value}>{tax.label}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </td>
+                          <td className="px-6 py-4 text-right font-medium text-slate-700">
+                            {formatCurrency(item.amount)}
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-slate-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                              onClick={() => removeRow(index)}
+                              data-testid={`button-remove-item-${index}`}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="p-4 border-t border-slate-100 bg-slate-50/30">
+                  <Button variant="link" className="text-blue-600 hover:text-blue-700 h-auto p-0 font-medium" onClick={addNewRow} data-testid="button-add-row">
+                    <Plus className="h-4 w-4 mr-1.5" />
+                    Add Another Line
+                  </Button>
+                  <Button variant="link" className="text-blue-600 hover:text-blue-700 h-auto p-0 font-medium ml-4" data-testid="button-add-bulk">
+                    <Plus className="h-4 w-4 mr-1.5" />
+                    Add Items in Bulk
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Terms & Attributes Card */}
+            <Card className="overflow-hidden border-slate-200 shadow-sm">
+              <CardContent className="p-0">
+                <div className="p-6 border-b border-slate-100 bg-slate-50/50">
+                  <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">Terms & Attributes</h2>
+                </div>
+                <div className="p-6">
+                  <div className="grid grid-cols-2 gap-12">
+                    {/* Left Column */}
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <Label className="text-slate-700 font-medium">Customer Notes</Label>
+                        <Textarea
+                          value={formData.customerNotes}
+                          onChange={(e) => setFormData(prev => ({ ...prev, customerNotes: e.target.value }))}
+                          placeholder="Looking forward for your business."
+                          className="min-h-[100px] resize-y"
+                          data-testid="textarea-customer-notes"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-slate-700 font-medium">Terms & Conditions</Label>
+                        <Textarea
+                          value={formData.termsAndConditions}
+                          onChange={(e) => setFormData(prev => ({ ...prev, termsAndConditions: e.target.value }))}
+                          placeholder="Enter the terms and conditions..."
+                          className="min-h-[100px] resize-y"
+                          data-testid="textarea-terms"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Right Column (Totals) */}
+                    <div className="bg-slate-50/50 rounded-lg p-6 space-y-4">
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-slate-600">Sub Total</span>
+                        <span className="font-medium text-slate-900" data-testid="text-subtotal">{formatCurrency(calculateSubTotal())}</span>
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-slate-600">Shipping Charges</span>
                         <Input
                           type="number"
                           min="0"
-                          value={item.discount}
-                          onChange={(e) => updateOrderItem(index, 'discount', parseFloat(e.target.value) || 0)}
-                          className="w-16 text-center"
-                          data-testid={`input-discount-${index}`}
+                          step="0.01"
+                          value={formData.shippingCharges}
+                          onChange={(e) => setFormData(prev => ({ ...prev, shippingCharges: parseFloat(e.target.value) || 0 }))}
+                          className="w-32 text-right h-8 bg-white"
+                          data-testid="input-shipping-charges"
                         />
-                        <Select
-                          value={item.discountType}
-                          onValueChange={(v) => updateOrderItem(index, 'discountType', v)}
-                        >
-                          <SelectTrigger className="w-14" data-testid={`select-discount-type-${index}`}>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="percentage">%</SelectItem>
-                            <SelectItem value="amount">₹</SelectItem>
-                          </SelectContent>
-                        </Select>
                       </div>
-                    </td>
-                    <td className="px-4 py-2">
-                      <Select value={item.tax} onValueChange={(v) => updateOrderItem(index, 'tax', v)}>
-                        <SelectTrigger data-testid={`select-tax-${index}`}>
-                          <SelectValue placeholder="Select a Tax" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {taxOptions.map(tax => (
-                            <SelectItem key={tax.value} value={tax.value}>{tax.label}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </td>
-                    <td className="px-4 py-2 text-right font-medium text-slate-900 dark:text-white">
-                      {formatCurrency(item.amount)}
-                    </td>
-                    <td className="px-4 py-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-red-500"
-                        onClick={() => removeRow(index)}
-                        data-testid={`button-remove-item-${index}`}
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="px-4 py-3 flex gap-4 border-t border-slate-200 dark:border-slate-700">
-            <Button variant="link" className="text-blue-600 p-0 h-auto" onClick={addNewRow} data-testid="button-add-row">
-              <Plus className="h-4 w-4 mr-1" />
-              Add New Row
-            </Button>
-            <Button variant="link" className="text-blue-600 p-0 h-auto" data-testid="button-add-bulk">
-              <Plus className="h-4 w-4 mr-1" />
-              Add Items in Bulk
-            </Button>
-          </div>
-        </div>
+                      <div className="flex justify-between items-center text-sm gap-2">
+                        <div className="flex items-center gap-2">
+                          <Checkbox id="tds" data-testid="checkbox-tds" />
+                          <Label htmlFor="tds" className="text-slate-600">TDS</Label>
+                          <Checkbox id="tcs" data-testid="checkbox-tcs" />
+                          <Label htmlFor="tcs" className="text-slate-600">TCS</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Select>
+                            <SelectTrigger className="w-24 h-8" data-testid="select-tds-tcs">
+                              <SelectValue placeholder="Tax" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="none">None</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <span className="text-slate-500 text-sm">- 0.00</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-slate-600">Adjustment</span>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          value={formData.adjustment}
+                          onChange={(e) => setFormData(prev => ({ ...prev, adjustment: parseFloat(e.target.value) || 0 }))}
+                          className="w-32 text-right h-8 bg-white"
+                          data-testid="input-adjustment"
+                        />
+                      </div>
+                      <div className="pt-4 mt-4 border-t border-slate-200">
+                        <div className="flex justify-between items-center">
+                          <span className="font-semibold text-base text-slate-900">Total (₹)</span>
+                          <span className="font-bold text-xl text-slate-900" data-testid="text-total">{formatCurrency(calculateTotal())}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-        <div className="grid grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label>Customer Notes</Label>
-              <Textarea
-                value={formData.customerNotes}
-                onChange={(e) => setFormData(prev => ({ ...prev, customerNotes: e.target.value }))}
-                placeholder="Looking forward for your business."
-                className="min-h-20"
-                data-testid="textarea-customer-notes"
-              />
+                  {/* Attachments Section */}
+                  <div className="mt-8 pt-8 border-t border-slate-100">
+                    <div className="space-y-4">
+                      <Label className="text-slate-700 font-medium">Attach File(s) to Sales Order</Label>
+                      <div className="border-2 border-dashed border-slate-200 rounded-lg p-8 text-center hover:bg-slate-50 transition-colors">
+                        <Button
+                          variant="ghost"
+                          className="flex flex-col items-center gap-2 h-auto"
+                          type="button"
+                          data-testid="button-upload-file"
+                        >
+                          <div className="h-10 w-10 bg-blue-50 rounded-full flex items-center justify-center">
+                            <Upload className="h-5 w-5 text-blue-600" />
+                          </div>
+                          <p className="text-sm font-medium text-blue-600">Click to upload files</p>
+                          <p className="text-xs text-slate-400">PDF, DOC, XLS, Images up to 10MB</p>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Bottom Actions */}
+            <div className="flex items-center justify-end gap-4 pt-4 pb-20">
+              <Button
+                variant="outline"
+                className="min-w-[100px]"
+                onClick={() => setLocation('/sales-orders')}
+                data-testid="button-cancel"
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="outline"
+                className="min-w-[120px]"
+                onClick={() => handleSubmit('draft')}
+                disabled={loading}
+                data-testid="button-save-draft"
+              >
+                {loading ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
+                Save as Draft
+              </Button>
+              <Button
+                className="min-w-[120px] bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                onClick={() => handleSubmit('confirmed')}
+                disabled={loading}
+                data-testid="button-save-send"
+              >
+                {loading ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
+                Save and Send
+              </Button>
             </div>
           </div>
-
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-slate-600 dark:text-slate-400">Sub Total</span>
-              <span className="font-medium text-slate-900 dark:text-white" data-testid="text-subtotal">{formatCurrency(calculateSubTotal())}</span>
-            </div>
-            <div className="flex justify-between items-center gap-2">
-              <span className="text-slate-600 dark:text-slate-400">Shipping Charges</span>
-              <Input
-                type="number"
-                min="0"
-                step="0.01"
-                value={formData.shippingCharges}
-                onChange={(e) => setFormData(prev => ({ ...prev, shippingCharges: parseFloat(e.target.value) || 0 }))}
-                className="w-32 text-right"
-                data-testid="input-shipping-charges"
-              />
-            </div>
-            <div className="flex justify-between items-center gap-2">
-              <div className="flex items-center gap-2">
-                <Checkbox id="tds" data-testid="checkbox-tds" />
-                <Label htmlFor="tds" className="text-slate-600 dark:text-slate-400">TDS</Label>
-                <Checkbox id="tcs" data-testid="checkbox-tcs" />
-                <Label htmlFor="tcs" className="text-slate-600 dark:text-slate-400">TCS</Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Select>
-                  <SelectTrigger className="w-32" data-testid="select-tds-tcs">
-                    <SelectValue placeholder="Select a Tax" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="none">None</SelectItem>
-                  </SelectContent>
-                </Select>
-                <span className="text-slate-500">- 0.00</span>
-              </div>
-            </div>
-            <div className="flex justify-between items-center gap-2">
-              <span className="text-slate-600 dark:text-slate-400">Adjustment</span>
-              <Input
-                type="number"
-                step="0.01"
-                value={formData.adjustment}
-                onChange={(e) => setFormData(prev => ({ ...prev, adjustment: parseFloat(e.target.value) || 0 }))}
-                className="w-32 text-right"
-                data-testid="input-adjustment"
-              />
-            </div>
-            <div className="flex justify-between items-center pt-3 border-t border-slate-200 dark:border-slate-700">
-              <span className="font-semibold text-slate-900 dark:text-white">Total ( ₹ )</span>
-              <span className="font-bold text-lg text-slate-900 dark:text-white" data-testid="text-total">{formatCurrency(calculateTotal())}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-slate-200 dark:border-slate-700 pt-6">
-          <div className="grid grid-cols-2 gap-8">
-            <div className="space-y-2">
-              <Label>Terms & Conditions</Label>
-              <Textarea
-                value={formData.termsAndConditions}
-                onChange={(e) => setFormData(prev => ({ ...prev, termsAndConditions: e.target.value }))}
-                placeholder="Enter the terms and conditions of your business to be displayed in your transaction"
-                className="min-h-[100px]"
-                data-testid="textarea-terms"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>Attach File(s) to Sales Order</Label>
-              <div className="border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg p-4 text-center">
-                <Button variant="outline" className="gap-2" data-testid="button-upload-file">
-                  <Upload className="h-4 w-4" />
-                  Upload File
-                </Button>
-                <p className="text-xs text-slate-500 mt-2">You can upload a maximum of 5 files, 10MB each</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
-          <Button
-            variant="outline"
-            onClick={() => handleSubmit('draft')}
-            disabled={loading}
-            data-testid="button-save-draft"
-          >
-            Save as Draft
-          </Button>
-          <Button
-            onClick={() => handleSubmit('confirmed')}
-            disabled={loading}
-            data-testid="button-save-send"
-          >
-            {loading ? 'Saving...' : 'Save and Send'}
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => setLocation('/sales-orders')}
-            data-testid="button-cancel"
-          >
-            Cancel
-          </Button>
         </div>
       </div>
 
@@ -883,6 +922,6 @@ export default function SalesOrderCreatePage() {
         onOpenChange={setShowManageSalespersons}
         onSalespersonChange={fetchSalespersons}
       />
-    </div >
+    </div>
   );
 }

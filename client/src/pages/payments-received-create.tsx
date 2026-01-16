@@ -8,7 +8,9 @@ import {
   X,
   Search,
   Calendar as CalendarIcon,
-  AlertCircle
+  AlertCircle,
+  ArrowLeft,
+  Loader2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTransactionBootstrap } from "@/hooks/use-transaction-bootstrap";
@@ -132,8 +134,12 @@ export default function PaymentsReceivedCreate() {
   useEffect(() => {
     if (customerId) {
       setSelectedCustomerId(customerId);
+      // Also update reference to trigger fetch
+      if (customers.find(c => c.id === customerId)) {
+        // ensure customer is in list, though fetchCustomers normally handles it.
+      }
     }
-  }, [customerId]);
+  }, [customerId, customers]);
 
   // Fetch customers
   useEffect(() => {
@@ -200,7 +206,12 @@ export default function PaymentsReceivedCreate() {
         // Initialize selection state
         const initialSelection: Record<string, { selected: boolean; payment: number; receivedDate?: Date }> = {};
         unpaidInvoices.forEach((inv: Invoice) => {
-          initialSelection[inv.id] = { selected: false, payment: 0, receivedDate: undefined };
+          // Keep existing selection if any
+          if (selectedInvoices[inv.id]) {
+            initialSelection[inv.id] = selectedInvoices[inv.id];
+          } else {
+            initialSelection[inv.id] = { selected: false, payment: 0, receivedDate: undefined };
+          }
         });
         setSelectedInvoices(initialSelection);
       }
@@ -433,418 +444,442 @@ export default function PaymentsReceivedCreate() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6 pb-24 px-4 sm:px-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground" data-testid="text-page-title">Record Payment</h1>
-          <p className="text-muted-foreground mt-1">Record a new payment from customer</p>
+    <div className="flex-1 flex flex-col bg-slate-50 h-screen animate-in slide-in-from-right duration-300">
+      <div className="flex items-center justify-between p-4 bg-white border-b border-slate-200 shadow-sm z-10 flex-shrink-0">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" size="icon" onClick={() => setLocation('/payments-received')} className="rounded-full hover:bg-slate-100" data-testid="button-back">
+            <ArrowLeft className="h-5 w-5 text-slate-500" />
+          </Button>
+          <div className="flex items-center gap-3">
+            <h1 className="text-xl font-semibold text-slate-900">Record Payment</h1>
+          </div>
         </div>
-        <Button variant="ghost" size="icon" onClick={() => setLocation("/payments-received")} data-testid="button-close">
-          <X className="h-5 w-5" />
-        </Button>
       </div>
 
-      {customerError && (
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>
-            {customerError}. You can manually select a customer below.
-          </AlertDescription>
-        </Alert>
-      )}
-
-      <Card className="border-border/60 shadow-sm">
-        <CardContent className="p-6 space-y-6">
-          {/* Customer Selection */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Customer *</Label>
-              <Select value={selectedCustomerId} onValueChange={handleCustomerChange}>
-                <SelectTrigger className="w-full" data-testid="select-customer">
-                  <SelectValue placeholder={customersLoading ? "Loading..." : "Select customer"} />
-                </SelectTrigger>
-                <SelectContent>
-                  {customers.map((customer) => (
-                    <SelectItem key={customer.id} value={customer.id} data-testid={`customer-option-${customer.id}`}>
-                      {customer.displayName || customer.name}
-                    </SelectItem>
-                  ))}
-                  <Separator className="my-1" />
-                  <SelectItem value="add_new" className="text-primary">
-                    <div className="flex items-center gap-2">
-                      <Plus className="h-4 w-4" />
-                      New Customer
-                    </div>
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              {isLoadingCustomer && (
-                <p className="text-xs text-muted-foreground">Loading customer details...</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Payment Date *</Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-full justify-start text-left font-normal",
-                      !paymentDate && "text-muted-foreground"
-                    )}
-                    data-testid="button-payment-date"
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {paymentDate ? format(paymentDate, "dd/MM/yyyy") : "Select date"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    selected={paymentDate}
-                    onSelect={(date) => date && setPaymentDate(date)}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-            </div>
-          </div>
-
-          {/* Customer Info Display */}
-          {selectedCustomer && customerSnapshot && (
-            <div className="bg-secondary/30 rounded-lg p-4 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="font-medium">{customerSnapshot.displayName || customerSnapshot.customerName}</span>
-                {customerSnapshot.taxPreference === 'tax_exempt' && (
-                  <Badge variant="outline" className="text-amber-600 border-amber-300">
-                    Tax Exempt
-                  </Badge>
-                )}
-              </div>
-              <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
-                <div>
-                  <span className="text-xs text-slate-500">Currency:</span>
-                  <span className="ml-2">{customerSnapshot.currency || 'INR'}</span>
-                </div>
-                {customerSnapshot.placeOfSupply && (
-                  <div>
-                    <span className="text-xs text-slate-500">Place of Supply:</span>
-                    <span className="ml-2">{customerSnapshot.placeOfSupply}</span>
-                  </div>
-                )}
-                {customerSnapshot.gstin && (
-                  <div>
-                    <span className="text-xs text-slate-500">GSTIN:</span>
-                    <span className="ml-2">{customerSnapshot.gstin}</span>
-                  </div>
-                )}
-              </div>
-            </div>
+      <div className="flex-1 overflow-y-auto invisible-scrollbar">
+        <div className="max-w-6xl mx-auto p-8 pb-32">
+          {customerError && (
+            <Alert variant="destructive" className="mb-6">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                {customerError}. You can manually select a customer below.
+              </AlertDescription>
+            </Alert>
           )}
 
-          {/* Payment Details */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Payment Mode</Label>
-              <Select value={paymentMode} onValueChange={setPaymentMode}>
-                <SelectTrigger data-testid="select-payment-mode">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {PAYMENT_MODES.map(mode => (
-                    <SelectItem key={mode} value={mode}>{mode}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Deposit To</Label>
-              <Select value={depositTo} onValueChange={setDepositTo}>
-                <SelectTrigger data-testid="select-deposit-to">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {DEPOSIT_ACCOUNTS.map(account => (
-                    <SelectItem key={account} value={account}>{account}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Reference Number</Label>
-              <Input
-                value={referenceNumber}
-                onChange={(e) => setReferenceNumber(e.target.value)}
-                placeholder="Enter reference number"
-                data-testid="input-reference"
-              />
-            </div>
-          </div>
-
-          {/* Amount Received Input */}
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-blue-700 dark:text-blue-300">
-                Amount Received *
-              </Label>
-              <Input
-                type="number"
-                value={totalAmountReceived || ''}
-                onChange={(e) => handleAmountReceivedChange(parseFloat(e.target.value) || 0)}
-                placeholder="Enter total amount received"
-                className="text-lg font-medium"
-                data-testid="input-amount-received"
-              />
-              <p className="text-xs text-blue-600 dark:text-blue-400">
-                This amount will be automatically allocated to unpaid invoices starting with the oldest.
-              </p>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* Outstanding Invoices */}
-          <div className="space-y-4">
-            <h3 className="font-medium">Outstanding Invoices</h3>
-
-            {selectedCustomerId ? (
-              customerInvoices.length > 0 ? (
-                <div className="border rounded-lg overflow-hidden">
-                  <Table>
-                    <TableHeader>
-                      <TableRow className="bg-muted/50">
-                        <TableHead className="w-12"></TableHead>
-                        <TableHead>Invoice #</TableHead>
-                        <TableHead>Date</TableHead>
-                        <TableHead className="text-right">Invoice Amount</TableHead>
-                        <TableHead className="text-right">Balance Due</TableHead>
-                        <TableHead className="text-center">Payment Received On</TableHead>
-                        <TableHead className="text-right">Payment</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {customerInvoices.map((invoice) => (
-                        <TableRow key={invoice.id}>
-                          <TableCell>
-                            <Checkbox
-                              checked={selectedInvoices[invoice.id]?.selected || false}
-                              onCheckedChange={() => toggleInvoiceSelection(invoice.id)}
-                              data-testid={`checkbox-invoice-${invoice.id}`}
-                            />
-                          </TableCell>
-                          <TableCell className="font-medium">{invoice.invoiceNumber}</TableCell>
-                          <TableCell>{formatDate(invoice.date)}</TableCell>
-                          <TableCell className="text-right">{formatCurrency(invoice.amount || 0)}</TableCell>
-                          <TableCell className="text-right">{formatCurrency(invoice.balanceDue || 0)}</TableCell>
-                          <TableCell className="text-center">
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  disabled={!selectedInvoices[invoice.id]?.selected}
-                                  className={cn(
-                                    "w-32 justify-start text-left font-normal",
-                                    !selectedInvoices[invoice.id]?.selected && "text-muted-foreground"
-                                  )}
-                                >
-                                  <CalendarIcon className="mr-2 h-4 w-4" />
-                                  {selectedInvoices[invoice.id]?.selected
-                                    ? format(selectedInvoices[invoice.id]?.receivedDate || new Date(), "dd/MM/yyyy")
-                                    : "-"
-                                  }
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent className="w-auto p-0">
-                                <Calendar
-                                  mode="single"
-                                  selected={selectedInvoices[invoice.id]?.receivedDate || new Date()}
-                                  onSelect={(date) => date && updateInvoiceReceivedDate(invoice.id, date)}
-                                  initialFocus
-                                />
-                              </PopoverContent>
-                            </Popover>
-                          </TableCell>
-                          <TableCell className="text-right">
-                            <Input
-                              type="number"
-                              value={selectedInvoices[invoice.id]?.payment || 0}
-                              onChange={(e) => updateInvoicePayment(invoice.id, parseFloat(e.target.value) || 0)}
-                              disabled={!selectedInvoices[invoice.id]?.selected}
-                              className="w-28 text-right ml-auto"
-                              data-testid={`input-payment-${invoice.id}`}
-                            />
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+          <div className="space-y-6">
+            <Card className="overflow-hidden border-slate-200 shadow-sm">
+              <CardContent className="p-0">
+                <div className="p-6 border-b border-slate-100 bg-slate-50/50">
+                  <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">Payment Details</h2>
                 </div>
-              ) : (
-                <div className="text-center py-8 text-muted-foreground border rounded-lg">
-                  No outstanding invoices for this customer
-                </div>
-              )
-            ) : (
-              <div className="text-center py-8 text-muted-foreground border rounded-lg">
-                Select a customer to view outstanding invoices
-              </div>
-            )}
+                <div className="p-6 space-y-6">
+                  {/* Customer Selection */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium after:content-['*'] after:ml-0.5 after:text-red-500">Customer</Label>
+                      <Select value={selectedCustomerId} onValueChange={handleCustomerChange}>
+                        <SelectTrigger className="w-full bg-white border-slate-200" data-testid="select-customer">
+                          <SelectValue placeholder={customersLoading ? "Loading..." : "Select customer"} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {customers.map((customer) => (
+                            <SelectItem key={customer.id} value={customer.id} data-testid={`customer-option-${customer.id}`}>
+                              {customer.displayName || customer.name}
+                            </SelectItem>
+                          ))}
+                          <Separator className="my-1" />
+                          <SelectItem value="add_new" className="text-blue-600 font-medium">
+                            <div className="flex items-center gap-2">
+                              <Plus className="h-4 w-4" />
+                              New Customer
+                            </div>
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {isLoadingCustomer && (
+                        <p className="text-xs text-muted-foreground">Loading customer details...</p>
+                      )}
+                    </div>
 
-            {/* Total */}
-            {selectedInvoiceCount > 0 && (
-              <div className="flex justify-end">
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg px-6 py-3">
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm text-green-700 dark:text-green-300">
-                      {selectedInvoiceCount} invoice(s) selected
-                    </span>
-                    <div className="text-right">
-                      <p className="text-xs text-green-600 dark:text-green-400">Total Payment</p>
-                      <p className="text-xl font-bold text-green-700 dark:text-green-300">
-                        {formatCurrency(totalPaymentAmount)}
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium after:content-['*'] after:ml-0.5 after:text-red-500">Payment Date</Label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full justify-start text-left font-normal bg-white border-slate-200",
+                              !paymentDate && "text-muted-foreground"
+                            )}
+                            data-testid="button-payment-date"
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {paymentDate ? format(paymentDate, "dd/MM/yyyy") : "Select date"}
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0">
+                          <Calendar
+                            mode="single"
+                            selected={paymentDate}
+                            onSelect={(date) => date && setPaymentDate(date)}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                  </div>
+
+                  {/* Customer Info Display */}
+                  {selectedCustomer && customerSnapshot && (
+                    <div className="bg-slate-50 rounded-lg p-4 border border-slate-100">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-semibold text-slate-900">{customerSnapshot.displayName || customerSnapshot.customerName}</span>
+                        {customerSnapshot.taxPreference === 'tax_exempt' && (
+                          <Badge variant="outline" className="text-amber-600 border-amber-300 bg-amber-50">
+                            Tax Exempt
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-slate-500">
+                        <div>
+                          <span className="text-xs font-medium uppercase tracking-wide">Currency</span>
+                          <p className="text-slate-900 mt-0.5">{customerSnapshot.currency || 'INR'}</p>
+                        </div>
+                        {customerSnapshot.placeOfSupply && (
+                          <div>
+                            <span className="text-xs font-medium uppercase tracking-wide">Place of Supply</span>
+                            <p className="text-slate-900 mt-0.5">{customerSnapshot.placeOfSupply}</p>
+                          </div>
+                        )}
+                        {customerSnapshot.gstin && (
+                          <div>
+                            <span className="text-xs font-medium uppercase tracking-wide">GSTIN</span>
+                            <p className="text-slate-900 mt-0.5">{customerSnapshot.gstin}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  <Separator className="bg-slate-100" />
+
+                  {/* Payment Details */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium">Payment Mode</Label>
+                      <Select value={paymentMode} onValueChange={setPaymentMode}>
+                        <SelectTrigger className="bg-white border-slate-200" data-testid="select-payment-mode">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {PAYMENT_MODES.map(mode => (
+                            <SelectItem key={mode} value={mode}>{mode}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium">Deposit To</Label>
+                      <Select value={depositTo} onValueChange={setDepositTo}>
+                        <SelectTrigger className="bg-white border-slate-200" data-testid="select-deposit-to">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {DEPOSIT_ACCOUNTS.map(account => (
+                            <SelectItem key={account} value={account}>{account}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label className="text-sm font-medium">Reference Number</Label>
+                      <Input
+                        value={referenceNumber}
+                        onChange={(e) => setReferenceNumber(e.target.value)}
+                        placeholder="Enter reference number"
+                        className="bg-white border-slate-200"
+                        data-testid="input-reference"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Amount Received Input */}
+                  <div className="bg-blue-50/50 border border-blue-100 rounded-lg p-6">
+                    <div className="space-y-3">
+                      <Label className="text-sm font-medium text-blue-900 after:content-['*'] after:ml-0.5 after:text-red-500">
+                        Amount Received
+                      </Label>
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl font-bold text-blue-900">₹</span>
+                        <Input
+                          type="number"
+                          value={totalAmountReceived || ''}
+                          onChange={(e) => handleAmountReceivedChange(parseFloat(e.target.value) || 0)}
+                          placeholder="0.00"
+                          className="text-2xl font-bold h-12 bg-white border-blue-200 text-blue-900 placeholder:text-blue-200"
+                          data-testid="input-amount-received"
+                        />
+                      </div>
+                      <p className="text-sm text-blue-700">
+                        This amount will be automatically allocated to unpaid invoices starting with the oldest.
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </CardContent>
+            </Card>
+
+            {/* Outstanding Invoices */}
+            <Card className="overflow-hidden border-slate-200 shadow-sm">
+              <CardContent className="p-0">
+                <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                  <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">Outstanding Invoices</h2>
+                  {selectedInvoiceCount > 0 && (
+                    <Badge className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100">{selectedInvoiceCount} Selected</Badge>
+                  )}
+                </div>
+                <div>
+                  {selectedCustomerId ? (
+                    customerInvoices.length > 0 ? (
+                      <div className="overflow-x-auto">
+                        <Table>
+                          <TableHeader className="bg-slate-50">
+                            <TableRow className="border-b border-slate-200">
+                              <TableHead className="w-12 pl-6"></TableHead>
+                              <TableHead className="font-semibold text-slate-700">Invoice #</TableHead>
+                              <TableHead className="font-semibold text-slate-700">Date</TableHead>
+                              <TableHead className="text-right font-semibold text-slate-700">Invoice Amount</TableHead>
+                              <TableHead className="text-right font-semibold text-slate-700">Balance Due</TableHead>
+                              <TableHead className="text-center font-semibold text-slate-700">Payment Date</TableHead>
+                              <TableHead className="text-right font-semibold text-slate-700 pr-6">Payment</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {customerInvoices.map((invoice) => (
+                              <TableRow key={invoice.id} className="border-b border-slate-100 hover:bg-slate-50/50">
+                                <TableCell className="pl-6">
+                                  <Checkbox
+                                    checked={selectedInvoices[invoice.id]?.selected || false}
+                                    onCheckedChange={() => toggleInvoiceSelection(invoice.id)}
+                                    data-testid={`checkbox-invoice-${invoice.id}`}
+                                  />
+                                </TableCell>
+                                <TableCell className="font-medium text-slate-900">{invoice.invoiceNumber}</TableCell>
+                                <TableCell className="text-slate-500">{formatDate(invoice.date)}</TableCell>
+                                <TableCell className="text-right text-slate-900">{formatCurrency(invoice.amount || 0)}</TableCell>
+                                <TableCell className="text-right text-slate-900">{formatCurrency(invoice.balanceDue || 0)}</TableCell>
+                                <TableCell className="text-center">
+                                  <Popover>
+                                    <PopoverTrigger asChild>
+                                      <Button
+                                        variant="outline"
+                                        size="sm"
+                                        disabled={!selectedInvoices[invoice.id]?.selected}
+                                        className={cn(
+                                          "w-32 justify-start text-left font-normal h-8 text-xs border-slate-200",
+                                          !selectedInvoices[invoice.id]?.selected && "text-muted-foreground"
+                                        )}
+                                      >
+                                        <CalendarIcon className="mr-2 h-3.5 w-3.5" />
+                                        {selectedInvoices[invoice.id]?.selected
+                                          ? format(selectedInvoices[invoice.id]?.receivedDate || new Date(), "dd/MM/yyyy")
+                                          : "-"
+                                        }
+                                      </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-auto p-0">
+                                      <Calendar
+                                        mode="single"
+                                        selected={selectedInvoices[invoice.id]?.receivedDate || new Date()}
+                                        onSelect={(date) => date && updateInvoiceReceivedDate(invoice.id, date)}
+                                        initialFocus
+                                      />
+                                    </PopoverContent>
+                                  </Popover>
+                                </TableCell>
+                                <TableCell className="text-right pr-6">
+                                  <Input
+                                    type="number"
+                                    value={selectedInvoices[invoice.id]?.payment || 0}
+                                    onChange={(e) => updateInvoicePayment(invoice.id, parseFloat(e.target.value) || 0)}
+                                    disabled={!selectedInvoices[invoice.id]?.selected}
+                                    className="w-32 text-right ml-auto h-8 border-slate-200"
+                                    data-testid={`input-payment-${invoice.id}`}
+                                  />
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    ) : (
+                      <div className="text-center py-12">
+                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-100 mb-4">
+                          <Search className="h-6 w-6 text-slate-400" />
+                        </div>
+                        <h3 className="text-sm font-medium text-slate-900">No Outstanding Invoices</h3>
+                        <p className="text-sm text-slate-500 mt-1">This customer has no unpaid invoices.</p>
+                      </div>
+                    )
+                  ) : (
+                    <div className="text-center py-12">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-100 mb-4">
+                        <Search className="h-6 w-6 text-slate-400" />
+                      </div>
+                      <h3 className="text-sm font-medium text-slate-900">Select a Customer</h3>
+                      <p className="text-sm text-slate-500 mt-1">Please select a customer to view their outstanding invoices.</p>
+                    </div>
+                  )}
+                </div>
+                {/* Total Footer */}
+                {selectedInvoiceCount > 0 && (
+                  <div className="bg-green-50 border-t border-green-100 p-4 flex justify-end">
+                    <div className="flex items-center gap-6">
+                      <div className="text-right">
+                        <p className="text-xs font-medium text-green-600 uppercase tracking-wide">Invoices Selected</p>
+                        <p className="text-lg font-bold text-green-700">{selectedInvoiceCount}</p>
+                      </div>
+                      <div className="h-8 w-px bg-green-200"></div>
+                      <div className="text-right">
+                        <p className="text-xs font-medium text-green-600 uppercase tracking-wide">Total Allocated</p>
+                        <p className="text-lg font-bold text-green-700">{formatCurrency(totalPaymentAmount)}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Payment Summary */}
+            {selectedCustomerId && (
+              <Card className="overflow-hidden border-slate-200 shadow-sm">
+                <CardContent className="p-0">
+                  <div className="p-6 border-b border-slate-100 bg-slate-50/50">
+                    <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">Payment Summary</h2>
+                  </div>
+                  <div className="p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <Label className="text-sm font-medium mb-2 block">Notes</Label>
+                        <Textarea
+                          value={notes}
+                          onChange={(e) => setNotes(e.target.value)}
+                          placeholder="Add any notes about this payment..."
+                          className="resize-none min-h-[120px] bg-white border-slate-200"
+                        />
+                        <div className="mt-4 flex items-center space-x-2">
+                          <Checkbox
+                            id="thank-you"
+                            checked={sendThankYou}
+                            onCheckedChange={(checked) => setSendThankYou(!!checked)}
+                          />
+                          <Label htmlFor="thank-you" className="font-normal cursor-pointer">
+                            Send a "Thank You" note for this payment
+                          </Label>
+                        </div>
+                      </div>
+                      <div className="bg-slate-50 rounded-lg p-6 space-y-4">
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500">Total Outstanding</span>
+                          <span className="font-medium text-slate-900">{formatCurrency(totalInvoicesAmount)}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500">Amount Received</span>
+                          <span className="font-medium text-slate-900">{formatCurrency(amountReceived)}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500">Amount used for Payments</span>
+                          <span className="font-medium text-green-600">-{formatCurrency(amountUsedForPayments)}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-slate-500">Amount Refunded</span>
+                          <span className="font-medium text-slate-900">{formatCurrency(amountRefunded)}</span>
+                        </div>
+                        <div className="border-t border-slate-200 pt-3 mt-2 flex justify-between items-center">
+                          <span className="font-semibold text-slate-700">Amount in Excess</span>
+                          <span className="font-bold text-lg text-theme-orange">{formatCurrency(amountInExcess)}</span>
+                        </div>
+                        <div className="text-xs text-slate-400 mt-2 text-right">
+                          This excess amount will be stored as unused credits for the customer.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             )}
-          </div>
 
-          <Separator />
-
-          {/* Customer Purchased Items */}
-          <div className="space-y-4">
-            <h3 className="font-medium">Items Purchased by Customer</h3>
-
-            {selectedCustomerId ? (
-              customerPurchasedItems.length > 0 ? (
-                <div className="border rounded-lg overflow-hidden">
-                  <Table>
-                    <TableHeader>
-                      <TableRow className="bg-muted/50">
-                        <TableHead>Item Name</TableHead>
-                        <TableHead>Description</TableHead>
-                        <TableHead>Unit</TableHead>
-                        <TableHead className="text-right">Last Rate</TableHead>
-                        <TableHead className="text-center">Total Qty</TableHead>
-                        <TableHead className="text-center">Purchase Count</TableHead>
-                        <TableHead>Last Purchase Date</TableHead>
-                        <TableHead className="text-right">Total Amount</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {customerPurchasedItems.map((item) => (
-                        <TableRow key={item.id}>
-                          <TableCell className="font-medium">{item.name}</TableCell>
-                          <TableCell className="text-muted-foreground max-w-[200px] truncate" title={item.description}>
-                            {item.description || '-'}
-                          </TableCell>
-                          <TableCell>{item.unit}</TableCell>
-                          <TableCell className="text-right">{formatCurrency(item.lastRate)}</TableCell>
-                          <TableCell className="text-center">{item.totalQuantity}</TableCell>
-                          <TableCell className="text-center">
-                            <Badge variant="secondary">{item.purchaseCount}</Badge>
-                          </TableCell>
-                          <TableCell>{formatDate(item.lastPurchaseDate)}</TableCell>
-                          <TableCell className="text-right">{formatCurrency(item.totalAmount)}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-              ) : (
-                <div className="text-center py-8 text-muted-foreground border rounded-lg">
-                  No items purchased by this customer yet
-                </div>
-              )
-            ) : (
-              <div className="text-center py-8 text-muted-foreground border rounded-lg">
-                Select a customer to view purchased items
-              </div>
-            )}
-          </div>
-
-          <Separator />
-
-          {/* Payment Summary */}
-          {selectedCustomerId && (
-            <div className="space-y-4">
-              <h3 className="font-medium">Payment Summary</h3>
-              <div className="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-4 space-y-3">
-                <div className="grid grid-cols-1 gap-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Total Outstanding:</span>
-                    <span className="font-medium">{formatCurrency(totalInvoicesAmount)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Amount Received:</span>
-                    <span className="font-medium text-green-600">{formatCurrency(amountReceived)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Amount used for Payments:</span>
-                    <span className="font-medium">{formatCurrency(amountUsedForPayments)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Amount Refunded:</span>
-                    <span className="font-medium">{formatCurrency(amountRefunded)}</span>
-                  </div>
-                  <div className="flex justify-between pt-2 border-t">
-                    <span className="text-muted-foreground">Amount in Excess:</span>
-                    <span className="font-bold text-orange-600">{formatCurrency(amountInExcess)}</span>
-                  </div>
-                </div>
-              </div>
+            {/* Customer Purchased Items (Collapsible or at bottom) */}
+            <div className="pt-6">
+              <h3 className="text-lg font-semibold text-slate-900 mb-4 px-1">Purchase History</h3>
+              <Card className="overflow-hidden border-slate-200 shadow-sm">
+                <CardContent className="p-0">
+                  {selectedCustomerId ? (
+                    customerPurchasedItems.length > 0 ? (
+                      <div className="overflow-x-auto">
+                        <Table>
+                          <TableHeader className="bg-slate-50">
+                            <TableRow className="border-b border-slate-200">
+                              <TableHead className="pl-6">Item Name</TableHead>
+                              <TableHead>Description</TableHead>
+                              <TableHead>Unit</TableHead>
+                              <TableHead className="text-right">Last Rate</TableHead>
+                              <TableHead className="text-center">Total Qty</TableHead>
+                              <TableHead className="text-center">Purchase Count</TableHead>
+                              <TableHead>Last Purchase Date</TableHead>
+                              <TableHead className="text-right pr-6">Total Amount</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {customerPurchasedItems.map((item) => (
+                              <TableRow key={item.id} className="border-b border-slate-100 hover:bg-slate-50/50">
+                                <TableCell className="pl-6 font-medium text-slate-900">{item.name}</TableCell>
+                                <TableCell className="text-slate-500 max-w-[200px] truncate" title={item.description}>
+                                  {item.description || '-'}
+                                </TableCell>
+                                <TableCell className="text-slate-500">{item.unit}</TableCell>
+                                <TableCell className="text-right text-slate-900">{formatCurrency(item.lastRate)}</TableCell>
+                                <TableCell className="text-center text-slate-900">{item.totalQuantity}</TableCell>
+                                <TableCell className="text-center">
+                                  <Badge variant="secondary" className="bg-slate-100 text-slate-700">{item.purchaseCount}</Badge>
+                                </TableCell>
+                                <TableCell className="text-slate-500">{formatDate(item.lastPurchaseDate)}</TableCell>
+                                <TableCell className="text-right pr-6 font-medium text-slate-900">{formatCurrency(item.totalAmount)}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    ) : (
+                      <div className="text-center py-8 text-slate-500">
+                        No items purchased by this customer yet
+                      </div>
+                    )
+                  ) : (
+                    <div className="text-center py-8 text-slate-500">
+                      Select a customer to view purchased items
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
             </div>
-          )}
-
-          <Separator />
-
-          <div className="space-y-2">
-            <Label className="text-sm font-medium">Notes</Label>
-            <Textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Add any notes for this payment..."
-              className="min-h-[80px]"
-              data-testid="textarea-notes"
-            />
           </div>
-
-
-          <div className="flex items-center gap-3">
-            <Switch
-              id="send-thank-you"
-              checked={sendThankYou}
-              onCheckedChange={setSendThankYou}
-              data-testid="switch-thank-you"
-            />
-            <Label htmlFor="send-thank-you" className="text-sm">
-              Send thank you email to customer
-            </Label>
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Footer Actions */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t px-6 py-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <Button variant="outline" onClick={() => setLocation("/payments-received")} data-testid="button-cancel">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 z-20">
+        <div className="max-w-6xl mx-auto flex items-center justify-end gap-3">
+          <Button variant="ghost" onClick={() => setLocation('/payments-received')} data-testid="button-cancel">
             Cancel
           </Button>
-          <div className="flex items-center gap-3">
-            <Button
-              onClick={handleSavePayment}
-              disabled={isSubmitting || !selectedCustomerId || totalAmountReceived <= 0}
-              data-testid="button-save"
-            >
-              <Save className="h-4 w-4 mr-2" />
-              {isSubmitting ? "Saving..." : "Record Payment"}
-            </Button>
-          </div>
+          <Button onClick={handleSavePayment} disabled={isSubmitting} className="bg-blue-600 hover:bg-blue-700 min-w-[140px]" data-testid="button-save">
+            {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Save className="h-4 w-4 mr-2" />}
+            Save Payment
+          </Button>
         </div>
       </div>
     </div>

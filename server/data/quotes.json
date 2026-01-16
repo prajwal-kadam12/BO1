@@ -233,12 +233,12 @@
           "description": "HP ProDesk desktop computer for office and professional use.\n",
           "quantity": 1,
           "unit": "",
-          "rate": 45002,
+          "rate": 45000,
           "discount": 0,
           "discountType": "percentage",
           "tax": 5,
           "taxName": "GST5",
-          "amount": 45002
+          "amount": 45000
         },
         {
           "id": "1766479637328",
@@ -341,15 +341,15 @@
           "description": "HP ProDesk desktop computer for office and professional use.\n",
           "quantity": 11,
           "unit": "",
-          "rate": 45002,
+          "rate": 45000,
           "discount": 0,
           "discountType": "percentage",
           "tax": 0,
           "taxName": "none",
-          "amount": 495002
+          "amount": 495000
         }
       ],
-      "subTotal": 495002,
+      "subTotal": 495000,
       "shippingCharges": 1000,
       "tdsType": "",
       "tdsAmount": 0,
@@ -1379,12 +1379,12 @@
           "description": "",
           "quantity": 1,
           "unit": "",
-          "rate": 15002,
+          "rate": 15000,
           "discount": 0,
           "discountType": "percentage",
           "tax": 18,
           "taxName": "GST18",
-          "amount": 15002
+          "amount": 15000
         }
       ],
       "subTotal": 15540,

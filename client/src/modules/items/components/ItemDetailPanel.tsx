@@ -86,7 +86,7 @@ const sampleTransactions: Transaction[] = [
     customerName: "Tech Solutions",
     quantitySold: 10.00,
     price: 1500.00,
-    total: 15002.00,
+    total: 15000.00,
     status: "Accepted",
     type: "invoices"
   },

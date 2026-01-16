@@ -2,13 +2,13 @@
   "profitAndLoss": {
     "totalIncome": 1558000,
     "totalExpenses": 889000,
-    "grossProfit": 1350020,
+    "grossProfit": 1350000,
     "netProfit": 669000,
     "monthlyData": [
       {
         "month": "Apr 2025",
-        "income": 85002,
-        "expense": 45002,
+        "income": 85000,
+        "expense": 45000,
         "profit": 40000
       },
       {
@@ -25,7 +25,7 @@
       },
       {
         "month": "Jul 2025",
-        "income": 105002,
+        "income": 105000,
         "expense": 62000,
         "profit": 43000
       },
@@ -37,31 +37,31 @@
       },
       {
         "month": "Sep 2025",
-        "income": 125002,
+        "income": 125000,
         "expense": 68000,
         "profit": 57000
       },
       {
         "month": "Oct 2025",
         "income": 140000,
-        "expense": 85002,
-        "profit": 55002
+        "expense": 85000,
+        "profit": 55000
       },
       {
         "month": "Nov 2025",
-        "income": 155002,
+        "income": 155000,
         "expense": 92000,
         "profit": 63000
       },
       {
         "month": "Dec 2025",
         "income": 180000,
-        "expense": 105002,
-        "profit": 75002
+        "expense": 105000,
+        "profit": 75000
       },
       {
         "month": "Jan 2026",
-        "income": 145002,
+        "income": 145000,
         "expense": 78000,
         "profit": 67000
       },
@@ -73,8 +73,8 @@
       },
       {
         "month": "Mar 2026",
-        "income": 175002,
-        "expense": 95002,
+        "income": 175000,
+        "expense": 95000,
         "profit": 80000
       }
     ]
@@ -82,13 +82,13 @@
   "salesByCustomer": [
     {
       "customer": "Uraja Foods",
-      "totalSales": 485002,
+      "totalSales": 485000,
       "invoiceCount": 12,
       "percentage": 31.1
     },
     {
       "customer": "Ashtvinayak Education Society",
-      "totalSales": 325002,
+      "totalSales": 325000,
       "invoiceCount": 8,
       "percentage": 20.9
     },
@@ -100,13 +100,13 @@
     },
     {
       "customer": "Nilraj Bhilare",
-      "totalSales": 225002,
+      "totalSales": 225000,
       "invoiceCount": 15,
       "percentage": 14.4
     },
     {
       "customer": "Green Valley Enterprises",
-      "totalSales": 145002,
+      "totalSales": 145000,
       "invoiceCount": 4,
       "percentage": 9.3
     },
@@ -132,7 +132,7 @@
     },
     {
       "product": "Training & Support",
-      "totalSales": 245002,
+      "totalSales": 245000,
       "quantity": 49,
       "percentage": 15.7
     },
@@ -144,7 +144,7 @@
     },
     {
       "product": "Maintenance Services",
-      "totalSales": 195002,
+      "totalSales": 195000,
       "quantity": 65,
       "percentage": 12.5
     }
@@ -152,7 +152,7 @@
   "expenseBreakdown": [
     {
       "category": "Salaries and Employee Wages",
-      "amount": 450020,
+      "amount": 450000,
       "percentage": 50.6,
       "color": "#4F46E5"
     },
@@ -164,19 +164,19 @@
     },
     {
       "category": "IT and Internet Expenses",
-      "amount": 85002,
+      "amount": 85000,
       "percentage": 9.6,
       "color": "#F59E0B"
     },
     {
       "category": "Travel Expense",
-      "amount": 65002,
+      "amount": 65000,
       "percentage": 7.3,
       "color": "#EF4444"
     },
     {
       "category": "Office Supplies",
-      "amount": 45002,
+      "amount": 45000,
       "percentage": 5.1,
       "color": "#8B5CF6"
     },
@@ -200,10 +200,10 @@
     }
   ],
   "taxSummary": {
-    "gstCollected": 185002,
+    "gstCollected": 185000,
     "gstPaid": 72500,
     "netGstPayable": 112500,
-    "tdsDeducted": 45002,
+    "tdsDeducted": 45000,
     "monthlyGst": [
       {
         "month": "Apr 2025",
@@ -218,7 +218,7 @@
       {
         "month": "Jun 2025",
         "collected": 11000,
-        "paid": 5002
+        "paid": 5000
       },
       {
         "month": "Jul 2025",
@@ -270,12 +270,12 @@
   "receivablesAging": [
     {
       "range": "Current",
-      "amount": 185002,
+      "amount": 185000,
       "count": 8
     },
     {
       "range": "1-30 Days",
-      "amount": 35002,
+      "amount": 35000,
       "count": 3
     },
     {
@@ -324,9 +324,9 @@
   "vendorSummary": [
     {
       "vendor": "Office Supplies Co",
-      "totalPurchases": 125002,
+      "totalPurchases": 125000,
       "billCount": 15,
-      "outstanding": 25002
+      "outstanding": 25000
     },
     {
       "vendor": "Tech Equipment Ltd",
@@ -336,13 +336,13 @@
     },
     {
       "vendor": "Utility Services",
-      "totalPurchases": 85002,
+      "totalPurchases": 85000,
       "billCount": 12,
-      "outstanding": 15002
+      "outstanding": 15000
     },
     {
       "vendor": "Internet Provider",
-      "totalPurchases": 65002,
+      "totalPurchases": 65000,
       "billCount": 12,
       "outstanding": 5500
     },

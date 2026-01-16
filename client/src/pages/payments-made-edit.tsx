@@ -184,7 +184,7 @@ export default function PaymentsMadeEdit() {
     if (existingPaymentData?.data) {
       const payment = existingPaymentData.data;
       const paymentType = payment.paymentType || "bill_payment";
-      
+
       // Set form data and activeTab together to ensure bills query triggers
       setFormData({
         vendorId: payment.vendorId || "",
@@ -205,20 +205,20 @@ export default function PaymentsMadeEdit() {
         notes: payment.notes || "",
         attachments: [],
       });
-      
+
       // Set active tab first so bills query will be enabled
       setActiveTab(paymentType);
-      
+
       if (payment.billPayments) {
         const bills: any = {};
         if (Array.isArray(payment.billPayments)) {
-           payment.billPayments.forEach((bp: any) => {
-             bills[bp.billId] = { payment: bp.paymentAmount, paymentMadeOn: payment.paymentDate };
-           });
+          payment.billPayments.forEach((bp: any) => {
+            bills[bp.billId] = { payment: bp.paymentAmount, paymentMadeOn: payment.paymentDate };
+          });
         } else {
-           Object.keys(payment.billPayments).forEach(key => {
-             bills[key] = payment.billPayments[key];
-           });
+          Object.keys(payment.billPayments).forEach(key => {
+            bills[key] = payment.billPayments[key];
+          });
         }
         setSelectedBills(bills);
       }
@@ -341,7 +341,7 @@ export default function PaymentsMadeEdit() {
   if (paymentLoading) return <div className="p-8">Loading payment details...</div>;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 overflow-y-auto invisible-scrollbar">
       <div className="border-b border-slate-200 bg-white px-6 py-4 sticky top-0 z-10">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" onClick={() => setLocation("/payments-made")}>
@@ -376,7 +376,7 @@ export default function PaymentsMadeEdit() {
 
               <div className="space-y-2">
                 <Label>Payment #*</Label>
-                <Input value={formData.paymentNumber} onChange={(e) => setFormData(p => ({...p, paymentNumber: e.target.value}))} />
+                <Input value={formData.paymentNumber} onChange={(e) => setFormData(p => ({ ...p, paymentNumber: e.target.value }))} />
               </div>
 
               <div className="space-y-2">
@@ -389,12 +389,12 @@ export default function PaymentsMadeEdit() {
 
               <div className="space-y-2">
                 <Label>Payment Date*</Label>
-                <Input type="date" value={formData.paymentDate} onChange={(e) => setFormData(p => ({...p, paymentDate: e.target.value}))} />
+                <Input type="date" value={formData.paymentDate} onChange={(e) => setFormData(p => ({ ...p, paymentDate: e.target.value }))} />
               </div>
 
               <div className="space-y-2">
                 <Label>Payment Mode</Label>
-                <Select value={formData.paymentMode} onValueChange={(v) => setFormData(p => ({...p, paymentMode: v}))}>
+                <Select value={formData.paymentMode} onValueChange={(v) => setFormData(p => ({ ...p, paymentMode: v }))}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     {PAYMENT_MODES.map(m => <SelectItem key={m.value} value={m.value}>{m.label}</SelectItem>)}
@@ -404,7 +404,7 @@ export default function PaymentsMadeEdit() {
 
               <div className="space-y-2">
                 <Label>Paid Through*</Label>
-                <Select value={formData.paidThrough} onValueChange={(v) => setFormData(p => ({...p, paidThrough: v}))}>
+                <Select value={formData.paidThrough} onValueChange={(v) => setFormData(p => ({ ...p, paidThrough: v }))}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     {PAID_THROUGH_OPTIONS.map(o => <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}

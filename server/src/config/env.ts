@@ -1,6 +1,6 @@
 export const env = {
   NODE_ENV: process.env.NODE_ENV || 'development',
-  PORT: parseInt(process.env.PORT || '5002', 10),
+  PORT: parseInt(process.env.PORT || '5000', 10),
   DATABASE_URL: process.env.DATABASE_URL,
   SESSION_SECRET: process.env.SESSION_SECRET || 'default-secret-change-in-production',
   JWT_SECRET: process.env.JWT_SECRET || 'jwt-secret-change-in-production',

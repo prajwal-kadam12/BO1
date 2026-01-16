@@ -18,7 +18,8 @@ import {
   Check,
   Settings,
   Edit3,
-  AlertCircle
+  AlertCircle,
+  Receipt
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAppStore, type ContactPerson } from "@/lib/store";
@@ -390,7 +391,7 @@ export default function InvoiceCreate() {
               ? (item.rate && item.quantity ? (item.discount / (item.rate * item.quantity)) * 100 : 0)
               : (item.discount || 0),
             gstRate: item.tax && item.tax > 0 ? (item.tax / (item.rate * item.quantity - (item.discount || 0))) * 100 : 18
-          })).filter(item => item.qty > 0); // Only include items with remaining quantity
+          })).filter((item: InvoiceItem) => item.qty > 0); // Only include items with remaining quantity
 
           setItems(convertedItems);
         }
@@ -634,7 +635,7 @@ export default function InvoiceCreate() {
   const totals = items.reduce((acc, item) => {
     const line = calculateLineItem(item);
     return {
-      subtotal: acc.subtotal + line.baseAmount, // Usually subtotal is before discount/tax in many systems, but user asked for "Line Total (Qty × Rate − Discount + GST)". Let's treat subtotal as sum of line totals for now? 
+      subtotal: acc.subtotal + line.baseAmount, // Usually subtotal is before discount/tax in many systems, but user asked for "Line Total (Qty × Rate − Discount + GST)". Let's treat subtotal as sum of line totals for now?
       // Actually, standard invoice subtotal is usually sum of (Qty * Rate).
       // Then Total Discount.
       // Then Total Tax.
@@ -717,7 +718,7 @@ export default function InvoiceCreate() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 pb-32 px-4 sm:px-6 relative overflow-visible">
+    <div className="max-w-7xl mx-auto space-y-8 pb-32 px-4 sm:px-6 relative overflow-y-auto max-h-screen">
 
       <div>
         <h1 className="text-3xl font-display font-bold text-foreground tracking-tight">Create Invoice</h1>

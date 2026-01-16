@@ -133,6 +133,18 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  
+  /* Invisible scrollbar - allows scrolling but hides the scrollbar */
+  .invisible-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: auto;
+  }
+  .invisible-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
 }
 
 @layer base {

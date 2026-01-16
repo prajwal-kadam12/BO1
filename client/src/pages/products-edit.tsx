@@ -368,8 +368,8 @@ export default function ProductEdit() {
 
   return (
     <TooltipProvider>
-      <div className="flex-1 flex flex-col bg-slate-50 overflow-hidden animate-in slide-in-from-right duration-300">
-        <div className="flex items-center justify-between p-4 bg-white border-b border-slate-200 shadow-sm z-10">
+      <div className="flex-1 flex flex-col bg-slate-50 h-screen animate-in slide-in-from-right duration-300">
+        <div className="flex items-center justify-between p-4 bg-white border-b border-slate-200 shadow-sm z-10 flex-shrink-0">
           <h1 className="text-xl font-semibold text-slate-900">Edit Item</h1>
           <Button
             variant="ghost"
@@ -382,8 +382,8 @@ export default function ProductEdit() {
           </Button>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
-          <div className="max-w-4xl mx-auto p-8">
+        <div className="flex-1 overflow-y-auto invisible-scrollbar">
+          <div className="max-w-4xl mx-auto p-8 pb-24">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 {/* Basic Information Card */}
@@ -674,9 +674,9 @@ export default function ProductEdit() {
                   <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden h-fit">
                     <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Checkbox 
-                          id="sellable-edit" 
-                          checked={sellable} 
+                        <Checkbox
+                          id="sellable-edit"
+                          checked={sellable}
                           onCheckedChange={(checked) => form.setValue("sellable", checked as boolean)}
                           className="border-slate-300 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
                         />
@@ -782,9 +782,9 @@ export default function ProductEdit() {
                   <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden h-fit">
                     <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Checkbox 
-                          id="purchasable-edit" 
-                          checked={purchasable} 
+                        <Checkbox
+                          id="purchasable-edit"
+                          checked={purchasable}
                           onCheckedChange={(checked) => form.setValue("purchasable", checked as boolean)}
                           className="border-slate-300 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
                         />

@@ -823,7 +823,7 @@
       "sourceOfSupply": "[AP] - Andhra Pradesh",
       "destinationOfSupply": "[AP] - Andhra Pradesh",
       "descriptionOfSupply": "",
-      "paymentAmount": 500200,
+      "paymentAmount": 500000,
       "reverseCharge": false,
       "tds": "",
       "paymentDate": "2025-12-24",
@@ -1305,7 +1305,7 @@
       "sourceOfSupply": "[NL] - Nagaland",
       "destinationOfSupply": "[NL] - Nagaland",
       "descriptionOfSupply": "",
-      "paymentAmount": 5002,
+      "paymentAmount": 5000,
       "reverseCharge": false,
       "tds": "",
       "paymentDate": "2025-12-24",
@@ -1319,7 +1319,7 @@
           "billId": "1766554360488",
           "billNumber": "20",
           "billAmount": 47259,
-          "amountPaid": 5002
+          "amountPaid": 5000
         }
       },
       "paymentType": "bill_payment",

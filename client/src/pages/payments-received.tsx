@@ -374,619 +374,21 @@ function PaymentDetailPanel({
   );
 }
 
-// FULL-PAGE FORM COMPONENT - No modal/dialog wrapper
-function PaymentCreateForm({
-  onClose,
-  onSave,
-  customers,
-  editPayment
-}: {
-  onClose: () => void;
-  onSave: (payment: any) => void;
-  customers: Customer[];
-  editPayment?: PaymentReceived | null;
-}) {
-  const [paymentType, setPaymentType] = useState<'invoice_payment' | 'customer_advance'>('invoice_payment');
-  const [formData, setFormData] = useState({
-    customerId: '',
-    customerName: '',
-    customerEmail: '',
-    amount: '',
-    bankCharges: '',
-    tax: '',
-    date: new Date().toISOString().split('T')[0],
-    paymentNumber: '',
-    mode: 'Cash',
-    depositTo: 'Petty Cash',
-    referenceNumber: '',
-    taxDeducted: 'no',
-    notes: '',
-    sendThankYou: true,
-    placeOfSupply: '',
-    descriptionOfSupply: ''
-  });
-  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
-  const [unpaidInvoices, setUnpaidInvoices] = useState<Invoice[]>([]);
-  const [selectedInvoices, setSelectedInvoices] = useState<Record<string, { payment: number; receivedDate: string }>>({});
-
-  const autoAllocatePayment = (totalAmount: number, invoices: Invoice[]) => {
-    if (invoices.length === 0) {
-      setSelectedInvoices({});
-      return;
-    }
-
-    if (totalAmount <= 0) {
-      setSelectedInvoices({});
-      return;
-    }
-
-    const sortedInvoices = [...invoices].sort((a, b) =>
-      new Date(a.date).getTime() - new Date(b.date).getTime()
-    );
-
-    let remainingAmount = totalAmount;
-    const newSelectedInvoices: Record<string, { payment: number; receivedDate: string }> = {};
-
-    for (const invoice of sortedInvoices) {
-      if (remainingAmount <= 0) break;
-
-      const invoiceBalance = invoice.balanceDue > 0 ? invoice.balanceDue : invoice.amount;
-      if (invoiceBalance > 0) {
-        const paymentAmount = Math.min(remainingAmount, invoiceBalance);
-        newSelectedInvoices[invoice.id] = {
-          payment: paymentAmount,
-          receivedDate: new Date().toISOString().split('T')[0]
-        };
-        remainingAmount -= paymentAmount;
-      }
-    }
-
-    setSelectedInvoices(newSelectedInvoices);
-  };
-
-  const handleAmountChange = (amount: string) => {
-    setFormData(prev => ({ ...prev, amount }));
-    const numAmount = parseFloat(amount) || 0;
-    if (numAmount > 0 && paymentType === 'invoice_payment') {
-      autoAllocatePayment(numAmount, unpaidInvoices);
-    } else {
-      setSelectedInvoices({});
-    }
-  };
-
-  const totalPaymentAmount = Object.values(selectedInvoices).reduce((sum, inv) => sum + inv.payment, 0);
-  const amountReceived = parseFloat(formData.amount) || 0;
-  const amountInExcess = Math.max(0, amountReceived - totalPaymentAmount);
-
-  useEffect(() => {
-    if (editPayment) {
-      setPaymentType(editPayment.paymentType === 'customer_advance' ? 'customer_advance' : 'invoice_payment');
-      setFormData({
-        customerId: editPayment.customerId,
-        customerName: editPayment.customerName,
-        customerEmail: editPayment.customerEmail,
-        amount: String(editPayment.amount),
-        bankCharges: String(editPayment.bankCharges || ''),
-        tax: editPayment.tax,
-        date: editPayment.date,
-        paymentNumber: editPayment.paymentNumber,
-        mode: editPayment.mode,
-        depositTo: editPayment.depositTo,
-        referenceNumber: editPayment.referenceNumber,
-        taxDeducted: 'no',
-        notes: editPayment.notes,
-        sendThankYou: editPayment.sendThankYou,
-        placeOfSupply: editPayment.placeOfSupply,
-        descriptionOfSupply: editPayment.descriptionOfSupply
-      });
-    } else {
-      setFormData({
-        customerId: '',
-        customerName: '',
-        customerEmail: '',
-        amount: '',
-        bankCharges: '',
-        tax: '',
-        date: new Date().toISOString().split('T')[0],
-        paymentNumber: '',
-        mode: 'Cash',
-        depositTo: 'Petty Cash',
-        referenceNumber: '',
-        taxDeducted: 'no',
-        notes: '',
-        sendThankYou: true,
-        placeOfSupply: '',
-        descriptionOfSupply: ''
-      });
-      setSelectedCustomer(null);
-    }
-  }, [editPayment]);
-
-  const handleCustomerChange = async (customerId: string) => {
-    const customer = customers.find(c => c.id === customerId);
-    if (customer) {
-      setSelectedCustomer(customer);
-      setFormData(prev => ({
-        ...prev,
-        customerId: customer.id,
-        customerName: customer.displayName || customer.companyName,
-        customerEmail: customer.email || '',
-        placeOfSupply: customer.placeOfSupply || ''
-      }));
-
-      try {
-        const response = await fetch(`/api/customers/${customerId}/unpaid-invoices`);
-        if (response.ok) {
-          const data = await response.json();
-          const invoices = (data.data || []).map((inv: any) => ({
-            ...inv,
-            balanceDue: inv.balanceDue > 0 ? inv.balanceDue : inv.amount
-          }));
-          setUnpaidInvoices(invoices);
-
-          const amount = parseFloat(formData.amount) || 0;
-          if (amount > 0) {
-            autoAllocatePayment(amount, invoices);
-          }
-        }
-      } catch (error) {
-        console.error('Failed to fetch unpaid invoices:', error);
-      }
-    }
-  };
-
-  const handleSubmit = () => {
-    const invoicePayments = Object.entries(selectedInvoices)
-      .filter(([_, inv]) => inv.payment > 0)
-      .map(([id, inv]) => {
-        const invoice = unpaidInvoices.find(i => i.id === id);
-        return {
-          invoiceId: id,
-          invoiceNumber: invoice?.invoiceNumber || '',
-          invoiceDate: invoice?.date || '',
-          invoiceAmount: invoice?.amount || 0,
-          balanceDue: invoice?.balanceDue || 0,
-          paymentAmount: inv.payment,
-          paymentReceivedDate: inv.receivedDate
-        };
-      });
-
-    const paymentData = {
-      ...formData,
-      amount: parseFloat(formData.amount) || 0,
-      bankCharges: parseFloat(formData.bankCharges) || 0,
-      paymentType,
-      status: 'PAID',
-      unusedAmount: amountInExcess,
-      invoices: invoicePayments,
-      attachments: [],
-      journalEntries: [
-        {
-          account: formData.depositTo,
-          debit: parseFloat(formData.amount) || 0,
-          credit: 0
-        },
-        {
-          account: 'Unearned Revenue',
-          debit: 0,
-          credit: parseFloat(formData.amount) || 0
-        }
-      ]
-    };
-
-    onSave(paymentData);
-    onClose();
-  };
-
-  return (
-    <div className="h-full flex flex-col bg-white overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
-        <h2 className="text-lg font-semibold text-slate-900">{editPayment ? 'Edit Payment' : 'Record Payment'}</h2>
-        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onClose} data-testid="button-close-form">
-          <X className="h-4 w-4" />
-        </Button>
-      </div>
-
-      <ScrollArea className="flex-1">
-        <div className="p-6 space-y-6">
-          <p className="text-sm text-slate-500">Record a payment received from a customer</p>
-
-          <Tabs value={paymentType} onValueChange={(v) => setPaymentType(v as any)}>
-            <TabsList className="mb-4">
-              <TabsTrigger value="invoice_payment">Invoice Payment</TabsTrigger>
-              <TabsTrigger value="customer_advance">Customer Advance</TabsTrigger>
-            </TabsList>
-
-            <div className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Customer Name
-                    <span className="text-red-600">*</span>
-                  </Label>
-                  <Select value={formData.customerId} onValueChange={handleCustomerChange}>
-                    <SelectTrigger data-testid="select-customer">
-                      <SelectValue placeholder="Select a customer" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {customers.map(customer => (
-                        <SelectItem key={customer.id} value={customer.id}>
-                          {customer.displayName || customer.companyName}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {selectedCustomer?.pan && (
-                    <p className="text-sm text-blue-600">PAN: {selectedCustomer.pan}</p>
-                  )}
-                  {selectedCustomer?.gstTreatment && (
-                    <p className="text-sm text-slate-600">GST Treatment: {selectedCustomer.gstTreatment}</p>
-                  )}
-                  {selectedCustomer?.gstin && (
-                    <p className="text-sm text-slate-600">GSTIN: {selectedCustomer.gstin}</p>
-                  )}
-                </div>
-
-                {paymentType === 'customer_advance' && (
-                  <div className="space-y-2">
-                    <Label className="text-sm font-medium">Place of Supply
-                      <span className="text-red-600">*</span>
-                    </Label>
-                    <Select value={formData.placeOfSupply} onValueChange={(v) => setFormData(prev => ({ ...prev, placeOfSupply: v }))}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select place of supply" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="[MH] - Maharashtra">[MH] - Maharashtra</SelectItem>
-                        <SelectItem value="[DL] - Delhi">[DL] - Delhi</SelectItem>
-                        <SelectItem value="[KA] - Karnataka">[KA] - Karnataka</SelectItem>
-                        <SelectItem value="[TN] - Tamil Nadu">[TN] - Tamil Nadu</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                )}
-              </div>
-
-              {paymentType === 'customer_advance' && (
-                <div className="space-y-2">
-                  <Label>Description of Supply</Label>
-                  <Textarea
-                    placeholder="Will be displayed on the Payment Receipt"
-                    value={formData.descriptionOfSupply}
-                    onChange={(e) => setFormData(prev => ({ ...prev, descriptionOfSupply: e.target.value }))}
-                  />
-                </div>
-              )}
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Amount Received
-                    <span className="text-red-600">*</span>
-                  </Label>
-                  <div className="flex">
-                    <span className="inline-flex items-center px-3 border border-r-0 border-slate-300 bg-slate-50 rounded-l-md text-sm">
-                      INR
-                    </span>
-                    <Input
-                      type="number"
-                      value={formData.amount}
-                      onChange={(e) => handleAmountChange(e.target.value)}
-                      placeholder="Enter amount to auto-allocate"
-                      className="rounded-l-none"
-                      data-testid="input-amount"
-                    />
-                  </div>
-                  <p className="text-xs text-slate-500">Amount will be auto-allocated to unpaid invoices (oldest first)</p>
-                </div>
-                <div className="space-y-2">
-                  <Label>Bank Charges (if any)</Label>
-                  <Input
-                    type="number"
-                    value={formData.bankCharges}
-                    onChange={(e) => setFormData(prev => ({ ...prev, bankCharges: e.target.value }))}
-                    data-testid="input-bank-charges"
-                  />
-                </div>
-              </div>
-
-              {paymentType === 'customer_advance' && (
-                <div className="space-y-2">
-                  <Label>Tax</Label>
-                  <Select value={formData.tax} onValueChange={(v) => setFormData(prev => ({ ...prev, tax: v }))}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a Tax" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">No Tax</SelectItem>
-                      <SelectItem value="gst18">GST 18%</SelectItem>
-                      <SelectItem value="gst12">GST 12%</SelectItem>
-                      <SelectItem value="gst5">GST 5%</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Payment Date
-                    <span className="text-red-600">*</span>
-                  </Label>
-                  <Input
-                    type="date"
-                    value={formData.date}
-                    onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
-                    data-testid="input-date"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Payment #
-                    <span className="text-red-600">*</span>
-                  </Label>
-                  <Input
-                    value={formData.paymentNumber}
-                    onChange={(e) => setFormData(prev => ({ ...prev, paymentNumber: e.target.value }))}
-                    placeholder="Auto-generated"
-                    data-testid="input-payment-number"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label>Payment Mode</Label>
-                  <Select value={formData.mode} onValueChange={(v) => setFormData(prev => ({ ...prev, mode: v }))}>
-                    <SelectTrigger data-testid="select-mode">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Cash">Cash</SelectItem>
-                      <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
-                      <SelectItem value="Cheque">Cheque</SelectItem>
-                      <SelectItem value="Credit Card">Credit Card</SelectItem>
-                      <SelectItem value="UPI">UPI</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Deposit To
-                    <span className="text-red-600">*</span>
-                  </Label>
-                  <Select value={formData.depositTo} onValueChange={(v) => setFormData(prev => ({ ...prev, depositTo: v }))}>
-                    <SelectTrigger data-testid="select-deposit">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Petty Cash">Petty Cash</SelectItem>
-                      <SelectItem value="Bank Account">Bank Account</SelectItem>
-                      <SelectItem value="Cash on Hand">Cash on Hand</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label>Reference#</Label>
-                <Input
-                  value={formData.referenceNumber}
-                  onChange={(e) => setFormData(prev => ({ ...prev, referenceNumber: e.target.value }))}
-                  data-testid="input-reference"
-                />
-              </div>
-
-              {paymentType === 'invoice_payment' && (
-                <div className="space-y-2">
-                  <Label>Tax deducted?</Label>
-                  <div className="flex gap-4">
-                    <label className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name="taxDeducted"
-                        value="no"
-                        checked={formData.taxDeducted === 'no'}
-                        onChange={() => setFormData(prev => ({ ...prev, taxDeducted: 'no' }))}
-                      />
-                      No Tax deducted
-                    </label>
-                    <label className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name="taxDeducted"
-                        value="yes"
-                        checked={formData.taxDeducted === 'yes'}
-                        onChange={() => setFormData(prev => ({ ...prev, taxDeducted: 'yes' }))}
-                      />
-                      Yes, TDS (Income Tax)
-                    </label>
-                  </div>
-                </div>
-              )}
-
-              {paymentType === 'invoice_payment' && formData.customerId && (
-                <div className="space-y-4 border-t pt-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-semibold">Unpaid Invoices</h4>
-                    <div className="flex items-center gap-2">
-                      <Button variant="outline" size="sm" className="gap-1">
-                        <Filter className="h-3 w-3" />
-                        Filter by Date Range
-                      </Button>
-                      <Button
-                        variant="link"
-                        size="sm"
-                        className="text-blue-600"
-                        onClick={() => setSelectedInvoices({})}
-                      >
-                        Clear Applied Amount
-                      </Button>
-                    </div>
-                  </div>
-
-                  <Table>
-                    <TableHeader>
-                      <TableRow className="bg-slate-50">
-                        <TableHead className="text-xs">DATE</TableHead>
-                        <TableHead className="text-xs">INVOICE NUMBER</TableHead>
-                        <TableHead className="text-xs text-right">INVOICE AMOUNT</TableHead>
-                        <TableHead className="text-xs text-right">AMOUNT DUE</TableHead>
-                        <TableHead className="text-xs">PAYMENT RECEIVED ON</TableHead>
-                        <TableHead className="text-xs text-right">PAYMENT</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {unpaidInvoices.length === 0 ? (
-                        <TableRow>
-                          <TableCell colSpan={6} className="text-center text-slate-500 py-8">
-                            There are no unpaid invoices associated with this customer.
-                          </TableCell>
-                        </TableRow>
-                      ) : (
-                        unpaidInvoices.map(invoice => (
-                          <TableRow key={invoice.id} className={selectedInvoices[invoice.id]?.payment > 0 ? "bg-green-50" : ""}>
-                            <TableCell>{formatDate(invoice.date)}</TableCell>
-                            <TableCell className="text-blue-600">{invoice.invoiceNumber}</TableCell>
-                            <TableCell className="text-right">{formatCurrency(invoice.amount || 0)}</TableCell>
-                            <TableCell className="text-right">{formatCurrency(invoice.balanceDue || 0)}</TableCell>
-                            <TableCell>
-                              {selectedInvoices[invoice.id]?.payment > 0 ? (
-                                <Input
-                                  type="date"
-                                  className="w-32"
-                                  value={selectedInvoices[invoice.id]?.receivedDate || ''}
-                                  onChange={(e) => setSelectedInvoices(prev => ({
-                                    ...prev,
-                                    [invoice.id]: {
-                                      ...prev[invoice.id],
-                                      receivedDate: e.target.value
-                                    }
-                                  }))}
-                                />
-                              ) : '-'}
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <Input
-                                type="number"
-                                className="w-24 text-right"
-                                value={selectedInvoices[invoice.id]?.payment || ''}
-                                onChange={(e) => {
-                                  const value = parseFloat(e.target.value) || 0;
-                                  const maxPayment = invoice.balanceDue || invoice.amount;
-                                  const validPayment = Math.min(Math.max(0, value), maxPayment);
-                                  setSelectedInvoices(prev => ({
-                                    ...prev,
-                                    [invoice.id]: {
-                                      payment: validPayment,
-                                      receivedDate: prev[invoice.id]?.receivedDate || new Date().toISOString().split('T')[0]
-                                    }
-                                  }));
-                                }}
-                              />
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      )}
-                    </TableBody>
-                  </Table>
-                  <p className="text-xs text-slate-500">**List contains only SENT invoices</p>
-
-                  <div className="flex justify-end">
-                    <div className="w-64 space-y-2">
-                      <div className="flex justify-between">
-                        <span>Total</span>
-                        <span>{formatCurrency(unpaidInvoices.reduce((sum, inv) => sum + (inv.balanceDue || inv.amount || 0), 0))}</span>
-                      </div>
-                      <div className="flex justify-between border-t pt-2">
-                        <span>Amount Received :</span>
-                        <span>{formatCurrency(amountReceived)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Amount used for Payments :</span>
-                        <span>{formatCurrency(totalPaymentAmount)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Amount Refunded :</span>
-                        <span>0.00</span>
-                      </div>
-                      <div className="flex justify-between text-orange-600">
-                        <span>Amount in Excess:</span>
-                        <span>{formatCurrency(amountInExcess)}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="space-y-2">
-                <Label>Notes (Internal use. Not visible to customer)</Label>
-                <Textarea
-                  value={formData.notes}
-                  onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-                  className="min-h-[80px]"
-                  data-testid="input-notes"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label>Attachments</Label>
-                <Button variant="outline" size="sm" className="gap-1">
-                  Upload File
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
-                <p className="text-xs text-slate-500">You can upload a maximum of 5 files, 5MB each</p>
-              </div>
-
-              <div className="flex items-center gap-2 border-t pt-4">
-                <Checkbox
-                  id="sendThankYou"
-                  checked={formData.sendThankYou}
-                  onCheckedChange={(checked) => setFormData(prev => ({ ...prev, sendThankYou: checked as boolean }))}
-                />
-                <Label htmlFor="sendThankYou">Send a "Thank you" note for this payment</Label>
-              </div>
-
-              {formData.sendThankYou && formData.customerEmail && (
-                <div className="ml-6 flex items-center gap-2">
-                  <Checkbox checked disabled />
-                  <span className="text-sm">&lt;{formData.customerEmail}&gt;</span>
-                </div>
-              )}
-
-              <p className="text-sm text-slate-500">
-                Additional Fields: Start adding custom fields for your payments received by going to{' '}
-                <span className="text-blue-600">Settings → Sales → Payments Received</span>.
-              </p>
-            </div>
-          </Tabs>
-        </div>
-      </ScrollArea>
-
-      <div className="border-t border-slate-200 -mb-2 p-2 bg-white flex items-center justify-end gap-2">
-        <Button variant="outline" onClick={onClose} data-testid="button-cancel">Cancel</Button>
-        <Button variant="outline" onClick={handleSubmit} data-testid="button-save-draft">Save as Draft</Button>
-        <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700" data-testid="button-save-paid">Save as Paid</Button>
-      </div>
-    </div>
-  );
-}
-
 export default function PaymentsReceived() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const { currentOrganization } = useOrganization();
   const [payments, setPayments] = useState<PaymentReceived[]>([]);
-  const [customers, setCustomers] = useState<Customer[]>([]);
   const [selectedPayment, setSelectedPayment] = useState<PaymentReceived | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedPayments, setSelectedPayments] = useState<string[]>([]);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [paymentToDelete, setPaymentToDelete] = useState<string | null>(null);
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [editPayment, setEditPayment] = useState<PaymentReceived | null>(null);
-  const [selectedPayments, setSelectedPayments] = useState<string[]>([]);
   const [branding, setBranding] = useState<any>(null);
-  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     fetchPayments();
-    fetchCustomers();
     fetchBranding();
   }, []);
 
@@ -1005,43 +407,19 @@ export default function PaymentsReceived() {
   const fetchPayments = async () => {
     try {
       const response = await fetch('/api/payments-received');
-      if (response.ok) {
-        const data = await response.json();
-        setPayments(data.data || []);
+      const data = await response.json();
+      if (data.success) {
+        setPayments(data.data);
       }
     } catch (error) {
-      console.error('Failed to fetch payments:', error);
+      toast({ title: "Error", description: "Failed to fetch payments", variant: "destructive" });
     } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchCustomers = async () => {
-    try {
-      const response = await fetch('/api/customers');
-      if (response.ok) {
-        const data = await response.json();
-        setCustomers(data.data || []);
-      }
-    } catch (error) {
-      console.error('Failed to fetch customers:', error);
-    }
-  };
-
-  const fetchPaymentDetail = async (id: string) => {
-    try {
-      const response = await fetch(`/api/payments-received/${id}`);
-      if (response.ok) {
-        const data = await response.json();
-        setSelectedPayment(data.data);
-      }
-    } catch (error) {
-      console.error('Failed to fetch payment detail:', error);
+      setIsLoading(false);
     }
   };
 
   const handlePaymentClick = (payment: PaymentReceived) => {
-    fetchPaymentDetail((payment as any).id);
+    setSelectedPayment(payment);
   };
 
   const handleClosePanel = () => {
@@ -1050,8 +428,7 @@ export default function PaymentsReceived() {
 
   const handleEditPayment = () => {
     if (selectedPayment) {
-      setEditPayment(selectedPayment);
-      setShowCreateForm(true);
+      setLocation(`/payments-received/${selectedPayment.id}/edit`);
     }
   };
 
@@ -1065,317 +442,140 @@ export default function PaymentsReceived() {
     try {
       const response = await fetch(`/api/payments-received/${paymentToDelete}`, { method: 'DELETE' });
       if (response.ok) {
-        toast({ title: "Payment deleted successfully" });
+        toast({ title: "Success", description: "Payment deleted successfully" });
         fetchPayments();
         if (selectedPayment?.id === paymentToDelete) {
-          handleClosePanel();
+          setSelectedPayment(null);
         }
       }
     } catch (error) {
-      toast({ title: "Failed to delete payment", variant: "destructive" });
+      toast({ title: "Error", description: "Failed to delete payment", variant: "destructive" });
     } finally {
       setDeleteDialogOpen(false);
       setPaymentToDelete(null);
     }
   };
 
-  const handleRefund = async () => {
-    if (!selectedPayment) return;
-    try {
-      const response = await fetch(`/api/payments-received/${selectedPayment.id}/refund`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ refundAmount: selectedPayment.amount })
-      });
-      if (response.ok) {
-        toast({ title: "Payment refunded" });
-        fetchPayments();
-        fetchPaymentDetail(selectedPayment.id);
-      }
-    } catch (error) {
-      toast({ title: "Failed to refund payment", variant: "destructive" });
-    }
+  const handleRefund = () => {
+    toast({ title: "Refund", description: "Refund functionality coming soon" });
   };
 
-  const handleSavePayment = async (paymentData: any) => {
-    try {
-      const url = editPayment
-        ? `/api/payments-received/${editPayment.id}`
-        : '/api/payments-received';
-      const method = editPayment ? 'PUT' : 'POST';
-
-      const response = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(paymentData)
-      });
-
-      if (response.ok) {
-        toast({ title: editPayment ? "Payment updated" : "Payment recorded successfully" });
-        fetchPayments();
-        setEditPayment(null);
-        setShowCreateForm(false);
-      }
-    } catch (error) {
-      toast({ title: "Failed to save payment", variant: "destructive" });
-    }
+  const getStatusBadge = (status: string) => {
+    const statusLower = status?.toLowerCase() || '';
+    if (statusLower === 'paid') return <Badge className="bg-green-100 text-green-700 border-green-200">Paid</Badge>;
+    if (statusLower === 'partially_paid') return <Badge className="bg-blue-100 text-blue-700 border-blue-200">Partially Paid</Badge>;
+    if (statusLower === 'void') return <Badge className="bg-red-100 text-red-700 border-red-200">Void</Badge>;
+    return <Badge variant="outline">{status}</Badge>;
   };
 
-  const toggleSelectPayment = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedPayments.includes(id)) {
-      setSelectedPayments(selectedPayments.filter(i => i !== id));
-    } else {
-      setSelectedPayments([...selectedPayments, id]);
-    }
-  };
-
-  const applyFilter = (paymentList: PaymentReceived[]) => {
-    if (activeFilter === "All") return paymentList;
-    return paymentList.filter(payment => {
-      const status = payment.status?.toUpperCase() || "";
-      switch (activeFilter) {
-        case "Paid": return status === "PAID";
-        case "Refunded": return status === "REFUNDED";
-        case "Draft": return status === "DRAFT";
-        default: return true;
-      }
-    });
-  };
-
-  const filteredPayments = applyFilter(payments).filter(payment =>
-    (payment as any).paymentNumber?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (payment as any).customerName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    payment.referenceNumber?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredPayments = payments.filter(p =>
+    p.paymentNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    p.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    p.referenceNumber?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const { currentPage, totalPages, totalItems, itemsPerPage, paginatedItems, goToPage } = usePagination(filteredPayments, 10);
 
-  const getStatusBadge = (status: string) => {
-    switch (status?.toUpperCase()) {
-      case 'PAID':
-        return <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">PAID</Badge>;
-      case 'REFUNDED':
-        return <Badge variant="outline" className="text-red-600 border-red-200 bg-red-50">REFUNDED</Badge>;
-      case 'DRAFT':
-        return <Badge variant="outline" className="text-slate-600 border-slate-200">DRAFT</Badge>;
-      default:
-        return <Badge variant="outline">{status}</Badge>;
-    }
-  };
+  const showCreateForm = false; // Separate page handles this
 
   return (
-    <div className="flex h-screen animate-in fade-in duration-300 w-full overflow-hidden bg-slate-50">
+    <div className="h-full flex w-full overflow-hidden bg-slate-50">
       <ResizablePanelGroup direction="horizontal" className="h-full w-full" autoSaveId="payments-received-layout">
         {!showCreateForm && (
-          <ResizablePanel
-            defaultSize={selectedPayment ? 30 : 100}
-            minSize={30}
-            className="flex flex-col overflow-hidden bg-white border-r border-slate-200"
-          >
-            <div className="flex flex-col h-full overflow-hidden">
-              <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-white sticky top-0 z-10">
-                <div className="flex items-center gap-4 flex-1">
-                  <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="gap-1.5 text-xl font-semibold text-slate-900 hover:text-slate-700 hover:bg-transparent p-0 h-auto transition-colors">
-                          {activeFilter === "All" ? "All Payments" : `${activeFilter} Payments`}
-                          <ChevronDown className="h-4 w-4 text-slate-500" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="start" className="w-56">
-                        <DropdownMenuItem onClick={() => setActiveFilter("All")}>All</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setActiveFilter("Paid")}>Paid</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setActiveFilter("Refunded")}>Refunded</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setActiveFilter("Draft")}>Draft</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                    <span className="text-sm text-slate-400">({payments.length})</span>
-                  </div>
-
-                  <div className="relative flex-1 max-w-[240px] hidden sm:block">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                    <Input
-                      placeholder="Search payments..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-9 h-9"
-                      data-testid="input-search-payments"
-                    />
-                  </div>
-                </div>
+          <ResizablePanel defaultSize={selectedPayment ? 30 : 100} minSize={20} className="bg-white">
+            <div className="h-full flex flex-col overflow-hidden bg-white border-r border-slate-200">
+              <div className="flex items-center justify-between p-4 border-b border-slate-200 sticky top-0 bg-white z-10 flex-none">
                 <div className="flex items-center gap-2">
-                  <Button
-                    onClick={() => {
-                      setEditPayment(null);
-                      setShowCreateForm(true);
-                    }}
-                    className="bg-blue-600 hover:bg-blue-700 gap-1.5 h-9"
-                    data-testid="button-new-payment"
-                  >
-                    <Plus className="h-4 w-4" /> New
-                  </Button>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="outline" size="icon" className="h-9 w-9" data-testid="button-more-options">
-                        <MoreHorizontal className="h-4 w-4" />
+                      <Button variant="ghost" className="text-xl font-bold p-0 hover:bg-transparent">
+                        All Payments <ChevronDown className="ml-1 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>
-                        <Download className="mr-2 h-4 w-4" /> Export
-                      </DropdownMenuItem>
-                      <DropdownMenuItem onClick={fetchPayments}>
-                        <RefreshCw className="mr-2 h-4 w-4" /> Refresh List
-                      </DropdownMenuItem>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>All Payments</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-              </div>
-
-              {/* Mobile Search Bar */}
-              <div className="px-4 py-3 flex items-center gap-2 border-b border-slate-200 bg-white sm:hidden">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                  <Input
-                    placeholder="Search payments..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-9 h-9"
-                    data-testid="input-search-mobile"
-                  />
+                <div className="flex items-center gap-2">
+                  <Button onClick={() => setLocation('/payments-received/create')} className="bg-blue-600 hover:bg-blue-700">
+                    <Plus className="h-4 w-4 mr-2" /> New
+                  </Button>
                 </div>
               </div>
 
-              <div className={`flex-1 flex flex-col min-h-0 ${selectedPayment ? 'p-0' : 'p-4 pb-0'}`}>
-                <div className="flex-1 flex flex-col pb-0 overflow-hidden">
-                  {loading ? (
-                    <div className="p-8 text-center text-slate-500">Loading payments...</div>
-                  ) : filteredPayments.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-full text-center p-8">
-                      <div className="h-16 w-16 rounded-full bg-slate-100 flex items-center justify-center mb-4">
-                        <FileText className="h-8 w-8 text-slate-400" />
-                      </div>
-                      <h3 className="text-lg font-semibold mb-2">No payments found</h3>
-                      <p className="text-slate-500 mb-4">
-                        {searchTerm ? 'Try adjusting your search criteria' : 'Record your first payment to get started'}
-                      </p>
-                      {!searchTerm && (
-                        <Button onClick={() => setShowCreateForm(true)} className="gap-2" data-testid="button-create-first-payment">
-                          <Plus className="h-4 w-4" /> Record Payment
-                        </Button>
-                      )}
-                    </div>
-                  ) : selectedPayment ? (
-                    <div className="divide-y divide-slate-100 bg-white">
-                      {paginatedItems.map((payment: any) => (
-                        <div
-                          key={(payment as any).id}
-                          className={`p-3 cursor-pointer hover:bg-slate-50 transition-colors border-b border-slate-100 ${selectedPayment?.id === (payment as any).id ? 'bg-blue-50/50' : ''}`}
-                          onClick={() => handlePaymentClick(payment)}
-                        >
-                          <div className="flex items-center justify-between mb-1">
-                            <div className="flex items-center gap-2">
+              <div className="flex-1 overflow-auto min-h-0">
+                {isLoading ? (
+                  <div className="flex items-center justify-center h-64">Loading...</div>
+                ) : filteredPayments.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center h-64 text-slate-500">
+                    <p>No payments found</p>
+                  </div>
+                ) : (
+                  <div className="w-full">
+                    <Table>
+                      <TableHeader className="bg-slate-50 sticky top-0 z-10 shadow-sm">
+                        <TableRow className="border-b border-slate-200">
+                          <TableHead className="w-12 pl-4 py-3">
+                            <Checkbox
+                              checked={selectedPayments.length === filteredPayments.length && filteredPayments.length > 0}
+                              onCheckedChange={(checked) => {
+                                if (checked) setSelectedPayments(filteredPayments.map(p => p.id));
+                                else setSelectedPayments([]);
+                              }}
+                            />
+                          </TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">DATE</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">PAYMENT #</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">REFERENCE NUMBER</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">CUSTOMER NAME</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">INVOICE#</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">MODE</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider text-right py-3">AMOUNT</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider text-right py-3">UNUSED AMOUNT</TableHead>
+                          <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">STATUS</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {paginatedItems.map((payment: any) => (
+                          <TableRow
+                            key={payment.id}
+                            onClick={() => handlePaymentClick(payment)}
+                            className={`cursor-pointer hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0 ${selectedPayment?.id === payment.id ? 'bg-blue-50' : ''}`}
+                            data-testid={`row-payment-${payment.id}`}
+                          >
+                            <TableCell className="pl-4 py-4" onClick={(e) => e.stopPropagation()}>
                               <Checkbox
-                                className="h-4 w-4 rounded border-slate-300"
-                                checked={selectedPayments.includes((payment as any).id)}
+                                checked={selectedPayments.includes(payment.id)}
                                 onCheckedChange={(checked) => {
                                   if (checked) {
-                                    setSelectedPayments(prev => [...prev, (payment as any).id]);
+                                    setSelectedPayments(prev => [...prev, payment.id]);
                                   } else {
-                                    setSelectedPayments(prev => prev.filter(i => i !== (payment as any).id));
+                                    setSelectedPayments(prev => prev.filter(i => i !== payment.id));
                                   }
                                 }}
-                                onClick={(e) => e.stopPropagation()}
                               />
-                              <span className="font-medium text-slate-900 text-sm">{(payment as any).customerName}</span>
-                            </div>
-                            <span className="font-semibold text-slate-900 text-sm">{formatCurrency((payment as any).amount)}</span>
-                          </div>
-                          <div className="flex items-center gap-2 pl-6 text-xs text-slate-500 mb-1">
-                            <span>{(payment as any).paymentNumber}</span>
-                            <span>•</span>
-                            <span>{formatDate((payment as any).date)}</span>
-                          </div>
-                          <div className="flex items-center gap-2 pl-6">
-                            <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider">{(payment as any).status}</span>
-                            <span className="text-[11px] text-slate-400">{(payment as any).mode}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="border rounded-lg bg-white shadow-sm flex-1 flex flex-col overflow-hidden">
-                      <div className="flex-1 overflow-auto scrollbar-hide">
-                        <Table>
-                          <TableHeader className="bg-slate-50 border-b border-slate-200">
-                            <TableRow className="border-none hover:bg-transparent">
-                              <TableHead className="w-10 pl-4 py-3">
-                                <Checkbox
-                                  checked={selectedPayments.length === paginatedItems.length && paginatedItems.length > 0}
-                                  onCheckedChange={(checked) => {
-                                    if (checked) {
-                                      setSelectedPayments(paginatedItems.map((p: any) => p.id));
-                                    } else {
-                                      setSelectedPayments([]);
-                                    }
-                                  }}
-                                />
-                              </TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">DATE</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">PAYMENT #</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">REFERENCE NUMBER</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">CUSTOMER NAME</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">INVOICE#</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">MODE</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider text-right py-3">AMOUNT</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider text-right py-3">UNUSED AMOUNT</TableHead>
-                              <TableHead className="text-xs font-medium text-slate-500 uppercase tracking-wider py-3">STATUS</TableHead>
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {paginatedItems.map((payment: any) => (
-                              <TableRow
-                                key={(payment as any).id}
-                                onClick={() => handlePaymentClick(payment)}
-                                className={`cursor-pointer hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0 ${selectedPayment?.id === (payment as any).id ? 'bg-blue-50' : ''}`}
-                                data-testid={`row-payment-${(payment as any).id}`}
-                              >
-                                <TableCell className="pl-4 py-4" onClick={(e) => e.stopPropagation()}>
-                                  <Checkbox
-                                    checked={selectedPayments.includes((payment as any).id)}
-                                    onCheckedChange={(checked) => {
-                                      if (checked) {
-                                        setSelectedPayments(prev => [...prev, (payment as any).id]);
-                                      } else {
-                                        setSelectedPayments(prev => prev.filter(i => i !== (payment as any).id));
-                                      }
-                                    }}
-                                  />
-                                </TableCell>
-                                <TableCell className="py-4 text-sm">{formatDate((payment as any).date)}</TableCell>
-                                <TableCell className="py-4 text-sm text-blue-600 font-medium">{(payment as any).paymentNumber}</TableCell> {/* Correction: paymentNumber not date */}
-                                <TableCell className="py-4 text-sm">{(payment as any).referenceNumber || '-'}</TableCell>
-                                <TableCell className="py-4 text-sm font-medium text-blue-600 hover:underline">{(payment as any).customerName}</TableCell>
-                                <TableCell className="py-4 text-sm">
-                                  {(payment as any).invoices?.length > 0
-                                    ? (payment as any).invoices.map((inv: any) => inv.invoiceNumber).join(', ')
-                                    : '-'
-                                  }
-                                </TableCell>
-                                <TableCell className="py-4 text-sm">{(payment as any).mode}</TableCell>
-                                <TableCell className="py-4 text-sm text-right font-semibold">{formatCurrency((payment as any).amount)}</TableCell>
-                                <TableCell className="py-4 text-sm text-right">{formatCurrency((payment as any).unusedAmount)}</TableCell>
-                                <TableCell className="py-4">{getStatusBadge((payment as any).status)}</TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                            </TableCell>
+                            <TableCell className="py-4 text-sm">{formatDate(payment.date)}</TableCell>
+                            <TableCell className="py-4 text-sm text-blue-600 font-medium">{payment.paymentNumber}</TableCell>
+                            <TableCell className="py-4 text-sm">{payment.referenceNumber || '-'}</TableCell>
+                            <TableCell className="py-4 text-sm font-medium text-blue-600 hover:underline">{payment.customerName}</TableCell>
+                            <TableCell className="py-4 text-sm">
+                              {payment.invoices?.length > 0
+                                ? payment.invoices.map((inv: any) => inv.invoiceNumber).join(', ')
+                                : '-'
+                              }
+                            </TableCell>
+                            <TableCell className="py-4 text-sm">{payment.mode}</TableCell>
+                            <TableCell className="py-4 text-sm text-right font-semibold">{formatCurrency(payment.amount)}</TableCell>
+                            <TableCell className="py-4 text-sm text-right">{formatCurrency(payment.unusedAmount)}</TableCell>
+                            <TableCell className="py-4">{getStatusBadge(payment.status)}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                )}
               </div>
               <div className="flex-none border-t border-slate-200 bg-white">
                 <TablePagination
@@ -1408,20 +608,6 @@ export default function PaymentsReceived() {
             </ResizablePanel>
           </>
         )}
-
-        {showCreateForm && (
-          <ResizablePanel defaultSize={100} className="bg-white">
-            <PaymentCreateForm
-              onClose={() => {
-                setShowCreateForm(false);
-                setEditPayment(null);
-              }}
-              onSave={handleSavePayment}
-              customers={customers}
-              editPayment={editPayment}
-            />
-          </ResizablePanel>
-        )}
       </ResizablePanelGroup>
 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
@@ -1443,3 +629,4 @@ export default function PaymentsReceived() {
     </div>
   );
 }
+

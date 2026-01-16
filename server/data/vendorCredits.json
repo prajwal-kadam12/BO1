@@ -149,10 +149,10 @@
           "description": "HP ProDesk desktop computer for office and professional use.\n",
           "account": "cost_of_goods_sold",
           "quantity": 1,
-          "rate": 45002,
+          "rate": 45000,
           "tax": "gst_12",
           "taxAmount": 5400,
-          "amount": 45002,
+          "amount": 45000,
           "hsnSac": ""
         },
         {
@@ -222,10 +222,10 @@
           "description": "HP ProDesk desktop computer for office and professional use.\n",
           "account": "prepaid_expenses",
           "quantity": 1,
-          "rate": 45002,
+          "rate": 45000,
           "tax": "none",
           "taxAmount": 0,
-          "amount": 45002,
+          "amount": 45000,
           "hsnSac": ""
         }
       ],
@@ -398,7 +398,7 @@
           "billId": "1766554360488",
           "billNumber": "20",
           "billDate": "2025-12-24",
-          "balanceDue": 45002,
+          "balanceDue": 45000,
           "billTotal": 47259,
           "hsnSac": ""
         },
@@ -416,7 +416,7 @@
           "billId": "1766554360488",
           "billNumber": "20",
           "billDate": "2025-12-24",
-          "balanceDue": 45002,
+          "balanceDue": 45000,
           "billTotal": 47259,
           "hsnSac": ""
         }
@@ -457,10 +457,10 @@
           "description": "HP ProDesk desktop computer for office and professional use.\n",
           "account": "discount",
           "quantity": 1,
-          "rate": "45002",
+          "rate": "45000",
           "tax": "gst_18",
           "taxAmount": 7200,
-          "amount": 45002,
+          "amount": 45000,
           "billId": "1766633708822",
           "billNumber": "22",
           "billDate": "2025-12-25",
@@ -469,7 +469,7 @@
           "hsnSac": ""
         }
       ],
-      "subTotal": 45002,
+      "subTotal": 45000,
       "discountType": "percentage",
       "discountValue": "",
       "discountAmount": 0,

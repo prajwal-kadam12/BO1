@@ -411,7 +411,7 @@ This document contains practical workflow rule examples for the Customer Lifecyc
   "triggerEvent": "invoice_created",
   "triggerConditions": {
     "customerTier": "vip",
-    "invoiceTotal": { "$gte": 5002 },
+    "invoiceTotal": { "$gte": 5000 },
     "isDraft": false
   },
   "actions": [

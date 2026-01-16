@@ -545,7 +545,7 @@ export default function BillCreate() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 overflow-y-auto invisible-scrollbar">
       <div className="max-w-6xl mx-auto p-6">
         <div className="flex items-center gap-3 mb-6">
           <FileText className="h-6 w-6 text-slate-600" />
@@ -791,7 +791,7 @@ export default function BillCreate() {
                             type="number"
                             value={item.quantity}
                             onChange={(e) => updateItem(item.id, 'quantity', parseFloat(e.target.value) || 0)}
-                            
+
                             className="text-sm text-center"
                             min={0}
                             step={0.01}
@@ -803,7 +803,7 @@ export default function BillCreate() {
                             type="number"
                             value={item.rate}
                             onChange={(e) => updateItem(item.id, 'rate', parseFloat(e.target.value) || 0)}
-                            
+
                             className="text-sm text-right"
                             min={0}
                             step={0.01}
@@ -899,7 +899,7 @@ export default function BillCreate() {
                       type="number"
                       value={formData.discountValue}
                       onChange={(e) => handleDiscountChange(formData.discountType, parseFloat(e.target.value) || 0)}
-                      
+
                       className="w-16 text-sm text-right"
                       min={0}
                       data-testid="input-discount"
@@ -974,7 +974,7 @@ export default function BillCreate() {
                       type="number"
                       value={formData.adjustment}
                       onChange={(e) => handleAdjustmentChange(parseFloat(e.target.value) || 0)}
-                      
+
                       className="w-24 text-sm text-right"
                       data-testid="input-adjustment"
                     />

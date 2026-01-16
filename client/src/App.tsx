@@ -58,7 +58,10 @@ import CreditNoteCreate from "@/pages/credit-note-create";
 import CreditNoteEdit from "@/pages/credit-note-edit";
 import PaymentsReceived from "@/pages/payments-received";
 import PaymentsReceivedCreate from "@/pages/payments-received-create";
+import PaymentsReceivedEdit from "@/pages/payments-received-edit";
 import EWayBills from "@/pages/e-way-bills";
+import EWayBillCreate from "@/pages/e-way-bill-create";
+import EWayBillEdit from "@/pages/e-way-bill-edit";
 
 import { OrganizationProvider } from "@/context/OrganizationContext";
 import SettingsOrganizations from "@/pages/settings-organizations";
@@ -96,8 +99,11 @@ function Router() {
         <Route path="/credit-notes/:id/edit" component={CreditNoteEdit} />
         <Route path="/payments-received" component={PaymentsReceived} />
         <Route path="/payments-received/create" component={PaymentsReceivedCreate} />
+        <Route path="/payments-received/:id/edit" component={PaymentsReceivedEdit} />
         <Route path="/eway-bills" component={EWayBills} />
         <Route path="/e-way-bills" component={EWayBills} />
+        <Route path="/e-way-bills/create" component={EWayBillCreate} />
+        <Route path="/e-way-bills/:id/edit" component={EWayBillEdit} />
         <Route path="/customers" component={Customers} />
         <Route path="/customers/new" component={CustomerCreate} />
         <Route path="/customers/:id/edit" component={CustomerEdit} />

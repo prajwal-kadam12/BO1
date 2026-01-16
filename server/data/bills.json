@@ -658,11 +658,11 @@
           "description": "HP ProDesk desktop computer for office and professional use.\n",
           "account": "prepaid_expenses",
           "quantity": 1,
-          "rate": 45002,
+          "rate": 45000,
           "tax": "IGST18",
           "taxAmount": 8100,
           "customerDetails": "6",
-          "amount": 45002
+          "amount": 45000
         }
       ],
       "subTotal": 46050,

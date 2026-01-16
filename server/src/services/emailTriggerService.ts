@@ -81,13 +81,13 @@ export class EmailTriggerService {
     const trigger = EmailDataService.saveTrigger(triggerData);
 
     if (request.sendMode === 'immediate') {
-      // Use setTimeout with a 5002ms delay to give the server plenty of time to stabilize
+      // Use setTimeout with a 5000ms delay to give the server plenty of time to stabilize
       setTimeout(() => {
         console.log(`[EmailTriggerService] Background task started for trigger ${trigger.id} after extended delay`);
         this.processImmediateSend(trigger.id, request, context).catch(err => {
           console.error(`[EmailTriggerService] Background task failed for trigger ${trigger.id}:`, err.message);
         });
-      }, 5002);
+      }, 5000);
       return { triggerId: trigger.id };
     }
 

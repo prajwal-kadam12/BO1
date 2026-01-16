@@ -5,7 +5,7 @@
       "expenseNumber": "EXP-00008",
       "date": "2025-12-22",
       "expenseAccount": "Cost Of Goods Sold",
-      "amount": 5002,
+      "amount": 5000,
       "currency": "INR",
       "paidThrough": "Petty Cash",
       "expenseType": "services",

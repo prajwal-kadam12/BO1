@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5002";
+const BASE_URL = "http://localhost:5000";
 
 async function run() {
     try {

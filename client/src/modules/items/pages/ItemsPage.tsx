@@ -284,10 +284,10 @@ export default function ItemsPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-80px)] animate-in fade-in duration-300">
-      <ResizablePanelGroup direction="horizontal" className="flex-1">
+    <div className="flex h-screen animate-in fade-in duration-300 w-full overflow-hidden">
+      <ResizablePanelGroup direction="horizontal" className="flex-1 w-full">
         <ResizablePanel defaultSize={selectedItem ? 30 : 100} minSize={25}>
-          <div className="flex flex-col h-full overflow-hidden">
+          <div className="flex flex-col h-full overflow-hidden w-full">
             <div className="flex items-center justify-between p-4 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <DropdownMenu>
@@ -410,40 +410,40 @@ export default function ItemsPage() {
                   </Button>
                 </div>
               ) : (
-                <table className="w-full text-sm">
+                <table className="w-full text-sm table-fixed">
                   <thead className="bg-slate-50 border-b border-slate-200 sticky top-0 z-10">
                     <tr>
-                      <th className="w-10 px-4 py-3">
+                      <th className="w-10 px-2 md:px-4 py-3">
                         <Checkbox
                           checked={selectedItems.length === items.length}
                           onCheckedChange={toggleSelectAll}
                         />
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                      <th className="px-2 md:px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider w-24 md:w-auto">
                         NAME
                       </th>
                       {!selectedItem && (
                         <>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                          <th className="hidden lg:table-cell px-2 md:px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
                             PURCHASE DESCRIPTION
                           </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider text-right">
+                          <th className="hidden md:table-cell px-2 md:px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider text-right">
                             PURCHASE RATE
                           </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                          <th className="hidden xl:table-cell px-2 md:px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
                             DESCRIPTION
                           </th>
                         </>
                       )}
-                      <th className="px-4 py-3 text-right text-xs font-medium text-slate-600 uppercase tracking-wider">
+                      <th className="px-2 md:px-4 py-3 text-right text-xs font-medium text-slate-600 uppercase tracking-wider">
                         RATE
                       </th>
                       {!selectedItem && (
                         <>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                          <th className="hidden md:table-cell px-2 md:px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
                             HSN/SAC
                           </th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                          <th className="hidden lg:table-cell px-2 md:px-4 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
                             USAGE UNIT
                           </th>
                         </>
@@ -458,50 +458,50 @@ export default function ItemsPage() {
                           }`}
                         onClick={() => handleItemClick(item)}
                       >
-                        <td className="px-4 py-3">
+                        <td className="px-2 md:px-4 py-3">
                           <Checkbox
                             checked={selectedItems.includes(item.id)}
                             onCheckedChange={() => { }}
                             onClick={(e) => toggleSelectItem(item.id, e as MouseEvent)}
                           />
                         </td>
-                        <td className="px-4 py-3">
-                          <div className="text-sm font-medium text-slate-700">
+                        <td className="px-2 md:px-4 py-3">
+                          <div className="text-sm font-medium text-slate-700 truncate max-w-[80px] md:max-w-none">
                             {item.name}
                           </div>
                         </td>
                         {!selectedItem && (
                           <>
-                            <td className="px-4 py-3">
-                              <div className="text-sm text-slate-600 truncate max-w-[200px]">
+                            <td className="hidden lg:table-cell px-2 md:px-4 py-3">
+                              <div className="text-sm text-slate-600 truncate max-w-[150px]">
                                 {item.purchaseDescription || '-'}
                               </div>
                             </td>
-                            <td className="px-4 py-3 text-right">
+                            <td className="hidden md:table-cell px-2 md:px-4 py-3 text-right">
                               <div className="text-sm text-slate-900">
                                 {item.purchaseRate ? `₹${item.purchaseRate}` : '-'}
                               </div>
                             </td>
-                            <td className="px-4 py-3">
-                              <div className="text-sm text-slate-600 truncate max-w-[200px]">
+                            <td className="hidden xl:table-cell px-2 md:px-4 py-3">
+                              <div className="text-sm text-slate-600 truncate max-w-[150px]">
                                 {item.description || '-'}
                               </div>
                             </td>
                           </>
                         )}
-                        <td className="px-4 py-3 text-right">
+                        <td className="px-2 md:px-4 py-3 text-right">
                           <div className="text-sm text-slate-900 font-medium">
                             {item.rate ? `₹${item.rate}` : '₹0.00'}
                           </div>
                         </td>
                         {!selectedItem && (
                           <>
-                            <td className="px-4 py-3">
+                            <td className="hidden md:table-cell px-2 md:px-4 py-3">
                               <div className="text-sm text-slate-900">
                                 {item.hsnSac || '-'}
                               </div>
                             </td>
-                            <td className="px-4 py-3">
+                            <td className="hidden lg:table-cell px-2 md:px-4 py-3">
                               <div className="text-sm text-slate-600">
                                 {item.usageUnit || '-'}
                               </div>
