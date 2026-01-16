@@ -1,7 +1,4 @@
 
-import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
-import { useOrganization } from "@/context/OrganizationContext";
 import {
     Plus,
     Search,
@@ -16,13 +13,30 @@ import {
     FileText,
     Filter,
     ArrowUpDown,
-    ChevronUp
+    ChevronUp,
+    X,
+    Send,
+    Printer,
+    Download,
+    MessageSquare,
+    History,
+    Receipt,
+    BadgeIndianRupee,
+    Settings,
+    Clock,
+    User,
+    CreditCard,
+    Briefcase,
+    Notebook,
+    ChevronRight,
+    Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import {
     ResizableHandle,
     ResizablePanel,
@@ -38,6 +52,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuPortal,
     DropdownMenuSubContent,
+    DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import {
     AlertDialog,
@@ -49,10 +64,16 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import {
+    Collapsible,
+    CollapsibleContent,
+    CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { useToast } from "@/hooks/use-toast";
 import { TablePagination } from "@/components/table-pagination";
 import { usePagination } from "@/hooks/use-pagination";
 import { formatCurrency } from "@/lib/utils";
+import { robustIframePrint } from "@/lib/robust-print";
 
 interface Vendor {
     id: string;
@@ -64,7 +85,11 @@ interface Vendor {
     email?: string;
     phone?: string;
     gstin?: string;
+    gstTreatment?: string;
     currency?: string;
+    openingBalance?: number;
+    paymentTerms?: string;
+    sourceOfSupply?: string;
     billingAddress?: {
         street1?: string;
         street2?: string;
@@ -73,8 +98,57 @@ interface Vendor {
         pinCode?: string;
         country?: string;
     };
-    payables?: number; // Simplified
+    shippingAddress?: {
+        street1?: string;
+        street2?: string;
+        city?: string;
+        state?: string;
+        pinCode?: string;
+        country?: string;
+    };
+    payables?: number;
     unusedCredits?: number;
+    status?: string;
+    createdAt?: string;
+}
+
+interface Comment {
+    id: string;
+    text: string;
+    author: string;
+    createdAt: string;
+}
+
+interface Transaction {
+    id: string;
+    type: string;
+    date: string;
+    number: string;
+    orderNumber?: string;
+    amount: number;
+    balance: number;
+    status: string;
+    vendor?: string;
+    paidThrough?: string;
+}
+
+interface SystemMail {
+    id: string;
+    to: string;
+    subject: string;
+    date: string;
+    status: string;
+    type: string;
+}
+
+interface ActivityItem {
+    id: string;
+    type: string;
+    title: string;
+    description: string;
+    user: string;
+    date: string;
+    time: string;
 }
 
 interface VendorDetailPanelProps {
@@ -85,7 +159,113 @@ interface VendorDetailPanelProps {
 }
 
 function VendorDetailPanel({ vendor, onClose, onEdit, onDelete }: VendorDetailPanelProps) {
+    const { toast } = useToast();
     const [activeTab, setActiveTab] = useState("overview");
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [newComment, setNewComment] = useState("");
+    const [transactions, setTransactions] = useState<Record<string, Transaction[]>>({
+        bills: [],
+        billPayments: [],
+        expenses: [],
+        purchaseOrders: [],
+        vendorCredits: [],
+        journals: []
+    });
+    const [mails, setMails] = useState<SystemMail[]>([]);
+    const [activities, setActivities] = useState<ActivityItem[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+        bills: true,
+        billPayments: true,
+        expenses: false,
+        purchaseOrders: false,
+        vendorCredits: false
+    });
+
+    useEffect(() => {
+        if (vendor.id) {
+            fetchVendorData();
+        }
+    }, [vendor.id]);
+
+    const fetchVendorData = async () => {
+        setLoading(true);
+        try {
+            const [commentsRes, transactionsRes, mailsRes, activitiesRes] = await Promise.all([
+                fetch(`/api/vendors/${vendor.id}/comments`),
+                fetch(`/api/vendors/${vendor.id}/transactions`),
+                fetch(`/api/vendors/${vendor.id}/mails`),
+                fetch(`/api/vendors/${vendor.id}/activities`)
+            ]);
+
+            if (commentsRes.ok) {
+                const data = await commentsRes.json();
+                setComments(data.data || []);
+            }
+            if (transactionsRes.ok) {
+                const data = await transactionsRes.json();
+                setTransactions(data.data || {
+                    bills: [],
+                    billPayments: [],
+                    expenses: [],
+                    purchaseOrders: [],
+                    vendorCredits: [],
+                    journals: []
+                });
+            }
+            if (mailsRes.ok) {
+                const data = await mailsRes.json();
+                setMails(data.data || []);
+            }
+            if (activitiesRes.ok) {
+                const data = await activitiesRes.json();
+                setActivities(data.data || []);
+            }
+        } catch (error) {
+            console.error('Error fetching vendor data:', error);
+            toast({ title: "Failed to fetch vendor data", variant: "destructive" });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleAddComment = async () => {
+        if (!newComment.trim()) return;
+        try {
+            const response = await fetch(`/api/vendors/${vendor.id}/comments`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: newComment })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setComments([...comments, data.data]);
+                setNewComment("");
+                toast({ title: "Comment added successfully" });
+            }
+        } catch (error) {
+            toast({ title: "Failed to add comment", variant: "destructive" });
+        }
+    };
+
+    const toggleSection = (section: string) => {
+        setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
+    };
+
+    const formatDate = (dateString: string) => {
+        if (!dateString) return '-';
+        return new Date(dateString).toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    };
+
+    const handlePrint = async () => {
+        toast({ title: "Preparing print...", description: "Please wait while we generate the statement preview." });
+        try {
+            await robustIframePrint('vendor-statement', `Statement_${vendor.name}`);
+        } catch (error) {
+            console.error('Print failed:', error);
+            toast({ title: "Print failed", variant: "destructive" });
+        }
+    };
 
     return (
         <div className="h-full flex flex-col bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700">
